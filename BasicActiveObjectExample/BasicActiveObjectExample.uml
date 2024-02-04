@@ -309,34 +309,51 @@ To test this example:&#xD;
         </nestedClassifier>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="__9YG8LttEe6neZnDM9mQww" name="Thread"/>
-      <packagedElement xmi:type="uml:StateMachine" xmi:id="__4nyYL9VEe6neZnDM9mQww" name="ARO_CounterStatus">
-        <region xmi:type="uml:Region" xmi:id="_C9KhcL9WEe6neZnDM9mQww" name="Region1">
-          <transition xmi:type="uml:Transition" xmi:id="_6M5gMMM7Ee6Ukrbv40SpNA" source="_XT1PkMM7Ee6Ukrbv40SpNA" target="_xG92cMM7Ee6Ukrbv40SpNA"/>
-          <transition xmi:type="uml:Transition" xmi:id="__5aXEMM7Ee6Ukrbv40SpNA" guard="_7nhYMMNIEe6Ukrbv40SpNA" source="_xG92cMM7Ee6Ukrbv40SpNA" target="_poO0AMM7Ee6Ukrbv40SpNA">
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_7nhYMMNIEe6Ukrbv40SpNA" name="aroNotOk">
-              <specification xmi:type="uml:OpaqueExpression" xmi:id="_AlPPYMNJEe6Ukrbv40SpNA">
-                <language>JAVA</language>
-                <body>aroCounter &lt; 200</body>
-              </specification>
-            </ownedRule>
-          </transition>
-          <transition xmi:type="uml:Transition" xmi:id="_GyP3IMM8Ee6Ukrbv40SpNA" guard="_VO3QsMNHEe6Ukrbv40SpNA" source="_xG92cMM7Ee6Ukrbv40SpNA" target="_lL-EEMM7Ee6Ukrbv40SpNA">
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_VO3QsMNHEe6Ukrbv40SpNA" name="aroOK">
-              <specification xmi:type="uml:OpaqueExpression" xmi:id="_oE47gMNHEe6Ukrbv40SpNA">
-                <language>JAVA</language>
-                <body>aroCounter >= 200</body>
-              </specification>
-            </ownedRule>
-          </transition>
-          <transition xmi:type="uml:Transition" xmi:id="_LuThcMM8Ee6Ukrbv40SpNA" name="backToOk" source="_poO0AMM7Ee6Ukrbv40SpNA" target="_lL-EEMM7Ee6Ukrbv40SpNA"/>
-          <transition xmi:type="uml:Transition" xmi:id="_QOvmwMM8Ee6Ukrbv40SpNA" name="nowNotOK" source="_lL-EEMM7Ee6Ukrbv40SpNA" target="_poO0AMM7Ee6Ukrbv40SpNA"/>
-          <subvertex xmi:type="uml:Pseudostate" xmi:id="_XT1PkMM7Ee6Ukrbv40SpNA" name="Initial1"/>
-          <subvertex xmi:type="uml:State" xmi:id="_lL-EEMM7Ee6Ukrbv40SpNA" name="ARO_counter_OK"/>
-          <subvertex xmi:type="uml:State" xmi:id="_poO0AMM7Ee6Ukrbv40SpNA" name="ARO_counter_NOT_OK"/>
-          <subvertex xmi:type="uml:Pseudostate" xmi:id="_xG92cMM7Ee6Ukrbv40SpNA" name="isARO_OK" kind="choice"/>
-        </region>
+      <packagedElement xmi:type="uml:Package" xmi:id="_-wmpMMNtEe6Ukrbv40SpNA" name="StateMachine">
+        <packagedElement xmi:type="uml:StateMachine" xmi:id="__4nyYL9VEe6neZnDM9mQww" name="ARO_CounterStatus">
+          <region xmi:type="uml:Region" xmi:id="_C9KhcL9WEe6neZnDM9mQww" name="Region1">
+            <transition xmi:type="uml:Transition" xmi:id="_6M5gMMM7Ee6Ukrbv40SpNA" source="_XT1PkMM7Ee6Ukrbv40SpNA" target="_xG92cMM7Ee6Ukrbv40SpNA"/>
+            <transition xmi:type="uml:Transition" xmi:id="__5aXEMM7Ee6Ukrbv40SpNA" guard="_7nhYMMNIEe6Ukrbv40SpNA" source="_xG92cMM7Ee6Ukrbv40SpNA" target="_poO0AMM7Ee6Ukrbv40SpNA">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_7nhYMMNIEe6Ukrbv40SpNA" name="aroNotOk">
+                <specification xmi:type="uml:OpaqueExpression" xmi:id="_AlPPYMNJEe6Ukrbv40SpNA">
+                  <language>JAVA</language>
+                  <body>aroCounter &lt; 200</body>
+                </specification>
+              </ownedRule>
+            </transition>
+            <transition xmi:type="uml:Transition" xmi:id="_GyP3IMM8Ee6Ukrbv40SpNA" guard="_VO3QsMNHEe6Ukrbv40SpNA" source="_xG92cMM7Ee6Ukrbv40SpNA" target="_lL-EEMM7Ee6Ukrbv40SpNA">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_VO3QsMNHEe6Ukrbv40SpNA" name="aroOK">
+                <specification xmi:type="uml:OpaqueExpression" xmi:id="_oE47gMNHEe6Ukrbv40SpNA">
+                  <language>JAVA</language>
+                  <body>aroCounter >= 200</body>
+                </specification>
+              </ownedRule>
+            </transition>
+            <transition xmi:type="uml:Transition" xmi:id="_LuThcMM8Ee6Ukrbv40SpNA" name="backToOk" source="_poO0AMM7Ee6Ukrbv40SpNA" target="_lL-EEMM7Ee6Ukrbv40SpNA">
+              <trigger xmi:type="uml:Trigger" xmi:id="_wyHHUMNoEe6Ukrbv40SpNA" name="aroOK" event="_FuN_wMNnEe6Ukrbv40SpNA"/>
+            </transition>
+            <transition xmi:type="uml:Transition" xmi:id="_QOvmwMM8Ee6Ukrbv40SpNA" name="nowNotOK" source="_lL-EEMM7Ee6Ukrbv40SpNA" target="_poO0AMM7Ee6Ukrbv40SpNA">
+              <trigger xmi:type="uml:Trigger" xmi:id="_FD17IMNpEe6Ukrbv40SpNA" name="aroNotOK" event="_DWQ_AMNpEe6Ukrbv40SpNA"/>
+            </transition>
+            <subvertex xmi:type="uml:Pseudostate" xmi:id="_XT1PkMM7Ee6Ukrbv40SpNA" name="Initial1"/>
+            <subvertex xmi:type="uml:State" xmi:id="_lL-EEMM7Ee6Ukrbv40SpNA" name="ARO_counter_OK"/>
+            <subvertex xmi:type="uml:State" xmi:id="_poO0AMM7Ee6Ukrbv40SpNA" name="ARO_counter_NOT_OK"/>
+            <subvertex xmi:type="uml:Pseudostate" xmi:id="_xG92cMM7Ee6Ukrbv40SpNA" name="isARO_OK" kind="choice"/>
+          </region>
+        </packagedElement>
+        <packagedElement xmi:type="uml:ChangeEvent" xmi:id="_FuN_wMNnEe6Ukrbv40SpNA" name="aroOK">
+          <changeExpression xmi:type="uml:OpaqueExpression" xmi:id="_ZtU9EMNoEe6Ukrbv40SpNA">
+            <language>JAVA</language>
+            <body>aroCounter >=200</body>
+          </changeExpression>
+        </packagedElement>
+        <packagedElement xmi:type="uml:ChangeEvent" xmi:id="_DWQ_AMNpEe6Ukrbv40SpNA" name="aroNotOK">
+          <changeExpression xmi:type="uml:OpaqueExpression" xmi:id="_DWQ_AcNpEe6Ukrbv40SpNA">
+            <language>JAVA</language>
+            <body>aroCounter &lt; 200</body>
+          </changeExpression>
+        </packagedElement>
       </packagedElement>
-      <packagedElement xmi:type="uml:ChangeEvent" xmi:id="_FuN_wMNnEe6Ukrbv40SpNA" name="aroOK"/>
     </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_XRCisPufEeOaTf6ppV18tA">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_XSCBMPufEeOaTf6ppV18tA" source="http://www.eclipse.org/uml2/2.0.0/UML">
