@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated BasicActiveObjectExample -->
+      <package
+            uri="http:///model/BasicActiveObjectExample.ecore"
+            class="model.BasicActiveObjectExample.BasicActiveObjectExamplePackage"
+            genModel="BasicActiveObjectExample.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated BasicActiveObjectExample -->
+      <package
+            uri="http:///java.ecore"
+            class="java.JavaPackage"
+            genModel="BasicActiveObjectExample.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated BasicActiveObjectExample -->
+      <package
+            uri="http:///java/lang.ecore"
+            class="java.lang.LangPackage"
+            genModel="BasicActiveObjectExample.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated BasicActiveObjectExample -->
+      <package
+            uri="http:///java/util.ecore"
+            class="java.util.UtilPackage"
+            genModel="BasicActiveObjectExample.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated BasicActiveObjectExample -->
+      <package
+            uri="http:///java/util/concurrent.ecore"
+            class="java.util.concurrent.ConcurrentPackage"
+            genModel="BasicActiveObjectExample.genmodel"/>
+   </extension>
+
+</plugin>

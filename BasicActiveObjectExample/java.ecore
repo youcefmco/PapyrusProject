@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="java" nsURI="http:///java.ecore" nsPrefix="java">
+  <eClassifiers xsi:type="ecore:EDataType" name="void" instanceClassName="void"/>
+  <eSubpackages name="lang" nsURI="http:///java/lang.ecore" nsPrefix="java.lang">
+    <eClassifiers xsi:type="ecore:EDataType" name="Byte" instanceClassName="Byte"/>
+    <eClassifiers xsi:type="ecore:EDataType" name="Double" instanceClassName="Double"/>
+    <eClassifiers xsi:type="ecore:EDataType" name="Short" instanceClassName="Short"/>
+    <eClassifiers xsi:type="ecore:EDataType" name="Float" instanceClassName="Float"/>
+    <eClassifiers xsi:type="ecore:EDataType" name="Long" instanceClassName="Long"/>
+    <eClassifiers xsi:type="ecore:EDataType" name="Character" instanceClassName="Character"/>
+    <eClassifiers xsi:type="ecore:EDataType" name="Boolean" instanceClassName="Boolean"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Thread"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Runnable" abstract="true" interface="true"/>
+    <eClassifiers xsi:type="ecore:EDataType" name="Integer" instanceClassName="Integer"/>
+    <eClassifiers xsi:type="ecore:EDataType" name="String" instanceClassName="String"/>
+  </eSubpackages>
+  <eSubpackages name="util" nsURI="http:///java/util.ecore" nsPrefix="java.util">
+    <eClassifiers xsi:type="ecore:EClass" name="ArrayList"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Collection" abstract="true" interface="true">
+      <eTypeParameters name="E"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Set" abstract="true" interface="true">
+      <eTypeParameters name="E"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Queue" abstract="true" interface="true">
+      <eTypeParameters name="E"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Map" abstract="true" interface="true">
+      <eTypeParameters name="K"/>
+      <eTypeParameters name="V"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="List" abstract="true" interface="true">
+      <eTypeParameters name="E"/>
+    </eClassifiers>
+    <eSubpackages name="concurrent" nsURI="http:///java/util/concurrent.ecore" nsPrefix="java.util.concurrent">
+      <eClassifiers xsi:type="ecore:EClass" name="Semaphore"/>
+    </eSubpackages>
+  </eSubpackages>
+</ecore:EPackage>

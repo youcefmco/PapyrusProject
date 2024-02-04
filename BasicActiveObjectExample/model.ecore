@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="model" nsURI="http:///model.ecore" nsPrefix="model">
+  <eSubpackages name="BasicActiveObjectExample" nsURI="http:///model/BasicActiveObjectExample.ecore"
+      nsPrefix="model.BasicActiveObjectExample">
+    <eClassifiers xsi:type="ecore:EClass" name="Increment">
+      <eOperations name="increment" ordered="false" lowerBound="1"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="counter" ordered="false"
+          lowerBound="1" eType="ecore:EDataType ../org.eclipse.uml2.types/model/Types.ecore#//Integer"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Increment_IncrementClassifierBehavior">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="IncrementClassifierBehavior"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Increment_incrementMethod">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="incrementMethod"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="AIM_TmTc_Struct">
+      <eOperations name="setMtq_speed" ordered="false" lowerBound="1"/>
+      <eOperations name="setMtm_value" ordered="false" lowerBound="1"/>
+      <eOperations name="setWheel_1_speed" ordered="false" lowerBound="1"/>
+      <eOperations name="setWheel_2_speed" ordered="false" lowerBound="1"/>
+      <eOperations name="getMtq_speed" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eOperations name="getMtm_value" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eOperations name="getWheel_1_speed" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eOperations name="getWheel_2_speed" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="AIM_TmTc_Struct_Activity6">
+      <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details key="originalName" value="Activity6"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="StateThread">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="pipeInputStream" ordered="false"
+          lowerBound="1" eType="ecore:EClass java.ecore#//util/List"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="PowerThread">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="lock" ordered="false"
+          lowerBound="1" eType="ecore:EClass java.ecore#//util/concurrent/Semaphore"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="State_Machine_AOCS">
+      <eOperations name="setAOCSMode" ordered="false" lowerBound="1"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="powerthread" ordered="false"
+          lowerBound="1" eType="#//BasicActiveObjectExample/PowerThread"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="statethread" ordered="false"
+          lowerBound="1" eType="#//BasicActiveObjectExample/StateThread"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="AOCS_Module">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="aim_tmtc_struct" ordered="false"
+          lowerBound="1" upperBound="-1" eType="#//BasicActiveObjectExample/AIM_TmTc_Struct"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="CAN_TmTc_Struct" abstract="true" interface="true">
+      <eOperations name="getDestinationAddress" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eOperations name="getSourceAddress" ordered="false" lowerBound="1" eType="ecore:EDataType ../org.eclipse.uml2.types/model/Types.ecore#//Integer">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="println"/>
+        </eAnnotations>
+      </eOperations>
+      <eOperations name="setDestinationAddress" ordered="false" lowerBound="1">
+        <eParameters name="address" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eOperations>
+      <eOperations name="setSourceAddress" ordered="false" lowerBound="1">
+        <eParameters name="address" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eOperations>
+    </eClassifiers>
+  </eSubpackages>
+</ecore:EPackage>

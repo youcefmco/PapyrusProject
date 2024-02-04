@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/uml2/2.2.0/GenModel"
+    modelDirectory="/BasicActiveObjectExample/src" modelPluginID="BasicActiveObjectExample"
+    modelName="BasicActiveObjectExample" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.uml2.uml.ecore.importer" complianceLevel="5.0" copyrightFields="false"
+    usedGenPackages="../org.eclipse.uml2.types/model/Types.genmodel#//types" operationReflection="true"
+    importOrganizing="true">
+  <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/importer/org.eclipse.uml2.uml.ecore.importer">
+    <details key="OPPOSITE_ROLE_NAMES" value="IGNORE"/>
+    <details key="DUPLICATE_FEATURES" value="DISCARD"/>
+    <details key="ANNOTATION_DETAILS" value="PROCESS"/>
+    <details key="PROPERTY_DEFAULT_EXPRESSIONS" value="IGNORE"/>
+    <details key="DUPLICATE_FEATURE_INHERITANCE" value="DISCARD"/>
+    <details key="COMMENTS" value="PROCESS"/>
+    <details key="DERIVED_FEATURES" value="PROCESS"/>
+    <details key="SUPER_CLASS_ORDER" value="PROCESS"/>
+    <details key="DUPLICATE_OPERATION_INHERITANCE" value="DISCARD"/>
+    <details key="REDEFINING_OPERATIONS" value="REPORT"/>
+    <details key="INVARIANT_CONSTRAINTS" value="PROCESS"/>
+    <details key="UNION_PROPERTIES" value="REPORT"/>
+    <details key="DUPLICATE_OPERATIONS" value="DISCARD"/>
+    <details key="NON_API_INVARIANTS" value="IGNORE"/>
+    <details key="CAMEL_CASE_NAMES" value="IGNORE"/>
+    <details key="SUBSETTING_PROPERTIES" value="REPORT"/>
+    <details key="OPERATION_BODIES" value="IGNORE"/>
+    <details key="ECORE_TAGGED_VALUES" value="PROCESS"/>
+    <details key="UNTYPED_PROPERTIES" value="REPORT"/>
+    <details key="REDEFINING_PROPERTIES" value="REPORT"/>
+    <details key="INVOCATION_DELEGATES" value="IGNORE"/>
+    <details key="VALIDATION_DELEGATES" value="IGNORE"/>
+  </genAnnotations>
+  <foreignModel>BasicActiveObjectExample.uml</foreignModel>
+  <genPackages xsi:type="genmodel:GenPackage" prefix="Model" disposableProviderFactory="true"
+      ecorePackage="model.ecore#/">
+    <nestedGenPackages xsi:type="genmodel:GenPackage" prefix="BasicActiveObjectExample"
+        basePackage="model" disposableProviderFactory="true" ecorePackage="model.ecore#//BasicActiveObjectExample">
+      <genClasses xsi:type="genmodel:GenClass" ecoreClass="model.ecore#//BasicActiveObjectExample/Increment">
+        <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//BasicActiveObjectExample/Increment/counter"/>
+        <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="model.ecore#//BasicActiveObjectExample/Increment/increment"/>
+      </genClasses>
+      <genClasses xsi:type="genmodel:GenClass" ecoreClass="model.ecore#//BasicActiveObjectExample/Increment_IncrementClassifierBehavior"/>
+      <genClasses xsi:type="genmodel:GenClass" ecoreClass="model.ecore#//BasicActiveObjectExample/Increment_incrementMethod"/>
+      <genClasses xsi:type="genmodel:GenClass" ecoreClass="model.ecore#//BasicActiveObjectExample/AIM_TmTc_Struct">
+        <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="model.ecore#//BasicActiveObjectExample/AIM_TmTc_Struct/setMtq_speed"/>
+        <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="model.ecore#//BasicActiveObjectExample/AIM_TmTc_Struct/setMtm_value"/>
+        <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="model.ecore#//BasicActiveObjectExample/AIM_TmTc_Struct/setWheel_1_speed"/>
+        <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="model.ecore#//BasicActiveObjectExample/AIM_TmTc_Struct/setWheel_2_speed"/>
+        <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="model.ecore#//BasicActiveObjectExample/AIM_TmTc_Struct/getMtq_speed"/>
+        <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="model.ecore#//BasicActiveObjectExample/AIM_TmTc_Struct/getMtm_value"/>
+        <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="model.ecore#//BasicActiveObjectExample/AIM_TmTc_Struct/getWheel_1_speed"/>
+        <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="model.ecore#//BasicActiveObjectExample/AIM_TmTc_Struct/getWheel_2_speed"/>
+      </genClasses>
+      <genClasses xsi:type="genmodel:GenClass" ecoreClass="model.ecore#//BasicActiveObjectExample/AIM_TmTc_Struct_Activity6"/>
+      <genClasses xsi:type="genmodel:GenClass" ecoreClass="model.ecore#//BasicActiveObjectExample/StateThread">
+        <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+            propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//BasicActiveObjectExample/StateThread/pipeInputStream"/>
+      </genClasses>
+      <genClasses xsi:type="genmodel:GenClass" ecoreClass="model.ecore#//BasicActiveObjectExample/PowerThread">
+        <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+            propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//BasicActiveObjectExample/PowerThread/lock"/>
+      </genClasses>
+      <genClasses xsi:type="genmodel:GenClass" ecoreClass="model.ecore#//BasicActiveObjectExample/State_Machine_AOCS">
+        <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+            propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//BasicActiveObjectExample/State_Machine_AOCS/powerthread"/>
+        <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+            propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//BasicActiveObjectExample/State_Machine_AOCS/statethread"/>
+        <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="model.ecore#//BasicActiveObjectExample/State_Machine_AOCS/setAOCSMode"/>
+      </genClasses>
+      <genClasses xsi:type="genmodel:GenClass" ecoreClass="model.ecore#//BasicActiveObjectExample/AOCS_Module">
+        <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+            propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//BasicActiveObjectExample/AOCS_Module/aim_tmtc_struct"/>
+      </genClasses>
+      <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="model.ecore#//BasicActiveObjectExample/CAN_TmTc_Struct">
+        <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="model.ecore#//BasicActiveObjectExample/CAN_TmTc_Struct/getDestinationAddress"/>
+        <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="model.ecore#//BasicActiveObjectExample/CAN_TmTc_Struct/getSourceAddress"/>
+        <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="model.ecore#//BasicActiveObjectExample/CAN_TmTc_Struct/setDestinationAddress">
+          <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="model.ecore#//BasicActiveObjectExample/CAN_TmTc_Struct/setDestinationAddress/address"/>
+        </genOperations>
+        <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="model.ecore#//BasicActiveObjectExample/CAN_TmTc_Struct/setSourceAddress">
+          <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="model.ecore#//BasicActiveObjectExample/CAN_TmTc_Struct/setSourceAddress/address"/>
+        </genOperations>
+      </genClasses>
+    </nestedGenPackages>
+  </genPackages>
+  <genPackages xsi:type="genmodel:GenPackage" prefix="Java" disposableProviderFactory="true"
+      ecorePackage="java.ecore#/">
+    <genDataTypes xsi:type="genmodel:GenDataType" ecoreDataType="java.ecore#//void"/>
+    <nestedGenPackages xsi:type="genmodel:GenPackage" prefix="Lang" basePackage="java"
+        disposableProviderFactory="true" ecorePackage="java.ecore#//lang">
+      <genDataTypes xsi:type="genmodel:GenDataType" ecoreDataType="java.ecore#//lang/Byte"/>
+      <genDataTypes xsi:type="genmodel:GenDataType" ecoreDataType="java.ecore#//lang/Double"/>
+      <genDataTypes xsi:type="genmodel:GenDataType" ecoreDataType="java.ecore#//lang/Short"/>
+      <genDataTypes xsi:type="genmodel:GenDataType" ecoreDataType="java.ecore#//lang/Float"/>
+      <genDataTypes xsi:type="genmodel:GenDataType" ecoreDataType="java.ecore#//lang/Long"/>
+      <genDataTypes xsi:type="genmodel:GenDataType" ecoreDataType="java.ecore#//lang/Character"/>
+      <genDataTypes xsi:type="genmodel:GenDataType" ecoreDataType="java.ecore#//lang/Boolean"/>
+      <genDataTypes xsi:type="genmodel:GenDataType" ecoreDataType="java.ecore#//lang/Integer"/>
+      <genDataTypes xsi:type="genmodel:GenDataType" ecoreDataType="java.ecore#//lang/String"/>
+      <genClasses xsi:type="genmodel:GenClass" ecoreClass="java.ecore#//lang/Thread"/>
+      <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="java.ecore#//lang/Runnable"/>
+    </nestedGenPackages>
+    <nestedGenPackages xsi:type="genmodel:GenPackage" prefix="Util" basePackage="java"
+        disposableProviderFactory="true" ecorePackage="java.ecore#//util">
+      <genClasses xsi:type="genmodel:GenClass" ecoreClass="java.ecore#//util/ArrayList"/>
+      <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="java.ecore#//util/Collection">
+        <genTypeParameters ecoreTypeParameter="java.ecore#//util/Collection/E"/>
+      </genClasses>
+      <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="java.ecore#//util/Set">
+        <genTypeParameters ecoreTypeParameter="java.ecore#//util/Set/E"/>
+      </genClasses>
+      <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="java.ecore#//util/Queue">
+        <genTypeParameters ecoreTypeParameter="java.ecore#//util/Queue/E"/>
+      </genClasses>
+      <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="java.ecore#//util/Map">
+        <genTypeParameters ecoreTypeParameter="java.ecore#//util/Map/K"/>
+        <genTypeParameters ecoreTypeParameter="java.ecore#//util/Map/V"/>
+      </genClasses>
+      <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="java.ecore#//util/List">
+        <genTypeParameters ecoreTypeParameter="java.ecore#//util/List/E"/>
+      </genClasses>
+      <nestedGenPackages xsi:type="genmodel:GenPackage" prefix="Concurrent" basePackage="java.util"
+          disposableProviderFactory="true" ecorePackage="java.ecore#//util/concurrent">
+        <genClasses xsi:type="genmodel:GenClass" ecoreClass="java.ecore#//util/concurrent/Semaphore"/>
+      </nestedGenPackages>
+    </nestedGenPackages>
+  </genPackages>
+</genmodel:GenModel>
