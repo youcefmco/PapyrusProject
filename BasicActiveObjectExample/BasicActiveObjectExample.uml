@@ -245,6 +245,7 @@ To test this example:&#xD;
           <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_JHWsUMNHEe6Ukrbv40SpNA" value="200"/>
         </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_iK5DILYeEe6IpLPqVFrelw" name="setAOCSMode"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_SsJWIMNkEe6Ukrbv40SpNA" name="aroStateMachine"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_ILcRcLg1Ee6IpLPqVFrelw" name="AOCS_Module">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_WKPVULg6Ee6IpLPqVFrelw" name="aim_tmtc_struct" type="_SMG-gK8IEe6-S-w_PQWpLQ" aggregation="shared" association="_WKNgILg6Ee6IpLPqVFrelw">
