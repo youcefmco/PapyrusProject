@@ -244,9 +244,19 @@ To test this example:&#xD;
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
           <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_JHWsUMNHEe6Ukrbv40SpNA" value="200"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_HYCjoMNvEe6Ukrbv40SpNA" name="aocsAlarmState"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_HYCjoMNvEe6Ukrbv40SpNA" name="aocsAlarmState" type="__TeJoMQFEe6Ukrbv40SpNA">
+          <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_TZqfAMQKEe6Ukrbv40SpNA" type="__TeJoMQFEe6Ukrbv40SpNA">
+            <language>JAVA</language>
+            <body>AlarmStates.NO_ALARM</body>
+          </defaultValue>
+        </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_iK5DILYeEe6IpLPqVFrelw" name="setAOCSMode"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_SsJWIMNkEe6Ukrbv40SpNA" name="aroStateMachine"/>
+        <nestedClassifier xmi:type="uml:Enumeration" xmi:id="__TeJoMQFEe6Ukrbv40SpNA" name="AlarmStates">
+          <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__TeJocQFEe6Ukrbv40SpNA" name="NO_ALARM"/>
+          <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__TeJo8QFEe6Ukrbv40SpNA" name="WARNING"/>
+          <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__TeJpcQFEe6Ukrbv40SpNA" name="ALARM"/>
+        </nestedClassifier>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_ILcRcLg1Ee6IpLPqVFrelw" name="AOCS_Module">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_WKPVULg6Ee6IpLPqVFrelw" name="aim_tmtc_struct" type="_SMG-gK8IEe6-S-w_PQWpLQ" aggregation="shared" association="_WKNgILg6Ee6IpLPqVFrelw">
@@ -337,9 +347,25 @@ To test this example:&#xD;
               <trigger xmi:type="uml:Trigger" xmi:id="_FD17IMNpEe6Ukrbv40SpNA" name="aroNotOK" event="_DWQ_AMNpEe6Ukrbv40SpNA"/>
             </transition>
             <subvertex xmi:type="uml:Pseudostate" xmi:id="_XT1PkMM7Ee6Ukrbv40SpNA" name="Initial1"/>
-            <subvertex xmi:type="uml:State" xmi:id="_lL-EEMM7Ee6Ukrbv40SpNA" name="ARO_counter_OK"/>
-            <subvertex xmi:type="uml:State" xmi:id="_poO0AMM7Ee6Ukrbv40SpNA" name="ARO_counter_NOT_OK"/>
+            <subvertex xmi:type="uml:State" xmi:id="_lL-EEMM7Ee6Ukrbv40SpNA" name="ARO_counter_OK">
+              <entry xmi:type="uml:OpaqueBehavior" xmi:id="_kFke0MQOEe6Ukrbv40SpNA" name="alarmState = AlarmStates.NO_ALARM">
+                <language>JAVA</language>
+                <body>alarmState = AlarmStates.NO_ALARM;</body>
+              </entry>
+            </subvertex>
+            <subvertex xmi:type="uml:State" xmi:id="_poO0AMM7Ee6Ukrbv40SpNA" name="ARO_counter_NOT_OK">
+              <entry xmi:type="uml:OpaqueBehavior" xmi:id="_PZHIwMQMEe6Ukrbv40SpNA" name="alarmState = AlarmStates.ALARM;">
+                <language>JAVA</language>
+                <body>alarmState = AlarmStates.ALARM;</body>
+              </entry>
+            </subvertex>
             <subvertex xmi:type="uml:Pseudostate" xmi:id="_xG92cMM7Ee6Ukrbv40SpNA" name="isARO_OK" kind="choice"/>
+            <subvertex xmi:type="uml:State" xmi:id="_evs6oMRAEe6OXuhxNqOtLQ" name="ARO_counter_Warning">
+              <entry xmi:type="uml:OpaqueBehavior" xmi:id="_DRpNkMRBEe6OXuhxNqOtLQ" name="alarmState = AlarmStates.WARNING;">
+                <language>JAVA</language>
+                <body>alarmState = AlarmStates.WARNING;</body>
+              </entry>
+            </subvertex>
           </region>
         </packagedElement>
         <packagedElement xmi:type="uml:ChangeEvent" xmi:id="_FuN_wMNnEe6Ukrbv40SpNA" name="aroOK">
