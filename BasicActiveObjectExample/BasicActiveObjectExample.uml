@@ -380,6 +380,9 @@ To test this example:&#xD;
       <packagedElement xmi:type="uml:Class" xmi:id="__9YG8LttEe6neZnDM9mQww" name="Thread"/>
       <packagedElement xmi:type="uml:StateMachine" xmi:id="__4nyYL9VEe6neZnDM9mQww" name="ARO_CounterStatus">
         <region xmi:type="uml:Region" xmi:id="_C9KhcL9WEe6neZnDM9mQww" name="Region1">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_cziQMMUBEe6OXuhxNqOtLQ">
+            <body>AOCS task ARO counter will decrement as attitude error would increase</body>
+          </ownedComment>
           <transition xmi:type="uml:Transition" xmi:id="_6M5gMMM7Ee6Ukrbv40SpNA" source="_XT1PkMM7Ee6Ukrbv40SpNA" target="_xG92cMM7Ee6Ukrbv40SpNA"/>
           <transition xmi:type="uml:Transition" xmi:id="__5aXEMM7Ee6Ukrbv40SpNA" guard="_7nhYMMNIEe6Ukrbv40SpNA" source="_xG92cMM7Ee6Ukrbv40SpNA" target="_poO0AMM7Ee6Ukrbv40SpNA">
             <ownedRule xmi:type="uml:Constraint" xmi:id="_7nhYMMNIEe6Ukrbv40SpNA" name="aroNotOk">

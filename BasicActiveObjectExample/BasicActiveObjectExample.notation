@@ -1520,6 +1520,11 @@
               <element xmi:type="uml:State" href="BasicActiveObjectExample.uml#_evs6oMRAEe6OXuhxNqOtLQ"/>
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ewMC0cRAEe6OXuhxNqOtLQ" x="329" y="310" width="261" height="61"/>
             </children>
+            <children xmi:type="notation:Shape" xmi:id="_czyu4MUBEe6OXuhxNqOtLQ" type="Comment_Shape">
+              <children xmi:type="notation:DecorationNode" xmi:id="_czyu4sUBEe6OXuhxNqOtLQ" type="Comment_BodyLabel"/>
+              <element xmi:type="uml:Comment" href="BasicActiveObjectExample.uml#_cziQMMUBEe6OXuhxNqOtLQ"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_czyu4cUBEe6OXuhxNqOtLQ" x="529" y="10" height="41"/>
+            </children>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_C9USeb9WEe6neZnDM9mQww"/>
           </children>
           <element xmi:type="uml:Region" href="BasicActiveObjectExample.uml#_C9KhcL9WEe6neZnDM9mQww"/>
