@@ -1363,15 +1363,6 @@
           </eAnnotations>
           <children xmi:type="notation:DecorationNode" xmi:id="_zQI68r3AEe6neZnDM9mQww" type="Package_NameLabel_CN"/>
           <children xmi:type="notation:BasicCompartment" xmi:id="_zQI6873AEe6neZnDM9mQww" type="Package_PackagedElementCompartment_CN">
-            <children xmi:type="notation:Shape" xmi:id="_-w15wMNtEe6Ukrbv40SpNA" type="Package_Shape_CN">
-              <children xmi:type="notation:DecorationNode" xmi:id="_-w2g0MNtEe6Ukrbv40SpNA" type="Package_NameLabel_CN"/>
-              <children xmi:type="notation:BasicCompartment" xmi:id="_-w2g0cNtEe6Ukrbv40SpNA" type="Package_PackagedElementCompartment_CN">
-                <styles xmi:type="notation:TitleStyle" xmi:id="_-w2g0sNtEe6Ukrbv40SpNA"/>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-w2g08NtEe6Ukrbv40SpNA"/>
-              </children>
-              <element xmi:type="uml:Package" href="BasicActiveObjectExample.uml#_-wmpMMNtEe6Ukrbv40SpNA"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-w15wcNtEe6Ukrbv40SpNA" x="74" y="12"/>
-            </children>
             <styles xmi:type="notation:TitleStyle" xmi:id="_zQI69L3AEe6neZnDM9mQww"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zQI69b3AEe6neZnDM9mQww"/>
           </children>
