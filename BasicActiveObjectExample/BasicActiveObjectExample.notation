@@ -1428,13 +1428,13 @@
                 <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_S7a0QMRAEe6OXuhxNqOtLQ" key="mutable" value="true"/>
               </eAnnotations>
               <children xmi:type="notation:DecorationNode" xmi:id="_lMHOAsM7Ee6Ukrbv40SpNA" type="State_NameLabel">
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JXU6kMQOEe6Ukrbv40SpNA"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JXU6kMQOEe6Ukrbv40SpNA" width="341"/>
               </children>
               <children xmi:type="notation:DecorationNode" xmi:id="_lMHOA8M7Ee6Ukrbv40SpNA" type="State_FloatingNameLabel">
                 <layoutConstraint xmi:type="notation:Location" xmi:id="_lMHOBMM7Ee6Ukrbv40SpNA" x="40"/>
               </children>
               <children xmi:type="notation:BasicCompartment" xmi:id="_lMHOBcM7Ee6Ukrbv40SpNA" type="State_RegionCompartment">
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_lMHOBsM7Ee6Ukrbv40SpNA" y="-1"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_lMHOBsM7Ee6Ukrbv40SpNA" y="-1" width="341"/>
               </children>
               <children xmi:type="notation:BasicCompartment" xmi:id="_St4ukMRAEe6OXuhxNqOtLQ" type="compartment_shape_display">
                 <styles xmi:type="notation:TitleStyle" xmi:id="_St4ukcRAEe6OXuhxNqOtLQ"/>
@@ -1448,7 +1448,7 @@
                 <layoutConstraint xmi:type="notation:Location" xmi:id="_SyPDEcRAEe6OXuhxNqOtLQ" x="-10" y="-10"/>
               </children>
               <element xmi:type="uml:State" href="BasicActiveObjectExample.uml#_lL-EEMM7Ee6Ukrbv40SpNA"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_lMHOAcM7Ee6Ukrbv40SpNA" x="29" y="150" height="61"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_lMHOAcM7Ee6Ukrbv40SpNA" x="29" y="150" width="341" height="61"/>
             </children>
             <children xmi:type="notation:Shape" xmi:id="_poUTkMM7Ee6Ukrbv40SpNA" type="State_Shape">
               <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_S7r6AMRAEe6OXuhxNqOtLQ" source="PapyrusCSSForceValue">
@@ -1582,7 +1582,7 @@
       <element xmi:type="uml:Transition" href="BasicActiveObjectExample.uml#_GyP3IMM8Ee6Ukrbv40SpNA"/>
       <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_GyiLAsM8Ee6Ukrbv40SpNA" points="[360, 156, -643984, -643984]$[180, 156, -643984, -643984]$[220, 200, -643984, -643984]"/>
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Gy9o0MM8Ee6Ukrbv40SpNA" id="(0.3333333333333333,0.8)"/>
-      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Gy9o0cM8Ee6Ukrbv40SpNA" id="(0.3883495145631068,0.0)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Gy9o0cM8Ee6Ukrbv40SpNA" id="(0.3519061583577713,0.0)"/>
     </edges>
     <edges xmi:type="notation:Connector" xmi:id="_Lug80MM8Ee6Ukrbv40SpNA" type="Transition_Edge" source="_ewMC0MRAEe6OXuhxNqOtLQ" target="_lMHOAMM7Ee6Ukrbv40SpNA">
       <children xmi:type="notation:DecorationNode" xmi:id="_Luhj4MM8Ee6Ukrbv40SpNA" type="Transition_NameLabel">
@@ -1635,7 +1635,7 @@
       <styles xmi:type="notation:FontStyle" xmi:id="_bT33gcRBEe6OXuhxNqOtLQ"/>
       <element xmi:type="uml:Transition" href="BasicActiveObjectExample.uml#_bTnY0MRBEe6OXuhxNqOtLQ"/>
       <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_bT33gsRBEe6OXuhxNqOtLQ" points="[120, 261, -643984, -643984]$[400, 360, -643984, -643984]"/>
-      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_bUil4MRBEe6OXuhxNqOtLQ" id="(0.9815384615384616,0.9836065573770492)"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_bUil4MRBEe6OXuhxNqOtLQ" id="(0.9384164222873901,1.0)"/>
       <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_bUil4cRBEe6OXuhxNqOtLQ" id="(0.07662835249042145,0.0)"/>
     </edges>
     <edges xmi:type="notation:Connector" xmi:id="_Nw87QMTUEe6OXuhxNqOtLQ" type="Transition_Edge" source="_poUTkMM7Ee6Ukrbv40SpNA" target="_ewMC0MRAEe6OXuhxNqOtLQ">
