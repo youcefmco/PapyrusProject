@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:Codegen="http://www.eclipse.org/papyrus/Codegen/1" xmlns:PapyrusJava="http://www.eclipse.org/papyrus/PapyrusJava/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:java="http://www.eclipse.org/papyrus/JAVA/1" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:Codegen="http://www.eclipse.org/papyrus/Codegen/1" xmlns:PapyrusJava="http://www.eclipse.org/papyrus/PapyrusJava/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:java="http://www.eclipse.org/papyrus/JAVA/1" xmlns:standard="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
   <uml:Model xmi:id="_TEGMIHIVEeKn_eMfgI85Zw" name="model" visibility="public">
     <packageImport xmi:type="uml:PackageImport" xmi:id="_2CeHEKKHEeKB6PiQ7fFSsA">
       <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
@@ -173,7 +173,65 @@ To test this example:&#xD;
           </node>
           <node xmi:type="uml:ForkNode" xmi:id="_-At60HX3EeKtD6JgZNlHOA" name="ForkNode1" incoming="_BTAFkHXlEeKEDJ51kkuoUw" outgoing="_Pt2D4HX4EeKtD6JgZNlHOA _T-_wAHX4EeKtD6JgZNlHOA"/>
         </ownedBehavior>
+        <ownedBehavior xmi:type="uml:Activity" xmi:id="_MhSkAMTxEe6OXuhxNqOtLQ" name="Increment_Factory" node="_Mhle8MTxEe6OXuhxNqOtLQ _Ml5-QMTxEe6OXuhxNqOtLQ _Ml5-RcTxEe6OXuhxNqOtLQ _MmWqMMTxEe6OXuhxNqOtLQ _MmWqNcTxEe6OXuhxNqOtLQ">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_MhSkAcTxEe6OXuhxNqOtLQ" name="result" type="_343NwHXhEeKEDJ51kkuoUw" direction="return">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MhSkAsTxEe6OXuhxNqOtLQ" value="1"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MhSkA8TxEe6OXuhxNqOtLQ" value="1"/>
+          </ownedParameter>
+          <edge xmi:type="uml:ObjectFlow" xmi:id="_Ml5-TsTxEe6OXuhxNqOtLQ" name="createObjectAction to callConstructor" target="_Ml5-RsTxEe6OXuhxNqOtLQ" source="_Ml5-QcTxEe6OXuhxNqOtLQ">
+            <guard xmi:type="uml:LiteralBoolean" xmi:id="_MnQCEMTxEe6OXuhxNqOtLQ" value="true"/>
+            <weight xmi:type="uml:LiteralInteger" xmi:id="_MnQCEcTxEe6OXuhxNqOtLQ" value="1"/>
+          </edge>
+          <edge xmi:type="uml:ObjectFlow" xmi:id="_Ml5-T8TxEe6OXuhxNqOtLQ" name="callConstructor to returnParamNode" target="_Mhle8MTxEe6OXuhxNqOtLQ" source="_MmWqNcTxEe6OXuhxNqOtLQ">
+            <guard xmi:type="uml:LiteralBoolean" xmi:id="_MnQCEsTxEe6OXuhxNqOtLQ" value="true"/>
+            <weight xmi:type="uml:LiteralInteger" xmi:id="_MnQCE8TxEe6OXuhxNqOtLQ" value="1"/>
+          </edge>
+          <edge xmi:type="uml:ObjectFlow" xmi:id="_MmWqNsTxEe6OXuhxNqOtLQ" name="fork to startbehavior input pin" target="_MmWqMcTxEe6OXuhxNqOtLQ" source="_MmWqNcTxEe6OXuhxNqOtLQ">
+            <guard xmi:type="uml:LiteralBoolean" xmi:id="_MnQCFMTxEe6OXuhxNqOtLQ" value="true"/>
+            <weight xmi:type="uml:LiteralInteger" xmi:id="_MnQCFcTxEe6OXuhxNqOtLQ" value="1"/>
+          </edge>
+          <edge xmi:type="uml:ObjectFlow" xmi:id="_MmWqN8TxEe6OXuhxNqOtLQ" name="callConstructor to startBehavior" target="_MmWqNcTxEe6OXuhxNqOtLQ" source="_Ml5-SsTxEe6OXuhxNqOtLQ">
+            <guard xmi:type="uml:LiteralBoolean" xmi:id="_MnQCFsTxEe6OXuhxNqOtLQ" value="true"/>
+            <weight xmi:type="uml:LiteralInteger" xmi:id="_MnQCF8TxEe6OXuhxNqOtLQ" value="1"/>
+          </edge>
+          <node xmi:type="uml:ActivityParameterNode" xmi:id="_Mhle8MTxEe6OXuhxNqOtLQ" name="resultParameterNode" incoming="_Ml5-T8TxEe6OXuhxNqOtLQ" type="_343NwHXhEeKEDJ51kkuoUw" parameter="_MhSkAcTxEe6OXuhxNqOtLQ">
+            <upperBound xmi:type="uml:LiteralInteger" xmi:id="_Mhle8cTxEe6OXuhxNqOtLQ" value="1"/>
+          </node>
+          <node xmi:type="uml:CreateObjectAction" xmi:id="_Ml5-QMTxEe6OXuhxNqOtLQ" name="createObject" classifier="_343NwHXhEeKEDJ51kkuoUw">
+            <result xmi:type="uml:OutputPin" xmi:id="_Ml5-QcTxEe6OXuhxNqOtLQ" name="result" outgoing="_Ml5-TsTxEe6OXuhxNqOtLQ" type="_343NwHXhEeKEDJ51kkuoUw">
+              <upperBound xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ml5-RMTxEe6OXuhxNqOtLQ" value="1"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Ml5-QsTxEe6OXuhxNqOtLQ" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ml5-Q8TxEe6OXuhxNqOtLQ" value="1"/>
+            </result>
+          </node>
+          <node xmi:type="uml:CallOperationAction" xmi:id="_Ml5-RcTxEe6OXuhxNqOtLQ" name="callConstructor" operation="_Mk3ccMTxEe6OXuhxNqOtLQ">
+            <result xmi:type="uml:OutputPin" xmi:id="_Ml5-SsTxEe6OXuhxNqOtLQ" name="result" outgoing="_MmWqN8TxEe6OXuhxNqOtLQ" type="_343NwHXhEeKEDJ51kkuoUw">
+              <upperBound xmi:type="uml:LiteralInteger" xmi:id="_Ml5-TcTxEe6OXuhxNqOtLQ" value="1"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Ml5-S8TxEe6OXuhxNqOtLQ" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ml5-TMTxEe6OXuhxNqOtLQ" value="1"/>
+            </result>
+            <target xmi:type="uml:InputPin" xmi:id="_Ml5-RsTxEe6OXuhxNqOtLQ" name="target" incoming="_Ml5-TsTxEe6OXuhxNqOtLQ" type="_343NwHXhEeKEDJ51kkuoUw">
+              <upperBound xmi:type="uml:LiteralInteger" xmi:id="_Ml5-ScTxEe6OXuhxNqOtLQ" value="1"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Ml5-R8TxEe6OXuhxNqOtLQ" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ml5-SMTxEe6OXuhxNqOtLQ" value="1"/>
+            </target>
+          </node>
+          <node xmi:type="uml:StartObjectBehaviorAction" xmi:id="_MmWqMMTxEe6OXuhxNqOtLQ" name="start classifier behavior" isSynchronous="false">
+            <object xmi:type="uml:InputPin" xmi:id="_MmWqMcTxEe6OXuhxNqOtLQ" name="object" incoming="_MmWqNsTxEe6OXuhxNqOtLQ" type="_343NwHXhEeKEDJ51kkuoUw">
+              <upperBound xmi:type="uml:LiteralInteger" xmi:id="_MmWqNMTxEe6OXuhxNqOtLQ" value="1"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MmWqMsTxEe6OXuhxNqOtLQ" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MmWqM8TxEe6OXuhxNqOtLQ" value="1"/>
+            </object>
+          </node>
+          <node xmi:type="uml:ForkNode" xmi:id="_MmWqNcTxEe6OXuhxNqOtLQ" name="forkInstanciatedObject" incoming="_MmWqN8TxEe6OXuhxNqOtLQ" outgoing="_Ml5-T8TxEe6OXuhxNqOtLQ _MmWqNsTxEe6OXuhxNqOtLQ"/>
+        </ownedBehavior>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_LmEtUHXkEeKEDJ51kkuoUw" name="increment" method="_cM6jwHXkEeKEDJ51kkuoUw"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_Mk3ccMTxEe6OXuhxNqOtLQ" name="Increment">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_MlBNcMTxEe6OXuhxNqOtLQ" name="return" type="_343NwHXhEeKEDJ51kkuoUw" direction="return">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MlBNccTxEe6OXuhxNqOtLQ" value="1"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MlBNcsTxEe6OXuhxNqOtLQ" value="1"/>
+          </ownedParameter>
+        </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_SMG-gK8IEe6-S-w_PQWpLQ" name="AIM_TmTc_Struct" isActive="true">
         <generalization xmi:type="uml:Generalization" xmi:id="_wafsELtmEe6neZnDM9mQww" general="_pAfYoLtmEe6neZnDM9mQww"/>
@@ -240,7 +298,7 @@ To test this example:&#xD;
       <packagedElement xmi:type="uml:Class" xmi:id="_XgbL4LYbEe6HVJQsqClfdg" name="State_Machine_AOCS">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_TYtJMrg3Ee6IpLPqVFrelw" name="powerthread" visibility="private" type="_18DmAK_HEe6-S-w_PQWpLQ" aggregation="shared" association="_TYsiILg3Ee6IpLPqVFrelw"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_QfE0Mrg4Ee6IpLPqVFrelw" name="statethread" visibility="private" type="_mw6RgK_HEe6-S-w_PQWpLQ" aggregation="shared" association="_QfENILg4Ee6IpLPqVFrelw"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_uWFpQMNGEe6Ukrbv40SpNA" name="aroCounter">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_uWFpQMNGEe6Ukrbv40SpNA" name="aroCounter" isStatic="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
           <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_JHWsUMNHEe6Ukrbv40SpNA" value="200"/>
         </ownedAttribute>
@@ -328,7 +386,7 @@ To test this example:&#xD;
               <ownedRule xmi:type="uml:Constraint" xmi:id="_7nhYMMNIEe6Ukrbv40SpNA" name="aroNotOk">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_AlPPYMNJEe6Ukrbv40SpNA">
                   <language>JAVA</language>
-                  <body>aroCounter &lt; 200</body>
+                  <body>State_Machine_AOCS.aroCounter &lt; 200</body>
                 </specification>
               </ownedRule>
             </transition>
@@ -336,7 +394,7 @@ To test this example:&#xD;
               <ownedRule xmi:type="uml:Constraint" xmi:id="_VO3QsMNHEe6Ukrbv40SpNA" name="aroOK">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_oE47gMNHEe6Ukrbv40SpNA">
                   <language>JAVA</language>
-                  <body>aroCounter >= 400</body>
+                  <body>State_Machine_AOCS.aroCounter >= 400</body>
                 </specification>
               </ownedRule>
             </transition>
@@ -362,7 +420,7 @@ To test this example:&#xD;
               <ownedRule xmi:type="uml:Constraint" xmi:id="_bNUVkMTbEe6OXuhxNqOtLQ" name="aroWarning">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_bNUVkcTbEe6OXuhxNqOtLQ">
                   <language>JAVA</language>
-                  <body>aroCounter &lt; 400 &amp;&amp; aroCounter >=200</body>
+                  <body>State_Machine_AOCS.aroCounter &lt; 400 &amp;&amp; State_Machine_AOCS.aroCounter >=200</body>
                 </specification>
               </ownedRule>
             </transition>
@@ -438,6 +496,12 @@ To test this example:&#xD;
       </eAnnotations>
       <appliedProfile xmi:type="uml:Profile" href="pathmap://PapyrusJava_PROFILES/PapyrusJava.profile.uml#_j9REUByGEduN1bTiWJ0lyw"/>
     </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_Mioo68TxEe6OXuhxNqOtLQ">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_MjEssMTxEe6OXuhxNqOtLQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
   </uml:Model>
   <Codegen:Project xmi:id="_9COzcLrIEe6neZnDM9mQww" base_Model="_TEGMIHIVEeKn_eMfgI85Zw" projectName="BasicActiveObjectExemple"/>
   <Codegen:GeneratorHint xmi:id="_TjjrULrJEe6neZnDM9mQww" base_Element="_TEGMIHIVEeKn_eMfgI85Zw">
@@ -447,4 +511,5 @@ To test this example:&#xD;
   <java:JavaClass xmi:id="_TexRsLtoEe6neZnDM9mQww" base_Classifier="_SMG-gK8IEe6-S-w_PQWpLQ"/>
   <PapyrusJava:External xmi:id="_8AQ3UL3BEe6neZnDM9mQww" base_Classifier="__9YG8LttEe6neZnDM9mQww"/>
   <PapyrusJava:Import xmi:id="_bt_NUL3CEe6neZnDM9mQww" manualImports="import java.lang.Thread;" base_class="_mw6RgK_HEe6-S-w_PQWpLQ" base_Classifier="_mw6RgK_HEe6-S-w_PQWpLQ"/>
+  <standard:Create xmi:id="_MldSUMTxEe6OXuhxNqOtLQ" base_BehavioralFeature="_Mk3ccMTxEe6OXuhxNqOtLQ"/>
 </xmi:XMI>
