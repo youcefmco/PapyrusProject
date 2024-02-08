@@ -379,19 +379,13 @@ To test this example:&#xD;
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="__9YG8LttEe6neZnDM9mQww" name="Thread"/>
       <packagedElement xmi:type="uml:StateMachine" xmi:id="__4nyYL9VEe6neZnDM9mQww" name="ARO_CounterStatus">
+        <connectionPoint xmi:type="uml:Pseudostate" xmi:id="_9wEqAMXCEe6ceOe2-JuqGg" name="EntryPoint2" kind="entryPoint"/>
         <region xmi:type="uml:Region" xmi:id="_C9KhcL9WEe6neZnDM9mQww" name="Region1">
           <ownedComment xmi:type="uml:Comment" xmi:id="_cziQMMUBEe6OXuhxNqOtLQ">
             <body>AOCS task ARO counter will decrement as attitude error would increase</body>
           </ownedComment>
           <transition xmi:type="uml:Transition" xmi:id="_6M5gMMM7Ee6Ukrbv40SpNA" source="_XT1PkMM7Ee6Ukrbv40SpNA" target="_xG92cMM7Ee6Ukrbv40SpNA"/>
-          <transition xmi:type="uml:Transition" xmi:id="__5aXEMM7Ee6Ukrbv40SpNA" guard="_7nhYMMNIEe6Ukrbv40SpNA" source="_xG92cMM7Ee6Ukrbv40SpNA" target="_poO0AMM7Ee6Ukrbv40SpNA">
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_7nhYMMNIEe6Ukrbv40SpNA" name="aroNotOk">
-              <specification xmi:type="uml:OpaqueExpression" xmi:id="_AlPPYMNJEe6Ukrbv40SpNA">
-                <language>JAVA</language>
-                <body>State_Machine_AOCS.aroCounter &lt; 200</body>
-              </specification>
-            </ownedRule>
-          </transition>
+          <transition xmi:type="uml:Transition" xmi:id="__5aXEMM7Ee6Ukrbv40SpNA" source="_xG92cMM7Ee6Ukrbv40SpNA" target="_poO0AMM7Ee6Ukrbv40SpNA"/>
           <transition xmi:type="uml:Transition" xmi:id="_GyP3IMM8Ee6Ukrbv40SpNA" guard="_VO3QsMNHEe6Ukrbv40SpNA" source="_xG92cMM7Ee6Ukrbv40SpNA" target="_lL-EEMM7Ee6Ukrbv40SpNA">
             <ownedRule xmi:type="uml:Constraint" xmi:id="_VO3QsMNHEe6Ukrbv40SpNA" name="aroOK">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_oE47gMNHEe6Ukrbv40SpNA">
@@ -465,6 +459,46 @@ To test this example:&#xD;
           <language>JAVA</language>
           <body>aroCounter &lt; 400 &amp;&amp; aroCounter >=200</body>
         </changeExpression>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Actor" xmi:id="_ec2k0MZpEe6SvYXnNjpWuQ" name="Operator"/>
+      <packagedElement xmi:type="uml:UseCase" xmi:id="_rNFWEMZpEe6SvYXnNjpWuQ" name="AOCS Initilisation"/>
+      <packagedElement xmi:type="uml:UseCase" xmi:id="_u0QREMZpEe6SvYXnNjpWuQ" name="Operational AOCS mode"/>
+      <packagedElement xmi:type="uml:UseCase" xmi:id="_2E4mEMZpEe6SvYXnNjpWuQ" name="Uncontrolled Tumble"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="_JhPREMZqEe6SvYXnNjpWuQ"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="_LZX3YMZqEe6SvYXnNjpWuQ"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_TW8K4MZqEe6SvYXnNjpWuQ" client="_rNFWEMZpEe6SvYXnNjpWuQ" supplier="_u0QREMZpEe6SvYXnNjpWuQ"/>
+      <packagedElement xmi:type="uml:StateMachine" xmi:id="_Wm3qkMZqEe6SvYXnNjpWuQ" name="AocsFDIR_StateMachine">
+        <connectionPoint xmi:type="uml:Pseudostate" xmi:id="_1w190MZrEe6SvYXnNjpWuQ" name="Operator" kind="entryPoint"/>
+        <region xmi:type="uml:Region" xmi:id="_dF_DEMZqEe6SvYXnNjpWuQ" name="Region1">
+          <transition xmi:type="uml:Transition" xmi:id="_BfjVwMZuEe6SvYXnNjpWuQ" source="_f20zAMZqEe6SvYXnNjpWuQ" target="_I5wk4MZrEe6SvYXnNjpWuQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_HTb_8MZuEe6SvYXnNjpWuQ" source="_1w190MZrEe6SvYXnNjpWuQ" target="_DiQ-8MZvEe6SvYXnNjpWuQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_NgoiAMZuEe6SvYXnNjpWuQ" source="_I5wk4MZrEe6SvYXnNjpWuQ" target="_Y_RP4MZrEe6SvYXnNjpWuQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_Y49FIMZuEe6SvYXnNjpWuQ" guard="_7nhYMMNIEe6Ukrbv40SpNA" source="_Y_RP4MZrEe6SvYXnNjpWuQ" target="_TBBocMZuEe6SvYXnNjpWuQ">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_7nhYMMNIEe6Ukrbv40SpNA" name="aroNotOk">
+              <specification xmi:type="uml:OpaqueExpression" xmi:id="_AlPPYMNJEe6Ukrbv40SpNA">
+                <language>JAVA</language>
+                <body>State_Machine_AOCS.aroCounter =&lt; 0</body>
+              </specification>
+            </ownedRule>
+          </transition>
+          <transition xmi:type="uml:Transition" xmi:id="_JKRwUMZvEe6SvYXnNjpWuQ" source="_DiQ-8MZvEe6SvYXnNjpWuQ" target="_I5wk4MZrEe6SvYXnNjpWuQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_LKEd0MZvEe6SvYXnNjpWuQ" source="_TBBocMZuEe6SvYXnNjpWuQ" target="_DiQ-8MZvEe6SvYXnNjpWuQ"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_f20zAMZqEe6SvYXnNjpWuQ" name="Initial"/>
+          <subvertex xmi:type="uml:State" xmi:id="_I5wk4MZrEe6SvYXnNjpWuQ" name="AOCS Intilisation"/>
+          <subvertex xmi:type="uml:State" xmi:id="_Y_RP4MZrEe6SvYXnNjpWuQ" name="Operational AOCS mode">
+            <entry xmi:type="uml:OpaqueBehavior" xmi:id="_PoLBAMaUEe6SvYXnNjpWuQ" name="State_Machine_AOCS.run();">
+              <language>JAVA</language>
+              <body>State_Machine_AOCS.run();</body>
+            </entry>
+          </subvertex>
+          <subvertex xmi:type="uml:State" xmi:id="_TBBocMZuEe6SvYXnNjpWuQ" name="Uncontrolled Tumble">
+            <entry xmi:type="uml:OpaqueBehavior" xmi:id="_DeXzEMaTEe6SvYXnNjpWuQ" name="SendAlarm (AocsProcess, SafatyProcess, AroCounterAlarm)">
+              <language>Natural language</language>
+              <body>SendAlarm (AocsProcess, SafatyProcess, AroCounterAlarm)</body>
+            </entry>
+          </subvertex>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_DiQ-8MZvEe6SvYXnNjpWuQ" name="Renitiate" kind="join"/>
+        </region>
       </packagedElement>
     </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_XRCisPufEeOaTf6ppV18tA">
