@@ -464,6 +464,8 @@ To test this example:&#xD;
       <packagedElement xmi:type="uml:Association" xmi:id="_LZX3YMZqEe6SvYXnNjpWuQ"/>
       <packagedElement xmi:type="uml:StateMachine" xmi:id="_Wm3qkMZqEe6SvYXnNjpWuQ" name="AocsFDIR_StateMachine">
         <connectionPoint xmi:type="uml:Pseudostate" xmi:id="_1w190MZrEe6SvYXnNjpWuQ" name="GS Telecommand" kind="entryPoint"/>
+        <connectionPoint xmi:type="uml:Pseudostate" xmi:id="_vQfmMM8yEe60kqNX-kRKdg" name="Power_watchdog" kind="entryPoint"/>
+        <connectionPoint xmi:type="uml:Pseudostate" xmi:id="_CuGKMM86Ee60kqNX-kRKdg" name="Safety Process" kind="exitPoint"/>
         <region xmi:type="uml:Region" xmi:id="_dF_DEMZqEe6SvYXnNjpWuQ" name="Region1">
           <transition xmi:type="uml:Transition" xmi:id="_BfjVwMZuEe6SvYXnNjpWuQ" source="_f20zAMZqEe6SvYXnNjpWuQ" target="_I5wk4MZrEe6SvYXnNjpWuQ"/>
           <transition xmi:type="uml:Transition" xmi:id="_HTb_8MZuEe6SvYXnNjpWuQ" source="_1w190MZrEe6SvYXnNjpWuQ" target="_DiQ-8MZvEe6SvYXnNjpWuQ"/>
@@ -472,12 +474,23 @@ To test this example:&#xD;
             <ownedRule xmi:type="uml:Constraint" xmi:id="_7nhYMMNIEe6Ukrbv40SpNA" name="aroNotOk">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_AlPPYMNJEe6Ukrbv40SpNA">
                 <language>JAVA</language>
-                <body>State_Machine_AOCS.aroCounter =&lt; 0</body>
+                <body>State_Machine_AOCS.aroCounter =&lt; 0 || watchdog_timer >120</body>
               </specification>
             </ownedRule>
           </transition>
           <transition xmi:type="uml:Transition" xmi:id="_JKRwUMZvEe6SvYXnNjpWuQ" source="_DiQ-8MZvEe6SvYXnNjpWuQ" target="_I5wk4MZrEe6SvYXnNjpWuQ"/>
-          <transition xmi:type="uml:Transition" xmi:id="_LKEd0MZvEe6SvYXnNjpWuQ" source="_TBBocMZuEe6SvYXnNjpWuQ" target="_DiQ-8MZvEe6SvYXnNjpWuQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_LKEd0MZvEe6SvYXnNjpWuQ" source="_2BHhQM85Ee60kqNX-kRKdg" target="_DiQ-8MZvEe6SvYXnNjpWuQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_MO4BEM8zEe60kqNX-kRKdg" name="watchdog_timeout" source="_vQfmMM8yEe60kqNX-kRKdg" target="_Y_RP4MZrEe6SvYXnNjpWuQ">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_y83fYM80Ee60kqNX-kRKdg">
+              <specification xmi:type="uml:OpaqueExpression" xmi:id="_y83fYc80Ee60kqNX-kRKdg">
+                <language>JAVA</language>
+                <body>watchdog_timer >120</body>
+              </specification>
+            </ownedRule>
+            <trigger xmi:type="uml:Trigger" xmi:id="_ydMAIM88Ee60kqNX-kRKdg" name="watchdog_timeout" event="_pzXDkM88Ee60kqNX-kRKdg"/>
+          </transition>
+          <transition xmi:type="uml:Transition" xmi:id="_9UzKQM85Ee60kqNX-kRKdg" source="_TBBocMZuEe6SvYXnNjpWuQ" target="_2BHhQM85Ee60kqNX-kRKdg"/>
+          <transition xmi:type="uml:Transition" xmi:id="_FY0rEM86Ee60kqNX-kRKdg" name="Alert Safety" source="_2BHhQM85Ee60kqNX-kRKdg" target="_CuGKMM86Ee60kqNX-kRKdg"/>
           <subvertex xmi:type="uml:Pseudostate" xmi:id="_f20zAMZqEe6SvYXnNjpWuQ" name="Initial"/>
           <subvertex xmi:type="uml:State" xmi:id="_I5wk4MZrEe6SvYXnNjpWuQ" name="AOCS_Intilisation"/>
           <subvertex xmi:type="uml:State" xmi:id="_Y_RP4MZrEe6SvYXnNjpWuQ" name="Operational_AOCS_mode">
@@ -486,15 +499,17 @@ To test this example:&#xD;
               <body>State_Machine_AOCS.run();</body>
             </entry>
           </subvertex>
-          <subvertex xmi:type="uml:State" xmi:id="_TBBocMZuEe6SvYXnNjpWuQ" name="Uncontrolled_Tumble">
-            <entry xmi:type="uml:OpaqueBehavior" xmi:id="_DeXzEMaTEe6SvYXnNjpWuQ" name="SendAlarm (AocsProcess, SafatyProcess, AroCounterAlarm)">
+          <subvertex xmi:type="uml:State" xmi:id="_TBBocMZuEe6SvYXnNjpWuQ" name="Uncontrolled_Tumble_(SBM)">
+            <entry xmi:type="uml:OpaqueBehavior" xmi:id="_DeXzEMaTEe6SvYXnNjpWuQ" name="SendAlarm (ARO_Reconfig_1)">
               <language>Natural language</language>
-              <body>SendAlarm (AocsProcess, SafatyProcess, AroCounterAlarm)</body>
+              <body>SendAlarm (ARO_Reconfig_1)</body>
             </entry>
           </subvertex>
           <subvertex xmi:type="uml:Pseudostate" xmi:id="_DiQ-8MZvEe6SvYXnNjpWuQ" name="Renitiate" kind="join"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_2BHhQM85Ee60kqNX-kRKdg" kind="fork"/>
         </region>
       </packagedElement>
+      <packagedElement xmi:type="uml:ChangeEvent" xmi:id="_pzXDkM88Ee60kqNX-kRKdg" name="watchdog_timeout"/>
     </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_XRCisPufEeOaTf6ppV18tA">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_XSCBMPufEeOaTf6ppV18tA" source="http://www.eclipse.org/uml2/2.0.0/UML">
