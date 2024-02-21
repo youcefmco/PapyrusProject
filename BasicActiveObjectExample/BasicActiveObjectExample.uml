@@ -10,7 +10,7 @@
     <packageImport xmi:type="uml:PackageImport" xmi:id="_caP74LncEe6Ml54jB_GRsA">
       <importedPackage xmi:type="uml:Profile" href="pathmap://Papyrus_JAVA_PROFILES/java.profile.uml#_6TYLMN0yEd6P1qtlpBOZyg"/>
     </packageImport>
-    <packagedElement xmi:type="uml:Package" xmi:id="_wLFCsHXhEeKEDJ51kkuoUw" name="BasicActiveObjectExample" visibility="public">
+    <packagedElement xmi:type="uml:Package" xmi:id="_wLFCsHXhEeKEDJ51kkuoUw" name="AOCS_FDIR_Mechanism" visibility="public">
       <ownedComment xmi:type="uml:Comment" xmi:id="_chbAoKKFEeKB6PiQ7fFSsA">
         <body>This example consist in:&#xD;
 - Instantiating an object of type Increment, and start its classifier behavior&#xD;
@@ -18,9 +18,6 @@
 To test this example:&#xD;
 - Define a new Moka launch configuration&#xD;
 - Target activity LaunchIncrementExample, from sub-package Launch</body>
-      </ownedComment>
-      <ownedComment xmi:type="uml:Comment" xmi:id="_SBnR0L3GEe6neZnDM9mQww" annotatedElement="_mw6RgK_HEe6-S-w_PQWpLQ">
-        <body>import java.util.Array;</body>
       </ownedComment>
       <packagedElement xmi:type="uml:Class" xmi:id="_343NwHXhEeKEDJ51kkuoUw" name="Increment" classifierBehavior="_Jq320HXiEeKEDJ51kkuoUw" isActive="true">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_RdkXEHXiEeKEDJ51kkuoUw" name="counter" visibility="private">
@@ -298,7 +295,7 @@ To test this example:&#xD;
       <packagedElement xmi:type="uml:Class" xmi:id="_XgbL4LYbEe6HVJQsqClfdg" name="State_Machine_AOCS">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_TYtJMrg3Ee6IpLPqVFrelw" name="powerthread" visibility="private" type="_18DmAK_HEe6-S-w_PQWpLQ" aggregation="shared" association="_TYsiILg3Ee6IpLPqVFrelw"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_QfE0Mrg4Ee6IpLPqVFrelw" name="statethread" visibility="private" type="_mw6RgK_HEe6-S-w_PQWpLQ" aggregation="shared" association="_QfENILg4Ee6IpLPqVFrelw"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_uWFpQMNGEe6Ukrbv40SpNA" name="aroCounter" isStatic="true">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_uWFpQMNGEe6Ukrbv40SpNA" name="aroCounter" visibility="private" isStatic="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
           <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_JHWsUMNHEe6Ukrbv40SpNA" value="200"/>
         </ownedAttribute>
@@ -308,12 +305,36 @@ To test this example:&#xD;
             <body>AlarmStates.NO_ALARM</body>
           </defaultValue>
         </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_l10ygNCmEe6OJd78DXkgdw" name="currentMode" visibility="private" type="_i2fTkNCmEe6OJd78DXkgdw">
+          <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_wD71MNC6Ee6OJd78DXkgdw">
+            <language>JAVA</language>
+            <body>AocsModes.SBM</body>
+          </defaultValue>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_hbNw8NC9Ee6OJd78DXkgdw" name="DTM_YTM_CPM_COUNTER" visibility="private" isStatic="true" isReadOnly="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_hbNw8dC9Ee6OJd78DXkgdw" value="300"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_Wq024NDFEe6OJd78DXkgdw" name="NOM_COUNTER" visibility="private" isStatic="true" isReadOnly="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_Wq024dDFEe6OJd78DXkgdw" value="600"/>
+        </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_iK5DILYeEe6IpLPqVFrelw" name="setAOCSMode"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_SsJWIMNkEe6Ukrbv40SpNA" name="aroStateMachine"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_s8DyYNDHEe6OJd78DXkgdw" name="decrementAROCounter"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_3yheQNDKEe6OJd78DXkgdw" name="incrementAROCounter"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_Q30HsNDLEe6OJd78DXkgdw" name="Operation14"/>
         <nestedClassifier xmi:type="uml:Enumeration" xmi:id="__TeJoMQFEe6Ukrbv40SpNA" name="AlarmStates">
           <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__TeJocQFEe6Ukrbv40SpNA" name="NO_ALARM"/>
           <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__TeJo8QFEe6Ukrbv40SpNA" name="WARNING"/>
           <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__TeJpcQFEe6Ukrbv40SpNA" name="ALARM"/>
+        </nestedClassifier>
+        <nestedClassifier xmi:type="uml:Enumeration" xmi:id="_i2fTkNCmEe6OJd78DXkgdw" name="AocsModes">
+          <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_BPjzsNC7Ee6OJd78DXkgdw" name="SBM"/>
+          <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_i2fTkdCmEe6OJd78DXkgdw" name="DTM"/>
+          <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_i2fTk9CmEe6OJd78DXkgdw" name="YTM"/>
+          <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_Dx6bsNC7Ee6OJd78DXkgdw" name="CPM"/>
+          <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_FHDCoNC7Ee6OJd78DXkgdw" name="NOM"/>
         </nestedClassifier>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_ILcRcLg1Ee6IpLPqVFrelw" name="AOCS_Module">
@@ -470,13 +491,15 @@ To test this example:&#xD;
           <transition xmi:type="uml:Transition" xmi:id="_BfjVwMZuEe6SvYXnNjpWuQ" source="_f20zAMZqEe6SvYXnNjpWuQ" target="_I5wk4MZrEe6SvYXnNjpWuQ"/>
           <transition xmi:type="uml:Transition" xmi:id="_HTb_8MZuEe6SvYXnNjpWuQ" source="_1w190MZrEe6SvYXnNjpWuQ" target="_DiQ-8MZvEe6SvYXnNjpWuQ"/>
           <transition xmi:type="uml:Transition" xmi:id="_NgoiAMZuEe6SvYXnNjpWuQ" source="_I5wk4MZrEe6SvYXnNjpWuQ" target="_Y_RP4MZrEe6SvYXnNjpWuQ"/>
-          <transition xmi:type="uml:Transition" xmi:id="_Y49FIMZuEe6SvYXnNjpWuQ" guard="_7nhYMMNIEe6Ukrbv40SpNA" source="_Y_RP4MZrEe6SvYXnNjpWuQ" target="_TBBocMZuEe6SvYXnNjpWuQ">
+          <transition xmi:type="uml:Transition" xmi:id="_Y49FIMZuEe6SvYXnNjpWuQ" name="State_Machine_AOCS.aroCounter =&lt; 0 || watchdog_timer &lt;= 0" source="_Y_RP4MZrEe6SvYXnNjpWuQ" target="_TBBocMZuEe6SvYXnNjpWuQ">
             <ownedRule xmi:type="uml:Constraint" xmi:id="_7nhYMMNIEe6Ukrbv40SpNA" name="aroNotOk">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_AlPPYMNJEe6Ukrbv40SpNA">
                 <language>JAVA</language>
-                <body>State_Machine_AOCS.aroCounter =&lt; 0 || watchdog_timer >120</body>
+                <body>State_Machine_AOCS.aroCounter =&lt; 0 || watchdog_timer &lt;= 0</body>
               </specification>
             </ownedRule>
+            <trigger xmi:type="uml:Trigger" xmi:id="_VL80EM_TEe60kqNX-kRKdg" name="watchdog_timeout" event="_pzXDkM88Ee60kqNX-kRKdg"/>
+            <trigger xmi:type="uml:Trigger" xmi:id="_sNk8oM_TEe60kqNX-kRKdg" name="ARO_counter_expire" event="_r9tUoM_TEe60kqNX-kRKdg"/>
           </transition>
           <transition xmi:type="uml:Transition" xmi:id="_JKRwUMZvEe6SvYXnNjpWuQ" source="_DiQ-8MZvEe6SvYXnNjpWuQ" target="_I5wk4MZrEe6SvYXnNjpWuQ"/>
           <transition xmi:type="uml:Transition" xmi:id="_LKEd0MZvEe6SvYXnNjpWuQ" source="_2BHhQM85Ee60kqNX-kRKdg" target="_DiQ-8MZvEe6SvYXnNjpWuQ"/>
@@ -490,7 +513,7 @@ To test this example:&#xD;
             <trigger xmi:type="uml:Trigger" xmi:id="_ydMAIM88Ee60kqNX-kRKdg" name="watchdog_timeout" event="_pzXDkM88Ee60kqNX-kRKdg"/>
           </transition>
           <transition xmi:type="uml:Transition" xmi:id="_9UzKQM85Ee60kqNX-kRKdg" source="_TBBocMZuEe6SvYXnNjpWuQ" target="_2BHhQM85Ee60kqNX-kRKdg"/>
-          <transition xmi:type="uml:Transition" xmi:id="_FY0rEM86Ee60kqNX-kRKdg" name="Alert Safety" source="_2BHhQM85Ee60kqNX-kRKdg" target="_CuGKMM86Ee60kqNX-kRKdg"/>
+          <transition xmi:type="uml:Transition" xmi:id="_FY0rEM86Ee60kqNX-kRKdg" name="alert_safety" source="_2BHhQM85Ee60kqNX-kRKdg" target="_CuGKMM86Ee60kqNX-kRKdg"/>
           <subvertex xmi:type="uml:Pseudostate" xmi:id="_f20zAMZqEe6SvYXnNjpWuQ" name="Initial"/>
           <subvertex xmi:type="uml:State" xmi:id="_I5wk4MZrEe6SvYXnNjpWuQ" name="AOCS_Intilisation"/>
           <subvertex xmi:type="uml:State" xmi:id="_Y_RP4MZrEe6SvYXnNjpWuQ" name="Operational_AOCS_mode">
@@ -505,11 +528,22 @@ To test this example:&#xD;
               <body>SendAlarm (ARO_Reconfig_1)</body>
             </entry>
           </subvertex>
-          <subvertex xmi:type="uml:Pseudostate" xmi:id="_DiQ-8MZvEe6SvYXnNjpWuQ" name="Renitiate" kind="join"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_DiQ-8MZvEe6SvYXnNjpWuQ" name="reconfig" kind="join"/>
           <subvertex xmi:type="uml:Pseudostate" xmi:id="_2BHhQM85Ee60kqNX-kRKdg" kind="fork"/>
         </region>
       </packagedElement>
       <packagedElement xmi:type="uml:ChangeEvent" xmi:id="_pzXDkM88Ee60kqNX-kRKdg" name="watchdog_timeout"/>
+      <packagedElement xmi:type="uml:ChangeEvent" xmi:id="_r9tUoM_TEe60kqNX-kRKdg" name="ARO_counter_expire">
+        <changeExpression xmi:type="uml:OpaqueExpression" xmi:id="_r9tUoc_TEe60kqNX-kRKdg">
+          <language>JAVA</language>
+          <body>State_Machine_AOCS.aroCounter =&lt; 0</body>
+        </changeExpression>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_8jWQUNDHEe6OJd78DXkgdw" name="SafetyProcessThread"/>
+      <packagedElement xmi:type="uml:Activity" xmi:id="_0114cNDPEe6OJd78DXkgdw" name="Activity23" node="_-kd54NDPEe6OJd78DXkgdw _REZ_8NDQEe6OJd78DXkgdw">
+        <node xmi:type="uml:InitialNode" xmi:id="_-kd54NDPEe6OJd78DXkgdw" name="InitialNode1"/>
+        <node xmi:type="uml:DecisionNode" xmi:id="_REZ_8NDQEe6OJd78DXkgdw" name="newMode"/>
+      </packagedElement>
     </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_XRCisPufEeOaTf6ppV18tA">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_XSCBMPufEeOaTf6ppV18tA" source="http://www.eclipse.org/uml2/2.0.0/UML">
