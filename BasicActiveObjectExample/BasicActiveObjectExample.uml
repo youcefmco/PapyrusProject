@@ -292,15 +292,17 @@ To test this example:&#xD;
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_613T8q_PEe6-S-w_PQWpLQ" value="1"/>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_XgbL4LYbEe6HVJQsqClfdg" name="State_Machine_AOCS" useCase="_zur1ENcPEe6Hj6nzgakJ2A __jS2INcQEe6Hj6nzgakJ2A _Q17mINcSEe6Hj6nzgakJ2A _drW5ENcVEe6Hj6nzgakJ2A _zBo6INcVEe6Hj6nzgakJ2A _8trhoNcVEe6Hj6nzgakJ2A">
+      <packagedElement xmi:type="uml:Class" xmi:id="_XgbL4LYbEe6HVJQsqClfdg" name="State_Machine_AOCS" useCase="_zur1ENcPEe6Hj6nzgakJ2A __jS2INcQEe6Hj6nzgakJ2A _Q17mINcSEe6Hj6nzgakJ2A _drW5ENcVEe6Hj6nzgakJ2A _8trhoNcVEe6Hj6nzgakJ2A _bpcWMNk6Ee6Hj6nzgakJ2A _KaoKsNlDEe6Hj6nzgakJ2A _NxdC8NlLEe6Hj6nzgakJ2A">
         <ownedUseCase xmi:type="uml:UseCase" xmi:id="_zur1ENcPEe6Hj6nzgakJ2A" name="Receive TM" subject="_XgbL4LYbEe6HVJQsqClfdg"/>
         <ownedUseCase xmi:type="uml:UseCase" xmi:id="__jS2INcQEe6Hj6nzgakJ2A" name="AOCS Algorithm" subject="_XgbL4LYbEe6HVJQsqClfdg"/>
-        <ownedUseCase xmi:type="uml:UseCase" xmi:id="_Q17mINcSEe6Hj6nzgakJ2A" name="Actuate" subject="_XgbL4LYbEe6HVJQsqClfdg">
-          <include xmi:type="uml:Include" xmi:id="_9yDFgNcREe6Hj6nzgakJ2A" addition="__jS2INcQEe6Hj6nzgakJ2A"/>
-        </ownedUseCase>
+        <ownedUseCase xmi:type="uml:UseCase" xmi:id="_Q17mINcSEe6Hj6nzgakJ2A" name="Actuate" subject="_XgbL4LYbEe6HVJQsqClfdg"/>
         <ownedUseCase xmi:type="uml:UseCase" xmi:id="_drW5ENcVEe6Hj6nzgakJ2A" name="Mode transition" subject="_XgbL4LYbEe6HVJQsqClfdg"/>
-        <ownedUseCase xmi:type="uml:UseCase" xmi:id="_zBo6INcVEe6Hj6nzgakJ2A" name="FDIR" subject="_XgbL4LYbEe6HVJQsqClfdg"/>
         <ownedUseCase xmi:type="uml:UseCase" xmi:id="_8trhoNcVEe6Hj6nzgakJ2A" name="AOCS Reconfig" subject="_XgbL4LYbEe6HVJQsqClfdg"/>
+        <ownedUseCase xmi:type="uml:UseCase" xmi:id="_bpcWMNk6Ee6Hj6nzgakJ2A" name="High-accuracy pointing " subject="_XgbL4LYbEe6HVJQsqClfdg"/>
+        <ownedUseCase xmi:type="uml:UseCase" xmi:id="_KaoKsNlDEe6Hj6nzgakJ2A" name="FDIR" subject="_XgbL4LYbEe6HVJQsqClfdg">
+          <include xmi:type="uml:Include" xmi:id="_P_FU8NlHEe6Hj6nzgakJ2A" addition="_8trhoNcVEe6Hj6nzgakJ2A"/>
+        </ownedUseCase>
+        <ownedUseCase xmi:type="uml:UseCase" xmi:id="_NxdC8NlLEe6Hj6nzgakJ2A" name="Specific Maneuver" subject="_XgbL4LYbEe6HVJQsqClfdg"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_TYtJMrg3Ee6IpLPqVFrelw" name="powerthread" visibility="private" type="_18DmAK_HEe6-S-w_PQWpLQ" aggregation="shared" association="_TYsiILg3Ee6IpLPqVFrelw"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_QfE0Mrg4Ee6IpLPqVFrelw" name="statethread" visibility="private" type="_mw6RgK_HEe6-S-w_PQWpLQ" aggregation="shared" association="_QfENILg4Ee6IpLPqVFrelw"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_uWFpQMNGEe6Ukrbv40SpNA" name="aroCounter" visibility="private" isStatic="true">
@@ -551,53 +553,82 @@ To test this example:&#xD;
         <node xmi:type="uml:InitialNode" xmi:id="_-kd54NDPEe6OJd78DXkgdw" name="InitialNode1"/>
         <node xmi:type="uml:DecisionNode" xmi:id="_REZ_8NDQEe6OJd78DXkgdw" name="newMode"/>
       </packagedElement>
+      <packagedElement xmi:type="uml:Usage" xmi:id="_A_CSoNlGEe6Hj6nzgakJ2A" client="_KaoKsNlDEe6Hj6nzgakJ2A" supplier="__jS2INcQEe6Hj6nzgakJ2A"/>
+      <packagedElement xmi:type="uml:Usage" xmi:id="_GBZZQNlGEe6Hj6nzgakJ2A" client="_KaoKsNlDEe6Hj6nzgakJ2A" supplier="_drW5ENcVEe6Hj6nzgakJ2A"/>
+      <packagedElement xmi:type="uml:Usage" xmi:id="_6-UQ4NlGEe6Hj6nzgakJ2A" client="_bpcWMNk6Ee6Hj6nzgakJ2A" supplier="__jS2INcQEe6Hj6nzgakJ2A"/>
+      <packagedElement xmi:type="uml:Usage" xmi:id="_7zMDYNlGEe6Hj6nzgakJ2A" client="_XgbL4LYbEe6HVJQsqClfdg" supplier="_drW5ENcVEe6Hj6nzgakJ2A"/>
+      <packagedElement xmi:type="uml:Usage" xmi:id="_G8Ki8NlHEe6Hj6nzgakJ2A" client="_Q17mINcSEe6Hj6nzgakJ2A" supplier="__jS2INcQEe6Hj6nzgakJ2A"/>
+      <packagedElement xmi:type="uml:Usage" xmi:id="_9V9y0NlIEe6Hj6nzgakJ2A" client="_drW5ENcVEe6Hj6nzgakJ2A" supplier="__jS2INcQEe6Hj6nzgakJ2A"/>
+      <packagedElement xmi:type="uml:Usage" xmi:id="_myqdoNlLEe6Hj6nzgakJ2A" client="_NxdC8NlLEe6Hj6nzgakJ2A" supplier="__jS2INcQEe6Hj6nzgakJ2A"/>
+      <packagedElement xmi:type="uml:Usage" xmi:id="_naYk8NlLEe6Hj6nzgakJ2A" client="_NxdC8NlLEe6Hj6nzgakJ2A" supplier="_drW5ENcVEe6Hj6nzgakJ2A"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_AOQzoNbuEe6Hj6nzgakJ2A" name="UseCaseDiagrams">
       <packagedElement xmi:type="uml:Actor" xmi:id="_wPGlQNcOEe6Hj6nzgakJ2A" name="Operator"/>
-      <packagedElement xmi:type="uml:Actor" xmi:id="_hduJsNcQEe6Hj6nzgakJ2A" name="AIM"/>
-      <packagedElement xmi:type="uml:Association" xmi:id="_mk-XYNcQEe6Hj6nzgakJ2A" memberEnd="_mlKkotcQEe6Hj6nzgakJ2A _mlKko9cQEe6Hj6nzgakJ2A">
+      <packagedElement xmi:type="uml:Actor" xmi:id="_hduJsNcQEe6Hj6nzgakJ2A" name="Sensors">
+        <generalization xmi:type="uml:Generalization" xmi:id="_V83f0Nk4Ee6Hj6nzgakJ2A" general="_T1Od4Nk4Ee6Hj6nzgakJ2A"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_mk-XYNcQEe6Hj6nzgakJ2A" name="Sensors send TM data" memberEnd="_mlKkotcQEe6Hj6nzgakJ2A _mlKko9cQEe6Hj6nzgakJ2A">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_mlKkoNcQEe6Hj6nzgakJ2A" source="org.eclipse.papyrus">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_mlKkodcQEe6Hj6nzgakJ2A" key="nature" value="UML_Nature"/>
         </eAnnotations>
         <ownedEnd xmi:type="uml:Property" xmi:id="_mlKkotcQEe6Hj6nzgakJ2A" name="aocs algorithm" type="_zur1ENcPEe6Hj6nzgakJ2A" association="_mk-XYNcQEe6Hj6nzgakJ2A"/>
         <ownedEnd xmi:type="uml:Property" xmi:id="_mlKko9cQEe6Hj6nzgakJ2A" name="aim" type="_hduJsNcQEe6Hj6nzgakJ2A" association="_mk-XYNcQEe6Hj6nzgakJ2A"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_ZN9BANcSEe6Hj6nzgakJ2A" memberEnd="_ZN9BA9cSEe6Hj6nzgakJ2A _ZN9BBNcSEe6Hj6nzgakJ2A">
+      <packagedElement xmi:type="uml:Association" xmi:id="_ZN9BANcSEe6Hj6nzgakJ2A" name="Actuators receive TC" memberEnd="_ZN9BA9cSEe6Hj6nzgakJ2A _ZN9BBNcSEe6Hj6nzgakJ2A">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ZN9BAdcSEe6Hj6nzgakJ2A" source="org.eclipse.papyrus">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ZN9BAtcSEe6Hj6nzgakJ2A" key="nature" value="UML_Nature"/>
         </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_ZN9BA9cSEe6Hj6nzgakJ2A" name="aim" type="_hduJsNcQEe6Hj6nzgakJ2A" association="_ZN9BANcSEe6Hj6nzgakJ2A"/>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_ZN9BA9cSEe6Hj6nzgakJ2A" name="aim" type="__UvcYNk3Ee6Hj6nzgakJ2A" association="_ZN9BANcSEe6Hj6nzgakJ2A"/>
         <ownedEnd xmi:type="uml:Property" xmi:id="_ZN9BBNcSEe6Hj6nzgakJ2A" name="actuate" type="_Q17mINcSEe6Hj6nzgakJ2A" association="_ZN9BANcSEe6Hj6nzgakJ2A"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_gfjfANcVEe6Hj6nzgakJ2A" memberEnd="_gfjfA9cVEe6Hj6nzgakJ2A _gfjfBNcVEe6Hj6nzgakJ2A">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_gfjfAdcVEe6Hj6nzgakJ2A" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_gfjfAtcVEe6Hj6nzgakJ2A" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_gfjfA9cVEe6Hj6nzgakJ2A" name="operator" type="_wPGlQNcOEe6Hj6nzgakJ2A" association="_gfjfANcVEe6Hj6nzgakJ2A"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_gfjfBNcVEe6Hj6nzgakJ2A" name="mode transition" type="_drW5ENcVEe6Hj6nzgakJ2A" association="_gfjfANcVEe6Hj6nzgakJ2A"/>
+      <packagedElement xmi:type="uml:Actor" xmi:id="__UvcYNk3Ee6Hj6nzgakJ2A" name="Actuators">
+        <generalization xmi:type="uml:Generalization" xmi:id="_aZbxwNk4Ee6Hj6nzgakJ2A" general="_T1Od4Nk4Ee6Hj6nzgakJ2A"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="__4XU8NcVEe6Hj6nzgakJ2A" memberEnd="__4XU89cVEe6Hj6nzgakJ2A __4XU9NcVEe6Hj6nzgakJ2A">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="__4XU8dcVEe6Hj6nzgakJ2A" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="__4XU8tcVEe6Hj6nzgakJ2A" key="nature" value="UML_Nature"/>
+      <packagedElement xmi:type="uml:Actor" xmi:id="_T1Od4Nk4Ee6Hj6nzgakJ2A" name="AIM"/>
+      <packagedElement xmi:type="uml:Actor" xmi:id="_r7vgANk6Ee6Hj6nzgakJ2A" name="Payload process"/>
+      <packagedElement xmi:type="uml:Actor" xmi:id="_ISqYoNlDEe6Hj6nzgakJ2A" name="Safety Process"/>
+      <packagedElement xmi:type="uml:Actor" xmi:id="_JY_ukNlDEe6Hj6nzgakJ2A" name="PDM"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="_hZprMNlDEe6Hj6nzgakJ2A" name="Aocs triggers FDIR actions" memberEnd="_hZprM9lDEe6Hj6nzgakJ2A _hZprNNlDEe6Hj6nzgakJ2A">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_hZprMdlDEe6Hj6nzgakJ2A" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_hZprMtlDEe6Hj6nzgakJ2A" key="nature" value="UML_Nature"/>
         </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="__4XU89cVEe6Hj6nzgakJ2A" name="operator" type="_wPGlQNcOEe6Hj6nzgakJ2A" association="__4XU8NcVEe6Hj6nzgakJ2A"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="__4XU9NcVEe6Hj6nzgakJ2A" name="aocs reconfig" type="_8trhoNcVEe6Hj6nzgakJ2A" association="__4XU8NcVEe6Hj6nzgakJ2A"/>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_hZprM9lDEe6Hj6nzgakJ2A" name="fdir" type="_KaoKsNlDEe6Hj6nzgakJ2A" association="_hZprMNlDEe6Hj6nzgakJ2A"/>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_hZprNNlDEe6Hj6nzgakJ2A" name="safety process" type="_ISqYoNlDEe6Hj6nzgakJ2A" association="_hZprMNlDEe6Hj6nzgakJ2A"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Actor" xmi:id="_BzxRsNcWEe6Hj6nzgakJ2A" name="Safety Process"/>
-      <packagedElement xmi:type="uml:Actor" xmi:id="_EkshMNcWEe6Hj6nzgakJ2A" name="PDM"/>
-      <packagedElement xmi:type="uml:Association" xmi:id="_G_RGMNcWEe6Hj6nzgakJ2A" memberEnd="_G_RGM9cWEe6Hj6nzgakJ2A _G_RGNNcWEe6Hj6nzgakJ2A">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_G_RGMdcWEe6Hj6nzgakJ2A" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_G_RGMtcWEe6Hj6nzgakJ2A" key="nature" value="UML_Nature"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="_oJRk4NlDEe6Hj6nzgakJ2A" name="PDM triggers FDIR actions" memberEnd="_oJRk49lDEe6Hj6nzgakJ2A _oJRk5NlDEe6Hj6nzgakJ2A">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_oJRk4dlDEe6Hj6nzgakJ2A" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_oJRk4tlDEe6Hj6nzgakJ2A" key="nature" value="UML_Nature"/>
         </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_G_RGM9cWEe6Hj6nzgakJ2A" name="fdir" type="_zBo6INcVEe6Hj6nzgakJ2A" association="_G_RGMNcWEe6Hj6nzgakJ2A"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_G_RGNNcWEe6Hj6nzgakJ2A" name="safety process" type="_BzxRsNcWEe6Hj6nzgakJ2A" association="_G_RGMNcWEe6Hj6nzgakJ2A"/>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_oJRk49lDEe6Hj6nzgakJ2A" name="fdir" type="_KaoKsNlDEe6Hj6nzgakJ2A" association="_oJRk4NlDEe6Hj6nzgakJ2A"/>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_oJRk5NlDEe6Hj6nzgakJ2A" name="pdm" type="_JY_ukNlDEe6Hj6nzgakJ2A" association="_oJRk4NlDEe6Hj6nzgakJ2A"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_Hzn7UNcWEe6Hj6nzgakJ2A" memberEnd="_Hzn7U9cWEe6Hj6nzgakJ2A _Hzn7VNcWEe6Hj6nzgakJ2A">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Hzn7UdcWEe6Hj6nzgakJ2A" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Hzn7UtcWEe6Hj6nzgakJ2A" key="nature" value="UML_Nature"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="_kKO1ENlGEe6Hj6nzgakJ2A" name="Payload executes imaging sked" memberEnd="_kKO1E9lGEe6Hj6nzgakJ2A _kKO1FNlGEe6Hj6nzgakJ2A">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_kKO1EdlGEe6Hj6nzgakJ2A" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_kKO1EtlGEe6Hj6nzgakJ2A" key="nature" value="UML_Nature"/>
         </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_Hzn7U9cWEe6Hj6nzgakJ2A" name="fdir" type="_zBo6INcVEe6Hj6nzgakJ2A" association="_Hzn7UNcWEe6Hj6nzgakJ2A"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_Hzn7VNcWEe6Hj6nzgakJ2A" name="power system" type="_EkshMNcWEe6Hj6nzgakJ2A" association="_Hzn7UNcWEe6Hj6nzgakJ2A"/>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_kKO1E9lGEe6Hj6nzgakJ2A" name="high-accuracy pointing " type="_bpcWMNk6Ee6Hj6nzgakJ2A" association="_kKO1ENlGEe6Hj6nzgakJ2A"/>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_kKO1FNlGEe6Hj6nzgakJ2A" name="payload" type="_r7vgANk6Ee6Hj6nzgakJ2A" association="_kKO1ENlGEe6Hj6nzgakJ2A"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_K-HDgNlJEe6Hj6nzgakJ2A" name="Operator resets Reconfig Flag" memberEnd="_K-HDg9lJEe6Hj6nzgakJ2A _K-HDhNlJEe6Hj6nzgakJ2A">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_K-HDgdlJEe6Hj6nzgakJ2A" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_K-HDgtlJEe6Hj6nzgakJ2A" key="nature" value="UML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_K-HDg9lJEe6Hj6nzgakJ2A" name="aocs reconfig" type="_8trhoNcVEe6Hj6nzgakJ2A" association="_K-HDgNlJEe6Hj6nzgakJ2A"/>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_K-HDhNlJEe6Hj6nzgakJ2A" name="operator" type="_wPGlQNcOEe6Hj6nzgakJ2A" association="_K-HDgNlJEe6Hj6nzgakJ2A"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_RS40QNlJEe6Hj6nzgakJ2A" name="Operator changes the mode" memberEnd="_RS40Q9lJEe6Hj6nzgakJ2A _RS40RNlJEe6Hj6nzgakJ2A">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_RS40QdlJEe6Hj6nzgakJ2A" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_RS40QtlJEe6Hj6nzgakJ2A" key="nature" value="UML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_RS40Q9lJEe6Hj6nzgakJ2A" name="mode transition" type="_drW5ENcVEe6Hj6nzgakJ2A" association="_RS40QNlJEe6Hj6nzgakJ2A"/>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_RS40RNlJEe6Hj6nzgakJ2A" name="operator" type="_wPGlQNcOEe6Hj6nzgakJ2A" association="_RS40QNlJEe6Hj6nzgakJ2A"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_s3yo0NlLEe6Hj6nzgakJ2A" name="Payload process executes firing sked" memberEnd="_s3yo09lLEe6Hj6nzgakJ2A _s3yo1NlLEe6Hj6nzgakJ2A">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_s3yo0dlLEe6Hj6nzgakJ2A" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_s3yo0tlLEe6Hj6nzgakJ2A" key="nature" value="UML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_s3yo09lLEe6Hj6nzgakJ2A" name="specific maneuver" type="_NxdC8NlLEe6Hj6nzgakJ2A" association="_s3yo0NlLEe6Hj6nzgakJ2A"/>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_s3yo1NlLEe6Hj6nzgakJ2A" name="payload process" type="_r7vgANk6Ee6Hj6nzgakJ2A" association="_s3yo0NlLEe6Hj6nzgakJ2A"/>
       </packagedElement>
     </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_XRCisPufEeOaTf6ppV18tA">
