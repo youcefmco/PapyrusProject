@@ -333,7 +333,7 @@ To test this example:&#xD;
         <ownedOperation xmi:type="uml:Operation" xmi:id="_SsJWIMNkEe6Ukrbv40SpNA" name="aroStateMachine"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_s8DyYNDHEe6OJd78DXkgdw" name="decrementAROCounter"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_3yheQNDKEe6OJd78DXkgdw" name="incrementAROCounter"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_Q30HsNDLEe6OJd78DXkgdw" name="Operation14"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_Q30HsNDLEe6OJd78DXkgdw" name="setAlarm"/>
         <nestedClassifier xmi:type="uml:Enumeration" xmi:id="__TeJoMQFEe6Ukrbv40SpNA" name="AlarmStates">
           <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__TeJocQFEe6Ukrbv40SpNA" name="NO_ALARM"/>
           <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__TeJo8QFEe6Ukrbv40SpNA" name="WARNING"/>
@@ -565,7 +565,7 @@ To test this example:&#xD;
     <packagedElement xmi:type="uml:Package" xmi:id="_AOQzoNbuEe6Hj6nzgakJ2A" name="UseCaseDiagrams">
       <packagedElement xmi:type="uml:Actor" xmi:id="_wPGlQNcOEe6Hj6nzgakJ2A" name="Operator"/>
       <packagedElement xmi:type="uml:Actor" xmi:id="_hduJsNcQEe6Hj6nzgakJ2A" name="Sensors">
-        <generalization xmi:type="uml:Generalization" xmi:id="_V83f0Nk4Ee6Hj6nzgakJ2A" general="_T1Od4Nk4Ee6Hj6nzgakJ2A"/>
+        <generalization xmi:type="uml:Generalization" xmi:id="_KN2FUNyYEe6XoZmok9ehtw" general="_T1Od4Nk4Ee6Hj6nzgakJ2A"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_mk-XYNcQEe6Hj6nzgakJ2A" name="Sensors send TM data" memberEnd="_mlKkotcQEe6Hj6nzgakJ2A _mlKko9cQEe6Hj6nzgakJ2A">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_mlKkoNcQEe6Hj6nzgakJ2A" source="org.eclipse.papyrus">
