@@ -305,11 +305,15 @@ To test this example:&#xD;
         <ownedUseCase xmi:type="uml:UseCase" xmi:id="_NxdC8NlLEe6Hj6nzgakJ2A" name="Specific Maneuver" subject="_XgbL4LYbEe6HVJQsqClfdg"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_TYtJMrg3Ee6IpLPqVFrelw" name="powerthread" visibility="private" type="_18DmAK_HEe6-S-w_PQWpLQ" aggregation="shared" association="_TYsiILg3Ee6IpLPqVFrelw"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_QfE0Mrg4Ee6IpLPqVFrelw" name="statethread" visibility="private" type="_mw6RgK_HEe6-S-w_PQWpLQ" aggregation="shared" association="_QfENILg4Ee6IpLPqVFrelw"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_uWFpQMNGEe6Ukrbv40SpNA" name="aroCounter" visibility="private" isStatic="true">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_uWFpQMNGEe6Ukrbv40SpNA" name="AROH_counterMax" visibility="private" isStatic="true">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_qLj90OB3Ee6XoZmok9ehtw" annotatedElement="_uWFpQMNGEe6Ukrbv40SpNA">
+            <body>Sets the current ARO max value for a given mode</body>
+          </ownedComment>
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
-          <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_JHWsUMNHEe6Ukrbv40SpNA" value="200"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_u29ycOB2Ee6XoZmok9ehtw" value="*"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_HYCjoMNvEe6Ukrbv40SpNA" name="aocsAlarmState" type="__TeJoMQFEe6Ukrbv40SpNA">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_HYCjoMNvEe6Ukrbv40SpNA" name="AROH_isReconfigEnabled" type="__TeJoMQFEe6Ukrbv40SpNA">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MO5OYOB6Ee6XoZmok9ehtw"/>
           <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_TZqfAMQKEe6Ukrbv40SpNA" type="__TeJoMQFEe6Ukrbv40SpNA">
             <language>JAVA</language>
             <body>AlarmStates.NO_ALARM</body>
@@ -329,11 +333,60 @@ To test this example:&#xD;
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
           <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_Wq024dDFEe6OJd78DXkgdw" value="600"/>
         </ownedAttribute>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_iK5DILYeEe6IpLPqVFrelw" name="setAOCSMode"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_SsJWIMNkEe6Ukrbv40SpNA" name="aroStateMachine"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_s8DyYNDHEe6OJd78DXkgdw" name="decrementAROCounter"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_3yheQNDKEe6OJd78DXkgdw" name="incrementAROCounter"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_Q30HsNDLEe6OJd78DXkgdw" name="setAlarm"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_iK5DILYeEe6IpLPqVFrelw" name="AOCS_setMode"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_SsJWIMNkEe6Ukrbv40SpNA" name="Run_AOCS">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_7EJTQOBxEe6XoZmok9ehtw" annotatedElement="_SsJWIMNkEe6Ukrbv40SpNA">
+            <body> Calls the AOCS function, checks for errors, and implements the ARO counter.</body>
+          </ownedComment>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_s8DyYNDHEe6OJd78DXkgdw" name="ARO_SetDecFlag">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_6PHoYOB0Ee6XoZmok9ehtw" annotatedElement="_s8DyYNDHEe6OJd78DXkgdw">
+            <body>Sets a flag to indicate ARO is to decrement</body>
+          </ownedComment>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_3yheQNDKEe6OJd78DXkgdw" name="ARO_ClearDecFlag">
+          <ownedComment xmi:type="uml:Comment" xmi:id="__WmfkOB0Ee6XoZmok9ehtw" annotatedElement="_3yheQNDKEe6OJd78DXkgdw">
+            <body>Clears the decrement flag</body>
+          </ownedComment>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_Q30HsNDLEe6OJd78DXkgdw" name="ARO_Enable_reconfig_flag_Alarm">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_sf_zsOB5Ee6XoZmok9ehtw" annotatedElement="_Q30HsNDLEe6OJd78DXkgdw">
+            <body>Enables/disables reconfiguration on ARO counter reaching 0</body>
+          </ownedComment>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_reY_AOB0Ee6XoZmok9ehtw" name="state" type="__TeJoMQFEe6Ukrbv40SpNA"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_UaPLEOBtEe6XoZmok9ehtw" name="AOCS_SetPeriod">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_eTrVYOBtEe6XoZmok9ehtw" name="period">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_4Fb0gOBzEe6XoZmok9ehtw" name="Actuate">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_-m7LkOBzEe6XoZmok9ehtw" annotatedElement="_4Fb0gOBzEe6XoZmok9ehtw">
+            <body> Sends the commands to the actuator and updates the AOCS ewods.</body>
+          </ownedComment>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_tQiKsOB3Ee6XoZmok9ehtw" name="ARO_SetCounterMax" visibility="private">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_OeVMUOB4Ee6XoZmok9ehtw">
+            <body>Sets the current ARO max value for a given mode&#xD;
+&#xD;
+{@link #_y9Y_0OB3Ee6XoZmok9ehtw} mode number&#xD;
+{@link #_0gXOcOB3Ee6XoZmok9ehtw}  value of max ARO &#xD;
+return function status</body>
+          </ownedComment>
+          <ownedComment xmi:type="uml:Comment" xmi:id="_OWEywOB5Ee6XoZmok9ehtw">
+            <body> Sets the current ARO max value for a given mode&#xD;
+&#xD;
+mode is mode number&#xD;
+ value is the value of max ARO &#xD;
+return void</body>
+          </ownedComment>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_y9Y_0OB3Ee6XoZmok9ehtw" name="mode">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_0gXOcOB3Ee6XoZmok9ehtw" name="value">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+        </ownedOperation>
         <nestedClassifier xmi:type="uml:Enumeration" xmi:id="__TeJoMQFEe6Ukrbv40SpNA" name="AlarmStates">
           <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__TeJocQFEe6Ukrbv40SpNA" name="NO_ALARM"/>
           <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__TeJo8QFEe6Ukrbv40SpNA" name="WARNING"/>
@@ -553,14 +606,10 @@ To test this example:&#xD;
         <node xmi:type="uml:InitialNode" xmi:id="_-kd54NDPEe6OJd78DXkgdw" name="InitialNode1"/>
         <node xmi:type="uml:DecisionNode" xmi:id="_REZ_8NDQEe6OJd78DXkgdw" name="newMode"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Usage" xmi:id="_A_CSoNlGEe6Hj6nzgakJ2A" client="_KaoKsNlDEe6Hj6nzgakJ2A" supplier="__jS2INcQEe6Hj6nzgakJ2A"/>
-      <packagedElement xmi:type="uml:Usage" xmi:id="_GBZZQNlGEe6Hj6nzgakJ2A" client="_KaoKsNlDEe6Hj6nzgakJ2A" supplier="_drW5ENcVEe6Hj6nzgakJ2A"/>
-      <packagedElement xmi:type="uml:Usage" xmi:id="_6-UQ4NlGEe6Hj6nzgakJ2A" client="_bpcWMNk6Ee6Hj6nzgakJ2A" supplier="__jS2INcQEe6Hj6nzgakJ2A"/>
-      <packagedElement xmi:type="uml:Usage" xmi:id="_7zMDYNlGEe6Hj6nzgakJ2A" client="_XgbL4LYbEe6HVJQsqClfdg" supplier="_drW5ENcVEe6Hj6nzgakJ2A"/>
+      <packagedElement xmi:type="uml:Usage" xmi:id="_A_CSoNlGEe6Hj6nzgakJ2A" client="_XgbL4LYbEe6HVJQsqClfdg" supplier="__jS2INcQEe6Hj6nzgakJ2A"/>
+      <packagedElement xmi:type="uml:Usage" xmi:id="_6-UQ4NlGEe6Hj6nzgakJ2A" client="_XgbL4LYbEe6HVJQsqClfdg _drW5ENcVEe6Hj6nzgakJ2A" supplier="__jS2INcQEe6Hj6nzgakJ2A"/>
       <packagedElement xmi:type="uml:Usage" xmi:id="_G8Ki8NlHEe6Hj6nzgakJ2A" client="_Q17mINcSEe6Hj6nzgakJ2A" supplier="__jS2INcQEe6Hj6nzgakJ2A"/>
       <packagedElement xmi:type="uml:Usage" xmi:id="_9V9y0NlIEe6Hj6nzgakJ2A" client="_drW5ENcVEe6Hj6nzgakJ2A" supplier="__jS2INcQEe6Hj6nzgakJ2A"/>
-      <packagedElement xmi:type="uml:Usage" xmi:id="_myqdoNlLEe6Hj6nzgakJ2A" client="_NxdC8NlLEe6Hj6nzgakJ2A" supplier="__jS2INcQEe6Hj6nzgakJ2A"/>
-      <packagedElement xmi:type="uml:Usage" xmi:id="_naYk8NlLEe6Hj6nzgakJ2A" client="_NxdC8NlLEe6Hj6nzgakJ2A" supplier="_drW5ENcVEe6Hj6nzgakJ2A"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_AOQzoNbuEe6Hj6nzgakJ2A" name="UseCaseDiagrams">
       <packagedElement xmi:type="uml:Actor" xmi:id="_wPGlQNcOEe6Hj6nzgakJ2A" name="Operator"/>
@@ -629,6 +678,27 @@ To test this example:&#xD;
         </eAnnotations>
         <ownedEnd xmi:type="uml:Property" xmi:id="_s3yo09lLEe6Hj6nzgakJ2A" name="specific maneuver" type="_NxdC8NlLEe6Hj6nzgakJ2A" association="_s3yo0NlLEe6Hj6nzgakJ2A"/>
         <ownedEnd xmi:type="uml:Property" xmi:id="_s3yo1NlLEe6Hj6nzgakJ2A" name="payload process" type="_r7vgANk6Ee6Hj6nzgakJ2A" association="_s3yo0NlLEe6Hj6nzgakJ2A"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_gzo7UN-qEe6XoZmok9ehtw" memberEnd="_g0OxMN-qEe6XoZmok9ehtw _g0iTMN-qEe6XoZmok9ehtw">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_g0FnQN-qEe6XoZmok9ehtw" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_g0FnQd-qEe6XoZmok9ehtw" key="nature" value="UML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_g0OxMN-qEe6XoZmok9ehtw" name="mode transition" type="_drW5ENcVEe6Hj6nzgakJ2A" association="_gzo7UN-qEe6XoZmok9ehtw"/>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_g0iTMN-qEe6XoZmok9ehtw" name="fdir" type="_KaoKsNlDEe6Hj6nzgakJ2A" association="_gzo7UN-qEe6XoZmok9ehtw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_9Km7cN-rEe6XoZmok9ehtw" memberEnd="_9Km7c9-rEe6XoZmok9ehtw _9Km7dN-rEe6XoZmok9ehtw">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_9Km7cd-rEe6XoZmok9ehtw" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_9Km7ct-rEe6XoZmok9ehtw" key="nature" value="UML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_9Km7c9-rEe6XoZmok9ehtw" name="mode transition" type="_drW5ENcVEe6Hj6nzgakJ2A" association="_9Km7cN-rEe6XoZmok9ehtw"/>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_9Km7dN-rEe6XoZmok9ehtw" name="high-accuracy pointing " type="_bpcWMNk6Ee6Hj6nzgakJ2A" association="_9Km7cN-rEe6XoZmok9ehtw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_99iNMN-rEe6XoZmok9ehtw" memberEnd="_99iNM9-rEe6XoZmok9ehtw _99iNNN-rEe6XoZmok9ehtw">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_99iNMd-rEe6XoZmok9ehtw" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_99iNMt-rEe6XoZmok9ehtw" key="nature" value="UML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_99iNM9-rEe6XoZmok9ehtw" name="mode transition" type="_drW5ENcVEe6Hj6nzgakJ2A" association="_99iNMN-rEe6XoZmok9ehtw"/>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_99iNNN-rEe6XoZmok9ehtw" name="specific maneuver" type="_NxdC8NlLEe6Hj6nzgakJ2A" association="_99iNMN-rEe6XoZmok9ehtw"/>
       </packagedElement>
     </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_XRCisPufEeOaTf6ppV18tA">
