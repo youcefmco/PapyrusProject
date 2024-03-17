@@ -625,7 +625,7 @@ return void</body>
       <packagedElement xmi:type="uml:Class" xmi:id="_lntV0ORhEe670Kb7sOjz5g" name="Reconfigure">
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oFTpYORQEe670Kb7sOjz5g" name="RCON_ReconfigureOpaqueBehavior" specification="_da2uUORPEe670Kb7sOjz5g">
           <language>JAVA</language>
-          <body>AocsModes newMode;&#xD;
+          <body>AOCS_MODES newMode;&#xD;
    /* &#xD;
     * set reconfig state &#xD;
     */&#xD;
