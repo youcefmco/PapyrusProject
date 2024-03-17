@@ -10,7 +10,7 @@
     <packageImport xmi:type="uml:PackageImport" xmi:id="_caP74LncEe6Ml54jB_GRsA">
       <importedPackage xmi:type="uml:Profile" href="pathmap://Papyrus_JAVA_PROFILES/java.profile.uml#_6TYLMN0yEd6P1qtlpBOZyg"/>
     </packageImport>
-    <packagedElement xmi:type="uml:Package" xmi:id="_wLFCsHXhEeKEDJ51kkuoUw" name="AOCS_FDIR_Mechanism" visibility="public">
+    <packagedElement xmi:type="uml:Package" xmi:id="_wLFCsHXhEeKEDJ51kkuoUw" name="AOCS_FSM" visibility="public">
       <ownedComment xmi:type="uml:Comment" xmi:id="_chbAoKKFEeKB6PiQ7fFSsA">
         <body>This example consist in:&#xD;
 - Instantiating an object of type Increment, and start its classifier behavior&#xD;
@@ -292,7 +292,7 @@ To test this example:&#xD;
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_613T8q_PEe6-S-w_PQWpLQ" value="1"/>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_XgbL4LYbEe6HVJQsqClfdg" name="State_Machine_AOCS" useCase="_zur1ENcPEe6Hj6nzgakJ2A __jS2INcQEe6Hj6nzgakJ2A _Q17mINcSEe6Hj6nzgakJ2A _drW5ENcVEe6Hj6nzgakJ2A _8trhoNcVEe6Hj6nzgakJ2A _bpcWMNk6Ee6Hj6nzgakJ2A _KaoKsNlDEe6Hj6nzgakJ2A _NxdC8NlLEe6Hj6nzgakJ2A">
+      <packagedElement xmi:type="uml:Class" xmi:id="_XgbL4LYbEe6HVJQsqClfdg" name="AOCS_State_Machine" useCase="_zur1ENcPEe6Hj6nzgakJ2A __jS2INcQEe6Hj6nzgakJ2A _Q17mINcSEe6Hj6nzgakJ2A _drW5ENcVEe6Hj6nzgakJ2A _8trhoNcVEe6Hj6nzgakJ2A _bpcWMNk6Ee6Hj6nzgakJ2A _KaoKsNlDEe6Hj6nzgakJ2A _NxdC8NlLEe6Hj6nzgakJ2A">
         <ownedUseCase xmi:type="uml:UseCase" xmi:id="_zur1ENcPEe6Hj6nzgakJ2A" name="Receive TM" subject="_XgbL4LYbEe6HVJQsqClfdg"/>
         <ownedUseCase xmi:type="uml:UseCase" xmi:id="__jS2INcQEe6Hj6nzgakJ2A" name="AOCS Algorithm" subject="_XgbL4LYbEe6HVJQsqClfdg"/>
         <ownedUseCase xmi:type="uml:UseCase" xmi:id="_Q17mINcSEe6Hj6nzgakJ2A" name="Actuate" subject="_XgbL4LYbEe6HVJQsqClfdg"/>
@@ -303,96 +303,46 @@ To test this example:&#xD;
           <include xmi:type="uml:Include" xmi:id="_P_FU8NlHEe6Hj6nzgakJ2A" addition="_8trhoNcVEe6Hj6nzgakJ2A"/>
         </ownedUseCase>
         <ownedUseCase xmi:type="uml:UseCase" xmi:id="_NxdC8NlLEe6Hj6nzgakJ2A" name="Specific Maneuver" subject="_XgbL4LYbEe6HVJQsqClfdg"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_TYtJMrg3Ee6IpLPqVFrelw" name="powerthread" visibility="private" type="_18DmAK_HEe6-S-w_PQWpLQ" aggregation="shared" association="_TYsiILg3Ee6IpLPqVFrelw"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_QfE0Mrg4Ee6IpLPqVFrelw" name="statethread" visibility="private" type="_mw6RgK_HEe6-S-w_PQWpLQ" aggregation="shared" association="_QfENILg4Ee6IpLPqVFrelw"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_uWFpQMNGEe6Ukrbv40SpNA" name="AROH_counterMax" visibility="private" isStatic="true">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_qLj90OB3Ee6XoZmok9ehtw" annotatedElement="_uWFpQMNGEe6Ukrbv40SpNA">
-            <body>Sets the current ARO max value for a given mode</body>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_l10ygNCmEe6OJd78DXkgdw" name="AOCS_currentMode" visibility="private" type="_i2fTkNCmEe6OJd78DXkgdw">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_hCK5oORXEe670Kb7sOjz5g" annotatedElement="_l10ygNCmEe6OJd78DXkgdw">
+            <body>Current mode</body>
           </ownedComment>
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_u29ycOB2Ee6XoZmok9ehtw" value="*"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_HYCjoMNvEe6Ukrbv40SpNA" name="AROH_isReconfigEnabled" type="__TeJoMQFEe6Ukrbv40SpNA">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MO5OYOB6Ee6XoZmok9ehtw"/>
-          <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_TZqfAMQKEe6Ukrbv40SpNA" type="__TeJoMQFEe6Ukrbv40SpNA">
-            <language>JAVA</language>
-            <body>AlarmStates.NO_ALARM</body>
-          </defaultValue>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_l10ygNCmEe6OJd78DXkgdw" name="currentMode" visibility="private" type="_i2fTkNCmEe6OJd78DXkgdw">
           <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_wD71MNC6Ee6OJd78DXkgdw">
             <language>JAVA</language>
-            <body>AocsModes.SBM</body>
+            <body>AOCS_MODES.SBM</body>
           </defaultValue>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_hbNw8NC9Ee6OJd78DXkgdw" name="DTM_YTM_CPM_COUNTER" visibility="private" isStatic="true" isReadOnly="true">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_o1XJIORXEe670Kb7sOjz5g" name="AOCS_reqMode" type="_i2fTkNCmEe6OJd78DXkgdw">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_tAnooORXEe670Kb7sOjz5g" annotatedElement="_o1XJIORXEe670Kb7sOjz5g">
+            <body>store the requested mode before a transition</body>
+          </ownedComment>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_hbNw8NC9Ee6OJd78DXkgdw" name="DTM_YTM_CPM" visibility="private" isStatic="true" isReadOnly="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
           <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_hbNw8dC9Ee6OJd78DXkgdw" value="300"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_Wq024NDFEe6OJd78DXkgdw" name="NOM_COUNTER" visibility="private" isStatic="true" isReadOnly="true">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
-          <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_Wq024dDFEe6OJd78DXkgdw" value="600"/>
-        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_TYtJMrg3Ee6IpLPqVFrelw" name="powerthread" visibility="private" type="_18DmAK_HEe6-S-w_PQWpLQ" aggregation="shared" association="_TYsiILg3Ee6IpLPqVFrelw"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_QfE0Mrg4Ee6IpLPqVFrelw" name="statethread" visibility="private" type="_mw6RgK_HEe6-S-w_PQWpLQ" aggregation="shared" association="_QfENILg4Ee6IpLPqVFrelw"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_iK5DILYeEe6IpLPqVFrelw" name="AOCS_setMode"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_UaPLEOBtEe6XoZmok9ehtw" name="AOCS_SetPeriod">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_hi9osOEZEe6XoZmok9ehtw" annotatedElement="_UaPLEOBtEe6XoZmok9ehtw">
+            <body>Sets the AOCS period</body>
+          </ownedComment>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_eTrVYOBtEe6XoZmok9ehtw" name="period">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+        </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_SsJWIMNkEe6Ukrbv40SpNA" name="Run_AOCS">
           <ownedComment xmi:type="uml:Comment" xmi:id="_7EJTQOBxEe6XoZmok9ehtw" annotatedElement="_SsJWIMNkEe6Ukrbv40SpNA">
             <body> Calls the AOCS function, checks for errors, and implements the ARO counter.</body>
           </ownedComment>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_s8DyYNDHEe6OJd78DXkgdw" name="ARO_SetDecFlag">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_6PHoYOB0Ee6XoZmok9ehtw" annotatedElement="_s8DyYNDHEe6OJd78DXkgdw">
-            <body>Sets a flag to indicate ARO is to decrement</body>
-          </ownedComment>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_3yheQNDKEe6OJd78DXkgdw" name="ARO_ClearDecFlag">
-          <ownedComment xmi:type="uml:Comment" xmi:id="__WmfkOB0Ee6XoZmok9ehtw" annotatedElement="_3yheQNDKEe6OJd78DXkgdw">
-            <body>Clears the decrement flag</body>
-          </ownedComment>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_Q30HsNDLEe6OJd78DXkgdw" name="ARO_Enable_reconfig_flag_Alarm">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_sf_zsOB5Ee6XoZmok9ehtw" annotatedElement="_Q30HsNDLEe6OJd78DXkgdw">
-            <body>Enables/disables reconfiguration on ARO counter reaching 0</body>
-          </ownedComment>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_reY_AOB0Ee6XoZmok9ehtw" name="state" type="__TeJoMQFEe6Ukrbv40SpNA"/>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_UaPLEOBtEe6XoZmok9ehtw" name="AOCS_SetPeriod">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_eTrVYOBtEe6XoZmok9ehtw" name="period">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
-          </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_4Fb0gOBzEe6XoZmok9ehtw" name="Actuate">
           <ownedComment xmi:type="uml:Comment" xmi:id="_-m7LkOBzEe6XoZmok9ehtw" annotatedElement="_4Fb0gOBzEe6XoZmok9ehtw">
             <body> Sends the commands to the actuator and updates the AOCS ewods.</body>
           </ownedComment>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_tQiKsOB3Ee6XoZmok9ehtw" name="ARO_SetCounterMax" visibility="private">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_OeVMUOB4Ee6XoZmok9ehtw">
-            <body>Sets the current ARO max value for a given mode&#xD;
-&#xD;
-{@link #_y9Y_0OB3Ee6XoZmok9ehtw} mode number&#xD;
-{@link #_0gXOcOB3Ee6XoZmok9ehtw}  value of max ARO &#xD;
-return function status</body>
-          </ownedComment>
-          <ownedComment xmi:type="uml:Comment" xmi:id="_OWEywOB5Ee6XoZmok9ehtw">
-            <body> Sets the current ARO max value for a given mode&#xD;
-&#xD;
-mode is mode number&#xD;
- value is the value of max ARO &#xD;
-return void</body>
-          </ownedComment>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_y9Y_0OB3Ee6XoZmok9ehtw" name="mode">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
-          </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_0gXOcOB3Ee6XoZmok9ehtw" name="value">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
-          </ownedParameter>
-        </ownedOperation>
-        <nestedClassifier xmi:type="uml:Enumeration" xmi:id="__TeJoMQFEe6Ukrbv40SpNA" name="AlarmStates">
-          <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__TeJocQFEe6Ukrbv40SpNA" name="NO_ALARM"/>
-          <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__TeJo8QFEe6Ukrbv40SpNA" name="WARNING"/>
-          <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__TeJpcQFEe6Ukrbv40SpNA" name="ALARM"/>
-        </nestedClassifier>
-        <nestedClassifier xmi:type="uml:Enumeration" xmi:id="_i2fTkNCmEe6OJd78DXkgdw" name="AocsModes">
+        <nestedClassifier xmi:type="uml:Enumeration" xmi:id="_i2fTkNCmEe6OJd78DXkgdw" name="AOCS_MODES" visibility="public">
           <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_BPjzsNC7Ee6OJd78DXkgdw" name="SBM"/>
           <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_i2fTkdCmEe6OJd78DXkgdw" name="DTM"/>
           <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_i2fTk9CmEe6OJd78DXkgdw" name="YTM"/>
@@ -610,6 +560,118 @@ return void</body>
       <packagedElement xmi:type="uml:Usage" xmi:id="_6-UQ4NlGEe6Hj6nzgakJ2A" client="_XgbL4LYbEe6HVJQsqClfdg _drW5ENcVEe6Hj6nzgakJ2A" supplier="__jS2INcQEe6Hj6nzgakJ2A"/>
       <packagedElement xmi:type="uml:Usage" xmi:id="_G8Ki8NlHEe6Hj6nzgakJ2A" client="_Q17mINcSEe6Hj6nzgakJ2A" supplier="__jS2INcQEe6Hj6nzgakJ2A"/>
       <packagedElement xmi:type="uml:Usage" xmi:id="_9V9y0NlIEe6Hj6nzgakJ2A" client="_drW5ENcVEe6Hj6nzgakJ2A" supplier="__jS2INcQEe6Hj6nzgakJ2A"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_4J8-cORgEe670Kb7sOjz5g" name="ARO_Handler">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_HYCjoMNvEe6Ukrbv40SpNA" name="ARO_isReconfigEnabled">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_fNlpgORKEe670Kb7sOjz5g" annotatedElement="_HYCjoMNvEe6Ukrbv40SpNA">
+            <body>If reconfiguration Enabled (true) when ARO counter reaching 0</body>
+          </ownedComment>
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MO5OYOB6Ee6XoZmok9ehtw"/>
+          <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_kFxgcORKEe670Kb7sOjz5g"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_uWFpQMNGEe6Ukrbv40SpNA" name="ARO_counterMax" visibility="private" isStatic="true">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_qLj90OB3Ee6XoZmok9ehtw" annotatedElement="_uWFpQMNGEe6Ukrbv40SpNA">
+            <body>Sets the current ARO max value for a given mode&#xD;
+For DTM, YTM, CPM the counter is set to 300&#xD;
+For NOM the counter is set to 600</body>
+          </ownedComment>
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_u29ycOB2Ee6XoZmok9ehtw" value="*"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_Wq024NDFEe6OJd78DXkgdw" name="ARO_counter" visibility="private">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_rjGVAORHEe670Kb7sOjz5g" annotatedElement="_Wq024NDFEe6OJd78DXkgdw">
+            <body>(ARO) counter keeps track of recurring errors within the AOCS system</body>
+          </ownedComment>
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_Wq024dDFEe6OJd78DXkgdw" name="ARO_INIT_VALUE" value="100"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_AvrWwORkEe670Kb7sOjz5g" name="ARO_reconfigState"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_s8DyYNDHEe6OJd78DXkgdw" name="ARO_SetDecFlag">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_6PHoYOB0Ee6XoZmok9ehtw" annotatedElement="_s8DyYNDHEe6OJd78DXkgdw">
+            <body>Sets a flag to indicate ARO is to decrement</body>
+          </ownedComment>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_3yheQNDKEe6OJd78DXkgdw" name="ARO_ClearDecFlag">
+          <ownedComment xmi:type="uml:Comment" xmi:id="__WmfkOB0Ee6XoZmok9ehtw" annotatedElement="_3yheQNDKEe6OJd78DXkgdw">
+            <body>Clears the decrement flag</body>
+          </ownedComment>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_Q30HsNDLEe6OJd78DXkgdw" name="ARO_Enable_reconfig_flag_Alarm">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_sf_zsOB5Ee6XoZmok9ehtw" annotatedElement="_Q30HsNDLEe6OJd78DXkgdw">
+            <body>Enables/disables reconfiguration on ARO counter reaching 0</body>
+          </ownedComment>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_reY_AOB0Ee6XoZmok9ehtw" name="state" type="__TeJoMQFEe6Ukrbv40SpNA"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_tQiKsOB3Ee6XoZmok9ehtw" name="ARO_SetCounterMax" visibility="private">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_SypdsORIEe670Kb7sOjz5g" annotatedElement="_tQiKsOB3Ee6XoZmok9ehtw">
+            <body>Sets the current ARO max value for a given mode&#xD;
+mode is mode number&#xD;
+value is the value of max ARO &#xD;
+return void</body>
+          </ownedComment>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_y9Y_0OB3Ee6XoZmok9ehtw" name="mode">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_0gXOcOB3Ee6XoZmok9ehtw" name="value">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+        </ownedOperation>
+        <nestedClassifier xmi:type="uml:Enumeration" xmi:id="__TeJoMQFEe6Ukrbv40SpNA" name="FLAG_STATES">
+          <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__TeJocQFEe6Ukrbv40SpNA" name="NoFlag"/>
+          <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__TeJo8QFEe6Ukrbv40SpNA" name="DecFlag"/>
+          <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__TeJpcQFEe6Ukrbv40SpNA" name="ReconfigFlag"/>
+        </nestedClassifier>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_lntV0ORhEe670Kb7sOjz5g" name="Reconfigure">
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oFTpYORQEe670Kb7sOjz5g" name="RCON_ReconfigureOpaqueBehavior" specification="_da2uUORPEe670Kb7sOjz5g">
+          <language>JAVA</language>
+          <body>AocsModes newMode;&#xD;
+   /* &#xD;
+    * set reconfig state &#xD;
+    */&#xD;
+   //AROH_reconfigState = RCON_RECONFIG1;&#xD;
+&#xD;
+   /*&#xD;
+    *  set safe mode to standby &#xD;
+    */&#xD;
+   newMode= AOCS_MODES.SBM;&#xD;
+&#xD;
+   /*  &#xD;
+    * kick off a safe mode transition&#xD;
+    */&#xD;
+   AMOH_SafeModeTransition(newMode);&#xD;
+&#xD;
+   /* &#xD;
+    * return new mode&#xD;
+    */&#xD;
+   return newMode;</body>
+        </ownedBehavior>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_da2uUORPEe670Kb7sOjz5g" name="Reconfigure" method="_oFTpYORQEe670Kb7sOjz5g">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_iFQn8ORPEe670Kb7sOjz5g" annotatedElement="_da2uUORPEe670Kb7sOjz5g">
+            <body>Reconfigure&#xD;
+&#xD;
+reconfigures the AOCS units depending on the state and mode&#xD;
+this is in accordance with the satellite's FDIR strategy</body>
+          </ownedComment>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_tOEvcORPEe670Kb7sOjz5g" name="mode" type="_i2fTkNCmEe6OJd78DXkgdw"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_EnQcYORQEe670Kb7sOjz5g" type="_i2fTkNCmEe6OJd78DXkgdw" direction="return"/>
+        </ownedOperation>
+        <nestedClassifier xmi:type="uml:Enumeration" xmi:id="_NdkY8ORUEe670Kb7sOjz5g" name="RECONFIG_STATES">
+          <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_4MtN8ORUEe670Kb7sOjz5g" name="RCON_NO_RECONFIG"/>
+          <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_5K4GYORUEe670Kb7sOjz5g" name="RCON_RECONFIG1">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_BsH5QORWEe670Kb7sOjz5g" annotatedElement="_5K4GYORUEe670Kb7sOjz5g">
+              <body>RCON_RECONFIG1 sets reconfiguration for a ARO Error&#xD;
+</body>
+            </ownedComment>
+          </ownedLiteral>
+          <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_6KXNcORUEe670Kb7sOjz5g" name="RCON_RECONFIG2">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_Efv3cORWEe670Kb7sOjz5g" annotatedElement="_6KXNcORUEe670Kb7sOjz5g">
+              <body>RCON_RECONFIG2 sets reconfiguration for a Math Error</body>
+            </ownedComment>
+          </ownedLiteral>
+          <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_7TOS8ORUEe670Kb7sOjz5g" name="RCON_RECONFIG3"/>
+        </nestedClassifier>
+      </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_AOQzoNbuEe6Hj6nzgakJ2A" name="UseCaseDiagrams">
       <packagedElement xmi:type="uml:Actor" xmi:id="_wPGlQNcOEe6Hj6nzgakJ2A" name="Operator"/>
@@ -749,4 +811,6 @@ return void</body>
   <standard:Create xmi:id="_MldSUMTxEe6OXuhxNqOtLQ" base_BehavioralFeature="_Mk3ccMTxEe6OXuhxNqOtLQ"/>
   <Codegen:NoCodeGen xmi:id="_LAX0IM8TEe60kqNX-kRKdg" base_Element="_Wm3qkMZqEe6SvYXnNjpWuQ"/>
   <Codegen:NoCodeGen xmi:id="_UG9lMM8TEe60kqNX-kRKdg" base_Element="__4nyYL9VEe6neZnDM9mQww"/>
+  <PapyrusJava:Import xmi:id="_Zb_xcORiEe670Kb7sOjz5g" manualImports="import AOCS_FSM.AOCS_State_Machine.AOCS_MODES;" base_class="_lntV0ORhEe670Kb7sOjz5g" base_Classifier="_lntV0ORhEe670Kb7sOjz5g"/>
+  <java:JavaClass xmi:id="_rFDdYORjEe670Kb7sOjz5g" base_Classifier="_lntV0ORhEe670Kb7sOjz5g"/>
 </xmi:XMI>
