@@ -292,7 +292,7 @@ To test this example:&#xD;
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_613T8q_PEe6-S-w_PQWpLQ" value="1"/>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_XgbL4LYbEe6HVJQsqClfdg" name="AOCS_State_Machine" useCase="_zur1ENcPEe6Hj6nzgakJ2A __jS2INcQEe6Hj6nzgakJ2A _Q17mINcSEe6Hj6nzgakJ2A _drW5ENcVEe6Hj6nzgakJ2A _8trhoNcVEe6Hj6nzgakJ2A _bpcWMNk6Ee6Hj6nzgakJ2A _KaoKsNlDEe6Hj6nzgakJ2A _NxdC8NlLEe6Hj6nzgakJ2A">
+      <packagedElement xmi:type="uml:Class" xmi:id="_XgbL4LYbEe6HVJQsqClfdg" name="AOCS_State_Machine" visibility="public" useCase="_zur1ENcPEe6Hj6nzgakJ2A __jS2INcQEe6Hj6nzgakJ2A _Q17mINcSEe6Hj6nzgakJ2A _drW5ENcVEe6Hj6nzgakJ2A _8trhoNcVEe6Hj6nzgakJ2A _bpcWMNk6Ee6Hj6nzgakJ2A _KaoKsNlDEe6Hj6nzgakJ2A _NxdC8NlLEe6Hj6nzgakJ2A">
         <ownedUseCase xmi:type="uml:UseCase" xmi:id="_zur1ENcPEe6Hj6nzgakJ2A" name="Receive TM" subject="_XgbL4LYbEe6HVJQsqClfdg"/>
         <ownedUseCase xmi:type="uml:UseCase" xmi:id="__jS2INcQEe6Hj6nzgakJ2A" name="AOCS Algorithm" subject="_XgbL4LYbEe6HVJQsqClfdg"/>
         <ownedUseCase xmi:type="uml:UseCase" xmi:id="_Q17mINcSEe6Hj6nzgakJ2A" name="Actuate" subject="_XgbL4LYbEe6HVJQsqClfdg"/>
@@ -312,18 +312,49 @@ To test this example:&#xD;
             <body>AOCS_MODES.SBM</body>
           </defaultValue>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_o1XJIORXEe670Kb7sOjz5g" name="AOCS_reqMode" type="_i2fTkNCmEe6OJd78DXkgdw">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_o1XJIORXEe670Kb7sOjz5g" name="AOCS_reqMode" visibility="private" type="_i2fTkNCmEe6OJd78DXkgdw">
           <ownedComment xmi:type="uml:Comment" xmi:id="_tAnooORXEe670Kb7sOjz5g" annotatedElement="_o1XJIORXEe670Kb7sOjz5g">
             <body>store the requested mode before a transition</body>
           </ownedComment>
         </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_76_EMOUdEe670Kb7sOjz5g" name="AOCS_transState" type="_29JtsOUcEe670Kb7sOjz5g"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_hbNw8NC9Ee6OJd78DXkgdw" name="DTM_YTM_CPM" visibility="private" isStatic="true" isReadOnly="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
           <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_hbNw8dC9Ee6OJd78DXkgdw" value="300"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_TYtJMrg3Ee6IpLPqVFrelw" name="powerthread" visibility="private" type="_18DmAK_HEe6-S-w_PQWpLQ" aggregation="shared" association="_TYsiILg3Ee6IpLPqVFrelw"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_QfE0Mrg4Ee6IpLPqVFrelw" name="statethread" visibility="private" type="_mw6RgK_HEe6-S-w_PQWpLQ" aggregation="shared" association="_QfENILg4Ee6IpLPqVFrelw"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_iK5DILYeEe6IpLPqVFrelw" name="AOCS_setMode"/>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_v3knkOUbEe670Kb7sOjz5g" name="AOCS_GetReqModeBehaviour" specification="_BHOm8OUbEe670Kb7sOjz5g">
+          <language>JAVA</language>
+          <body>return AOCS_reqMode;</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Vf4awOUeEe670Kb7sOjz5g" name="AOCS_RequestModeBehavior" specification="_iK5DILYeEe6IpLPqVFrelw">
+          <language>JAVA</language>
+          <body>/* check if already performing a mode transistion */&#xD;
+if (AOCS_transState != AOCS_TRANS_STATE.AMOH_TRANS_IDLE) {&#xD;
+    System.out.println(&quot;Unable to process mode trans req: [&quot; + AOCS_currentMode + &quot;] -> [&quot; + AOCS_reqMode + &quot;]&quot;);&#xD;
+    return GDEF_STATUS.GDEF_FAILURE;&#xD;
+}&#xD;
+/* check if is different to current value */&#xD;
+if (newMode != AOCS_currentMode) {&#xD;
+    /* Set the requested mode if it is a valid transistion */&#xD;
+    if (GDEF_STATUS.GDEF_TRUE == CheckValidModetransition(newMode)) {}&#xD;
+}&#xD;
+return GDEF_STATUS.GDEF_SUCCESS;</body>
+        </ownedBehavior>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_iK5DILYeEe6IpLPqVFrelw" name="AOCS_RequestMode" method="_Vf4awOUeEe670Kb7sOjz5g">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_tbCcEOUNEe670Kb7sOjz5g" name="newMode" type="_i2fTkNCmEe6OJd78DXkgdw"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_ROO6MOUwEe670Kb7sOjz5g" type="_GwLHQOUtEe670Kb7sOjz5g" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_orDzAOUaEe670Kb7sOjz5g" name="AOCS_ForceMode">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_orDzAeUaEe670Kb7sOjz5g" name="newMode" type="_i2fTkNCmEe6OJd78DXkgdw"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_BHOm8OUbEe670Kb7sOjz5g" name="AOCS_GetReqMode" method="_v3knkOUbEe670Kb7sOjz5g">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FtXEkOUbEe670Kb7sOjz5g" annotatedElement="_BHOm8OUbEe670Kb7sOjz5g">
+            <body>get requested mode number</body>
+          </ownedComment>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_BHOm8eUbEe670Kb7sOjz5g" type="_i2fTkNCmEe6OJd78DXkgdw" direction="return" effect="read"/>
+        </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_UaPLEOBtEe6XoZmok9ehtw" name="AOCS_SetPeriod">
           <ownedComment xmi:type="uml:Comment" xmi:id="_hi9osOEZEe6XoZmok9ehtw" annotatedElement="_UaPLEOBtEe6XoZmok9ehtw">
             <body>Sets the AOCS period</body>
@@ -348,6 +379,33 @@ To test this example:&#xD;
           <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_i2fTk9CmEe6OJd78DXkgdw" name="YTM"/>
           <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_Dx6bsNC7Ee6OJd78DXkgdw" name="CPM"/>
           <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_FHDCoNC7Ee6OJd78DXkgdw" name="NOM"/>
+        </nestedClassifier>
+        <nestedClassifier xmi:type="uml:Enumeration" xmi:id="_29JtsOUcEe670Kb7sOjz5g" name="AOCS_TRANS_STATE">
+          <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_7-dEYOUcEe670Kb7sOjz5g" name="AMOH_TRANS_IDLE">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_CJzMUOUdEe670Kb7sOjz5g" annotatedElement="_7-dEYOUcEe670Kb7sOjz5g">
+              <body>no transition occurring</body>
+            </ownedComment>
+          </ownedLiteral>
+          <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_8vCz0OUcEe670Kb7sOjz5g" name="AMOH_TRANS_REQ">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_EFZWUOUdEe670Kb7sOjz5g" annotatedElement="_8vCz0OUcEe670Kb7sOjz5g">
+              <body>transition requested </body>
+            </ownedComment>
+          </ownedLiteral>
+          <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_9zU7UOUcEe670Kb7sOjz5g" name="AMOH_TRANS_CONFIG">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_F7acwOUdEe670Kb7sOjz5g" annotatedElement="_9zU7UOUcEe670Kb7sOjz5g">
+              <body>hardware configuration</body>
+            </ownedComment>
+          </ownedLiteral>
+          <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_-0s4wOUcEe670Kb7sOjz5g" name="AMOH_TRANS_SHELL">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_HyiWcOUdEe670Kb7sOjz5g" annotatedElement="_-0s4wOUcEe670Kb7sOjz5g">
+              <body>set shell parameters</body>
+            </ownedComment>
+          </ownedLiteral>
+          <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__6hRUOUcEe670Kb7sOjz5g" name="AMOH_TRANS_ALGS">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_JgJu0OUdEe670Kb7sOjz5g" annotatedElement="__6hRUOUcEe670Kb7sOjz5g">
+              <body>set algorithm parameters</body>
+            </ownedComment>
+          </ownedLiteral>
         </nestedClassifier>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_ILcRcLg1Ee6IpLPqVFrelw" name="AOCS_Module">
@@ -672,6 +730,30 @@ this is in accordance with the satellite's FDIR strategy</body>
           <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_7TOS8ORUEe670Kb7sOjz5g" name="RCON_RECONFIG3"/>
         </nestedClassifier>
       </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_EbAfUOUwEe670Kb7sOjz5g" name="TTC_Handler">
+        <nestedClassifier xmi:type="uml:Enumeration" xmi:id="_GwLHQOUtEe670Kb7sOjz5g" name="GDEF_STATUS">
+          <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TRddkOUtEe670Kb7sOjz5g" name="GDEF_FAILURE">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_TRddkeUtEe670Kb7sOjz5g" annotatedElement="_TRddkOUtEe670Kb7sOjz5g">
+              <body>Failure</body>
+            </ownedComment>
+          </ownedLiteral>
+          <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_bbrtAOUtEe670Kb7sOjz5g" name="GDEF_SUCCESS">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_bbrtAeUtEe670Kb7sOjz5g" annotatedElement="_bbrtAOUtEe670Kb7sOjz5g">
+              <body>Success</body>
+            </ownedComment>
+          </ownedLiteral>
+          <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_jOgJEOUtEe670Kb7sOjz5g" name="GDEF_FALSE">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_jOgJEeUtEe670Kb7sOjz5g" annotatedElement="_jOgJEOUtEe670Kb7sOjz5g">
+              <body>False</body>
+            </ownedComment>
+          </ownedLiteral>
+          <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_lXNiAOUtEe670Kb7sOjz5g" name="GDEF_TRUE">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_lXNiAeUtEe670Kb7sOjz5g" annotatedElement="_lXNiAOUtEe670Kb7sOjz5g">
+              <body>True</body>
+            </ownedComment>
+          </ownedLiteral>
+        </nestedClassifier>
+      </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_AOQzoNbuEe6Hj6nzgakJ2A" name="UseCaseDiagrams">
       <packagedElement xmi:type="uml:Actor" xmi:id="_wPGlQNcOEe6Hj6nzgakJ2A" name="Operator"/>
@@ -813,4 +895,5 @@ this is in accordance with the satellite's FDIR strategy</body>
   <Codegen:NoCodeGen xmi:id="_UG9lMM8TEe60kqNX-kRKdg" base_Element="__4nyYL9VEe6neZnDM9mQww"/>
   <PapyrusJava:Import xmi:id="_Zb_xcORiEe670Kb7sOjz5g" manualImports="import AOCS_FSM.AOCS_State_Machine.AOCS_MODES;" base_class="_lntV0ORhEe670Kb7sOjz5g" base_Classifier="_lntV0ORhEe670Kb7sOjz5g"/>
   <java:JavaClass xmi:id="_rFDdYORjEe670Kb7sOjz5g" base_Classifier="_lntV0ORhEe670Kb7sOjz5g"/>
+  <PapyrusJava:Import xmi:id="_1x8HsOUwEe670Kb7sOjz5g" manualImports="import AOCS_FSM.TTC_Handler.GDEF_STATUS;" base_class="_XgbL4LYbEe6HVJQsqClfdg" base_Classifier="_XgbL4LYbEe6HVJQsqClfdg"/>
 </xmi:XMI>
