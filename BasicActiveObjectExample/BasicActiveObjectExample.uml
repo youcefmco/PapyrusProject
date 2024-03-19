@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:Codegen="http://www.eclipse.org/papyrus/Codegen/1" xmlns:PapyrusJava="http://www.eclipse.org/papyrus/PapyrusJava/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:java="http://www.eclipse.org/papyrus/JAVA/1" xmlns:standard="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
   <uml:Model xmi:id="_TEGMIHIVEeKn_eMfgI85Zw" name="model" visibility="public">
-    <packageImport xmi:type="uml:PackageImport" xmi:id="_2CeHEKKHEeKB6PiQ7fFSsA">
-      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
-    </packageImport>
-    <packageImport xmi:type="uml:PackageImport" xmi:id="_9Z-u4LVTEe6kcpRxSBfD0w">
-      <importedPackage xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
-    </packageImport>
-    <packageImport xmi:type="uml:PackageImport" xmi:id="_caP74LncEe6Ml54jB_GRsA">
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_nGJgEOXdEe670Kb7sOjz5g">
       <importedPackage xmi:type="uml:Profile" href="pathmap://Papyrus_JAVA_PROFILES/java.profile.uml#_6TYLMN0yEd6P1qtlpBOZyg"/>
     </packageImport>
-    <packagedElement xmi:type="uml:Package" xmi:id="_wLFCsHXhEeKEDJ51kkuoUw" name="AOCS_FSM" visibility="public">
+    <packagedElement xmi:type="uml:Package" xmi:id="_wLFCsHXhEeKEDJ51kkuoUw" name="AOCS_RTP" visibility="public">
       <ownedComment xmi:type="uml:Comment" xmi:id="_chbAoKKFEeKB6PiQ7fFSsA">
         <body>This example consist in:&#xD;
 - Instantiating an object of type Increment, and start its classifier behavior&#xD;
@@ -296,7 +290,7 @@ To test this example:&#xD;
         <ownedUseCase xmi:type="uml:UseCase" xmi:id="_zur1ENcPEe6Hj6nzgakJ2A" name="Receive TM" subject="_XgbL4LYbEe6HVJQsqClfdg"/>
         <ownedUseCase xmi:type="uml:UseCase" xmi:id="__jS2INcQEe6Hj6nzgakJ2A" name="AOCS Algorithm" subject="_XgbL4LYbEe6HVJQsqClfdg"/>
         <ownedUseCase xmi:type="uml:UseCase" xmi:id="_Q17mINcSEe6Hj6nzgakJ2A" name="Actuate" subject="_XgbL4LYbEe6HVJQsqClfdg"/>
-        <ownedUseCase xmi:type="uml:UseCase" xmi:id="_drW5ENcVEe6Hj6nzgakJ2A" name="Mode transition" subject="_XgbL4LYbEe6HVJQsqClfdg"/>
+        <ownedUseCase xmi:type="uml:UseCase" xmi:id="_drW5ENcVEe6Hj6nzgakJ2A" name="Mode transition" subject="_XgbL4LYbEe6HVJQsqClfdg _nfphAOXkEe670Kb7sOjz5g"/>
         <ownedUseCase xmi:type="uml:UseCase" xmi:id="_8trhoNcVEe6Hj6nzgakJ2A" name="AOCS Reconfig" subject="_XgbL4LYbEe6HVJQsqClfdg"/>
         <ownedUseCase xmi:type="uml:UseCase" xmi:id="_bpcWMNk6Ee6Hj6nzgakJ2A" name="High-accuracy pointing " subject="_XgbL4LYbEe6HVJQsqClfdg"/>
         <ownedUseCase xmi:type="uml:UseCase" xmi:id="_KaoKsNlDEe6Hj6nzgakJ2A" name="FDIR" subject="_XgbL4LYbEe6HVJQsqClfdg">
@@ -324,6 +318,19 @@ To test this example:&#xD;
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_TYtJMrg3Ee6IpLPqVFrelw" name="powerthread" visibility="private" type="_18DmAK_HEe6-S-w_PQWpLQ" aggregation="shared" association="_TYsiILg3Ee6IpLPqVFrelw"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_QfE0Mrg4Ee6IpLPqVFrelw" name="statethread" visibility="private" type="_mw6RgK_HEe6-S-w_PQWpLQ" aggregation="shared" association="_QfENILg4Ee6IpLPqVFrelw"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_su8a8OXlEe670Kb7sOjz5g" name="AOCS_modeTransitionTable" isStatic="true">
+          <ownedComment xmi:type="uml:Comment" xmi:id="__jytIOX9Ee670Kb7sOjz5g" annotatedElement="_su8a8OXlEe670Kb7sOjz5g">
+            <body>AOCS_MODE_TRANSISTION_TABLE</body>
+          </ownedComment>
+          <type xmi:type="uml:Interface" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_5jaF0GMnEeydfJuFsrdeeg"/>
+          <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_hMTmwOX8Ee670Kb7sOjz5g">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_hMTmweX8Ee670Kb7sOjz5g" annotatedElement="_hMTmwOX8Ee670Kb7sOjz5g">
+              <body>// Modified array declaration</body>
+            </ownedComment>
+            <language>JAVA</language>
+            <body>new EnumMap&lt;AOCS_MODES, GDEF_STATUS[]>(AOCS_MODES.class)</body>
+          </defaultValue>
+        </ownedAttribute>
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_v3knkOUbEe670Kb7sOjz5g" name="AOCS_GetReqModeBehaviour" specification="_BHOm8OUbEe670Kb7sOjz5g">
           <language>JAVA</language>
           <body>return AOCS_reqMode;</body>
@@ -341,6 +348,21 @@ if (newMode != AOCS_currentMode) {&#xD;
     if (GDEF_STATUS.GDEF_TRUE == CheckValidModetransition(newMode)) {}&#xD;
 }&#xD;
 return GDEF_STATUS.GDEF_SUCCESS;</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_nfphAOXkEe670Kb7sOjz5g" name="CheckValidModetransitionBehaviour" useCase="_drW5ENcVEe6Hj6nzgakJ2A" specification="_Jvpb8OXkEe670Kb7sOjz5g">
+          <language>JAVA</language>
+          <body>return AOCS_modeTransitionTable[AOCS_currentMode][newMode];</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_I-aYAOX_Ee670Kb7sOjz5g" name="initBahavior" specification="_mYj7IOX6Ee670Kb7sOjz5g">
+          <language>JAVA</language>
+          <body>// Initialization of inner arrays&#xD;
+for (AOCS_MODES mode : AOCS_MODES.values()) {&#xD;
+    AOCS_modeTransitionTable.put(mode, new GDEF_STATUS[AOCS_MODES.values().length]); &#xD;
+}&#xD;
+&#xD;
+// Accessing and assigning elements&#xD;
+AOCS_modeTransitionTable.get(AOCS_MODES.SBM)[AOCS_MODES.YTM] = GDEF_STATUS.GDEF_SUCCESS; &#xD;
+</body>
         </ownedBehavior>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_iK5DILYeEe6IpLPqVFrelw" name="AOCS_RequestMode" method="_Vf4awOUeEe670Kb7sOjz5g">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_tbCcEOUNEe670Kb7sOjz5g" name="newMode" type="_i2fTkNCmEe6OJd78DXkgdw"/>
@@ -370,9 +392,17 @@ return GDEF_STATUS.GDEF_SUCCESS;</body>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_4Fb0gOBzEe6XoZmok9ehtw" name="Actuate">
           <ownedComment xmi:type="uml:Comment" xmi:id="_-m7LkOBzEe6XoZmok9ehtw" annotatedElement="_4Fb0gOBzEe6XoZmok9ehtw">
-            <body> Sends the commands to the actuator and updates the AOCS ewods.</body>
+            <body> Sends the commands to the actuators and updates the AOCS ewods.</body>
           </ownedComment>
         </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_Jvpb8OXkEe670Kb7sOjz5g" name="CheckValidModetransition" method="_nfphAOXkEe670Kb7sOjz5g">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_Jvpb8eXkEe670Kb7sOjz5g" annotatedElement="_Jvpb8OXkEe670Kb7sOjz5g">
+            <body>Check if the requested mode is a valid transistion </body>
+          </ownedComment>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_Jvpb8uXkEe670Kb7sOjz5g" name="newMode" type="_i2fTkNCmEe6OJd78DXkgdw"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_TbJQ4OXkEe670Kb7sOjz5g" type="_GwLHQOUtEe670Kb7sOjz5g" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_mYj7IOX6Ee670Kb7sOjz5g" name="init" method="_I-aYAOX_Ee670Kb7sOjz5g"/>
         <nestedClassifier xmi:type="uml:Enumeration" xmi:id="_i2fTkNCmEe6OJd78DXkgdw" name="AOCS_MODES" visibility="public">
           <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_BPjzsNC7Ee6OJd78DXkgdw" name="SBM"/>
           <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_i2fTkdCmEe6OJd78DXkgdw" name="DTM"/>
@@ -845,6 +875,7 @@ this is in accordance with the satellite's FDIR strategy</body>
         <ownedEnd xmi:type="uml:Property" xmi:id="_99iNNN-rEe6XoZmok9ehtw" name="specific maneuver" type="_NxdC8NlLEe6Hj6nzgakJ2A" association="_99iNMN-rEe6XoZmok9ehtw"/>
       </packagedElement>
     </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_0qfysOXZEe670Kb7sOjz5g" name="Include"/>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_XRCisPufEeOaTf6ppV18tA">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_XSCBMPufEeOaTf6ppV18tA" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
@@ -893,7 +924,7 @@ this is in accordance with the satellite's FDIR strategy</body>
   <standard:Create xmi:id="_MldSUMTxEe6OXuhxNqOtLQ" base_BehavioralFeature="_Mk3ccMTxEe6OXuhxNqOtLQ"/>
   <Codegen:NoCodeGen xmi:id="_LAX0IM8TEe60kqNX-kRKdg" base_Element="_Wm3qkMZqEe6SvYXnNjpWuQ"/>
   <Codegen:NoCodeGen xmi:id="_UG9lMM8TEe60kqNX-kRKdg" base_Element="__4nyYL9VEe6neZnDM9mQww"/>
-  <PapyrusJava:Import xmi:id="_Zb_xcORiEe670Kb7sOjz5g" manualImports="import AOCS_FSM.AOCS_State_Machine.AOCS_MODES;" base_class="_lntV0ORhEe670Kb7sOjz5g" base_Classifier="_lntV0ORhEe670Kb7sOjz5g"/>
-  <java:JavaClass xmi:id="_rFDdYORjEe670Kb7sOjz5g" base_Classifier="_lntV0ORhEe670Kb7sOjz5g"/>
-  <PapyrusJava:Import xmi:id="_1x8HsOUwEe670Kb7sOjz5g" manualImports="import AOCS_FSM.TTC_Handler.GDEF_STATUS;" base_class="_XgbL4LYbEe6HVJQsqClfdg" base_Classifier="_XgbL4LYbEe6HVJQsqClfdg"/>
+  <PapyrusJava:Import xmi:id="_Zb_xcORiEe670Kb7sOjz5g" manualImports="import AOCS_RTP.AOCS_State_Machine.AOCS_MODES;" base_class="_lntV0ORhEe670Kb7sOjz5g" base_Classifier="_lntV0ORhEe670Kb7sOjz5g"/>
+  <java:JavaClass xmi:id="_rFDdYORjEe670Kb7sOjz5g" author="Youcef Bouziane" base_Classifier="_lntV0ORhEe670Kb7sOjz5g"/>
+  <PapyrusJava:Import xmi:id="_1x8HsOUwEe670Kb7sOjz5g" manualImports="import AOCS_RTP.TTC_Handler.GDEF_STATUS;import java.util.EnumMap;" base_class="_XgbL4LYbEe6HVJQsqClfdg" base_Classifier="_XgbL4LYbEe6HVJQsqClfdg"/>
 </xmi:XMI>

@@ -827,7 +827,7 @@
     </children>
     <styles xmi:type="notation:DiagramStyle" xmi:id="_SBlSoXqOEeKTxtxzlOVcOw"/>
     <styles xmi:type="style:PapyrusDiagramStyle" xmi:id="_-QkosK79Ee6-S-w_PQWpLQ" diagramKindId="org.eclipse.papyrus.uml.diagram.class">
-      <owner xmi:type="uml:Model" href="BasicActiveObjectExample.uml#_TEGMIHIVEeKn_eMfgI85Zw"/>
+      <owner xmi:type="uml:Package" href="BasicActiveObjectExample.uml#_0qfysOXZEe670Kb7sOjz5g"/>
     </styles>
     <styles xmi:type="notation:StringValueStyle" xmi:id="_-Qmd4K79Ee6-S-w_PQWpLQ" name="diagram_compatibility_version" stringValue="1.4.0"/>
     <element xmi:type="uml:Model" href="BasicActiveObjectExample.uml#_TEGMIHIVEeKn_eMfgI85Zw"/>
@@ -1583,7 +1583,7 @@
     <styles xmi:type="notation:StringValueStyle" xmi:id="_fOpikb3AEe6neZnDM9mQww" name="diagram_compatibility_version" stringValue="1.4.0"/>
     <styles xmi:type="notation:DiagramStyle" xmi:id="_fOpikr3AEe6neZnDM9mQww"/>
     <styles xmi:type="style:PapyrusDiagramStyle" xmi:id="_fOpik73AEe6neZnDM9mQww" diagramKindId="org.eclipse.papyrus.uml.diagram.package">
-      <owner xmi:type="uml:Model" href="BasicActiveObjectExample.uml#_TEGMIHIVEeKn_eMfgI85Zw"/>
+      <owner xmi:type="uml:Package" href="BasicActiveObjectExample.uml#_0qfysOXZEe670Kb7sOjz5g"/>
     </styles>
     <element xmi:type="uml:Model" href="BasicActiveObjectExample.uml#_TEGMIHIVEeKn_eMfgI85Zw"/>
     <edges xmi:type="notation:Connector" xmi:id="_BOlZLuBuEe6XoZmok9ehtw" type="StereotypeCommentLink" source="_gYnbUL3AEe6neZnDM9mQww" target="_BOlZKuBuEe6XoZmok9ehtw">
