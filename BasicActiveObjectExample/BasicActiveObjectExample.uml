@@ -337,6 +337,9 @@ To test this example:&#xD;
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_TYtJMrg3Ee6IpLPqVFrelw" name="powerthread" visibility="private" type="_18DmAK_HEe6-S-w_PQWpLQ" aggregation="shared" association="_TYsiILg3Ee6IpLPqVFrelw"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_QfE0Mrg4Ee6IpLPqVFrelw" name="statethread" visibility="private" type="_mw6RgK_HEe6-S-w_PQWpLQ" aggregation="shared" association="_QfENILg4Ee6IpLPqVFrelw"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_aEttYObKEe670Kb7sOjz5g" name="modeIndexMap ">
+          <type xmi:type="uml:Interface" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_5jaF0GMnEeydfJuFsrdeeg"/>
+        </ownedAttribute>
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_v3knkOUbEe670Kb7sOjz5g" name="AOCS_GetReqModeBehaviour" specification="_BHOm8OUbEe670Kb7sOjz5g">
           <language>JAVA</language>
           <body>return AOCS_reqMode;</body>
@@ -357,17 +360,25 @@ return GDEF_STATUS.GDEF_SUCCESS;</body>
         </ownedBehavior>
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_nfphAOXkEe670Kb7sOjz5g" name="CheckValidModetransitionBehaviour" useCase="_drW5ENcVEe6Hj6nzgakJ2A" specification="_Jvpb8OXkEe670Kb7sOjz5g">
           <language>JAVA</language>
-          <body>return AOCS_modeTransitionTable.get(AOCS_currentMode)[newMode];</body>
+          <body>return AOCS_modeTransitionTable.get(AOCS_currentMode)[modeIndexMap.get(newMode)];</body>
         </ownedBehavior>
         <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_I-aYAOX_Ee670Kb7sOjz5g" name="initBahavior" specification="_mYj7IOX6Ee670Kb7sOjz5g">
           <language>JAVA</language>
-          <body>// Initialization of inner arrays&#xD;
+          <body>// Initialization of mapping arrays&#xD;
+modeIndexMap = new HashMap&lt;>();&#xD;
+modeIndexMap.put(AOCS_MODES.SBM, 0);&#xD;
+modeIndexMap.put(AOCS_MODES.DTM, 1);&#xD;
+modeIndexMap.put(AOCS_MODES.YTM, 2);&#xD;
+modeIndexMap.put(AOCS_MODES.CPM, 3);&#xD;
+modeIndexMap.put(AOCS_MODES.NOM, 4);&#xD;
+&#xD;
+// Initialization of rules arrays&#xD;
 for (AOCS_MODES mode : AOCS_MODES.values()) {&#xD;
     AOCS_modeTransitionTable.put(mode, new GDEF_STATUS[AOCS_MODES.values().length]); &#xD;
 }&#xD;
 &#xD;
 // Accessing and assigning elements&#xD;
-AOCS_modeTransitionTable.get(AOCS_MODES.SBM)[AOCS_MODES.YTM] = GDEF_STATUS.GDEF_SUCCESS; &#xD;
+AOCS_modeTransitionTable.get(AOCS_MODES.SBM)[modeIndexMap.get(AOCS_MODES.YTM)] = GDEF_STATUS.GDEF_SUCCESS; &#xD;
 </body>
         </ownedBehavior>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_iK5DILYeEe6IpLPqVFrelw" name="AOCS_RequestMode" method="_Vf4awOUeEe670Kb7sOjz5g">
@@ -932,6 +943,9 @@ this is in accordance with the satellite's FDIR strategy</body>
   <Codegen:NoCodeGen xmi:id="_UG9lMM8TEe60kqNX-kRKdg" base_Element="__4nyYL9VEe6neZnDM9mQww"/>
   <PapyrusJava:Import xmi:id="_Zb_xcORiEe670Kb7sOjz5g" manualImports="import AOCS_RTP.AOCS_State_Machine.AOCS_MODES;" base_class="_lntV0ORhEe670Kb7sOjz5g" base_Classifier="_lntV0ORhEe670Kb7sOjz5g"/>
   <java:JavaClass xmi:id="_rFDdYORjEe670Kb7sOjz5g" author="Youcef Bouziane" base_Classifier="_lntV0ORhEe670Kb7sOjz5g"/>
-  <PapyrusJava:Import xmi:id="_1x8HsOUwEe670Kb7sOjz5g" manualImports="import AOCS_RTP.TTC_Handler.GDEF_STATUS;import java.util.EnumMap;" base_class="_XgbL4LYbEe6HVJQsqClfdg" base_Classifier="_XgbL4LYbEe6HVJQsqClfdg"/>
+  <PapyrusJava:Import xmi:id="_1x8HsOUwEe670Kb7sOjz5g" manualImports="import AOCS_RTP.TTC_Handler.GDEF_STATUS;import java.util.EnumMap;import java.util.HashMap;" base_class="_XgbL4LYbEe6HVJQsqClfdg" base_Classifier="_XgbL4LYbEe6HVJQsqClfdg"/>
   <PapyrusJava:Array xmi:id="_QkTq8ObGEe670Kb7sOjz5g" definition="&lt;AOCS_MODES, GDEF_STATUS[]>" base_property="_8UlJoObCEe670Kb7sOjz5g"/>
+  <java:JavaClass xmi:id="_qirKEObJEe670Kb7sOjz5g" name="AOCS_State_Machine" base_Classifier="_XgbL4LYbEe6HVJQsqClfdg"/>
+  <PapyrusJava:Array xmi:id="_fDHhEObKEe670Kb7sOjz5g" definition="&lt;AOCS_MODES, Integer>" base_property="_aEttYObKEe670Kb7sOjz5g"/>
+  <Codegen:TraceHint xmi:id="_CQOvEObLEe670Kb7sOjz5g" declaration="new Object();" base_Element="_i2fTkNCmEe6OJd78DXkgdw"/>
 </xmi:XMI>
