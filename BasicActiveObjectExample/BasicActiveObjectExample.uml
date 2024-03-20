@@ -4,6 +4,9 @@
     <packageImport xmi:type="uml:PackageImport" xmi:id="_nGJgEOXdEe670Kb7sOjz5g">
       <importedPackage xmi:type="uml:Profile" href="pathmap://Papyrus_JAVA_PROFILES/java.profile.uml#_6TYLMN0yEd6P1qtlpBOZyg"/>
     </packageImport>
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_cMrgcOa_Ee670Kb7sOjz5g">
+      <importedPackage xmi:type="uml:Profile" href="pathmap://PapyrusJava_PROFILES/PapyrusJava.profile.uml#_j9REUByGEduN1bTiWJ0lyw"/>
+    </packageImport>
     <packagedElement xmi:type="uml:Package" xmi:id="_wLFCsHXhEeKEDJ51kkuoUw" name="AOCS_RTP" visibility="public">
       <ownedComment xmi:type="uml:Comment" xmi:id="_chbAoKKFEeKB6PiQ7fFSsA">
         <body>This example consist in:&#xD;
@@ -311,26 +314,29 @@ To test this example:&#xD;
             <body>store the requested mode before a transition</body>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_76_EMOUdEe670Kb7sOjz5g" name="AOCS_transState" type="_29JtsOUcEe670Kb7sOjz5g"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_sTJwkObGEe670Kb7sOjz5g" name="AOCS_transState" type="_29JtsOUcEe670Kb7sOjz5g">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_vLuOQObIEe670Kb7sOjz5g" annotatedElement="_sTJwkObGEe670Kb7sOjz5g">
+            <body>Store the transition state (if idle next mode)</body>
+          </ownedComment>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_mJagQObIEe670Kb7sOjz5g" name="AOCS_isSafeMode">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_mJagQebIEe670Kb7sOjz5g" annotatedElement="_mJagQObIEe670Kb7sOjz5g">
+            <body>flag to indicate if this is a safe mode</body>
+          </ownedComment>
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_8UlJoObCEe670Kb7sOjz5g" name="AOCS_modeTransitionTable">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_8UlJoebCEe670Kb7sOjz5g" annotatedElement="_8UlJoObCEe670Kb7sOjz5g">
+            <body>Set the requested mode if it is a valid transistion</body>
+          </ownedComment>
+          <type xmi:type="uml:Interface" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_5jaF0GMnEeydfJuFsrdeeg"/>
+        </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_hbNw8NC9Ee6OJd78DXkgdw" name="DTM_YTM_CPM" visibility="private" isStatic="true" isReadOnly="true">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
           <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_hbNw8dC9Ee6OJd78DXkgdw" value="300"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_TYtJMrg3Ee6IpLPqVFrelw" name="powerthread" visibility="private" type="_18DmAK_HEe6-S-w_PQWpLQ" aggregation="shared" association="_TYsiILg3Ee6IpLPqVFrelw"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_QfE0Mrg4Ee6IpLPqVFrelw" name="statethread" visibility="private" type="_mw6RgK_HEe6-S-w_PQWpLQ" aggregation="shared" association="_QfENILg4Ee6IpLPqVFrelw"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_su8a8OXlEe670Kb7sOjz5g" name="AOCS_modeTransitionTable" isStatic="true">
-          <ownedComment xmi:type="uml:Comment" xmi:id="__jytIOX9Ee670Kb7sOjz5g" annotatedElement="_su8a8OXlEe670Kb7sOjz5g">
-            <body>AOCS_MODE_TRANSISTION_TABLE</body>
-          </ownedComment>
-          <type xmi:type="uml:Interface" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_5jaF0GMnEeydfJuFsrdeeg"/>
-          <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_hMTmwOX8Ee670Kb7sOjz5g">
-            <ownedComment xmi:type="uml:Comment" xmi:id="_hMTmweX8Ee670Kb7sOjz5g" annotatedElement="_hMTmwOX8Ee670Kb7sOjz5g">
-              <body>// Modified array declaration</body>
-            </ownedComment>
-            <language>JAVA</language>
-            <body>new EnumMap&lt;AOCS_MODES, GDEF_STATUS[]>(AOCS_MODES.class)</body>
-          </defaultValue>
-        </ownedAttribute>
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_v3knkOUbEe670Kb7sOjz5g" name="AOCS_GetReqModeBehaviour" specification="_BHOm8OUbEe670Kb7sOjz5g">
           <language>JAVA</language>
           <body>return AOCS_reqMode;</body>
@@ -351,7 +357,7 @@ return GDEF_STATUS.GDEF_SUCCESS;</body>
         </ownedBehavior>
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_nfphAOXkEe670Kb7sOjz5g" name="CheckValidModetransitionBehaviour" useCase="_drW5ENcVEe6Hj6nzgakJ2A" specification="_Jvpb8OXkEe670Kb7sOjz5g">
           <language>JAVA</language>
-          <body>return AOCS_modeTransitionTable[AOCS_currentMode][newMode];</body>
+          <body>return AOCS_modeTransitionTable.get(AOCS_currentMode)[newMode];</body>
         </ownedBehavior>
         <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_I-aYAOX_Ee670Kb7sOjz5g" name="initBahavior" specification="_mYj7IOX6Ee670Kb7sOjz5g">
           <language>JAVA</language>
@@ -927,4 +933,5 @@ this is in accordance with the satellite's FDIR strategy</body>
   <PapyrusJava:Import xmi:id="_Zb_xcORiEe670Kb7sOjz5g" manualImports="import AOCS_RTP.AOCS_State_Machine.AOCS_MODES;" base_class="_lntV0ORhEe670Kb7sOjz5g" base_Classifier="_lntV0ORhEe670Kb7sOjz5g"/>
   <java:JavaClass xmi:id="_rFDdYORjEe670Kb7sOjz5g" author="Youcef Bouziane" base_Classifier="_lntV0ORhEe670Kb7sOjz5g"/>
   <PapyrusJava:Import xmi:id="_1x8HsOUwEe670Kb7sOjz5g" manualImports="import AOCS_RTP.TTC_Handler.GDEF_STATUS;import java.util.EnumMap;" base_class="_XgbL4LYbEe6HVJQsqClfdg" base_Classifier="_XgbL4LYbEe6HVJQsqClfdg"/>
+  <PapyrusJava:Array xmi:id="_QkTq8ObGEe670Kb7sOjz5g" definition="&lt;AOCS_MODES, GDEF_STATUS[]>" base_property="_8UlJoObCEe670Kb7sOjz5g"/>
 </xmi:XMI>
