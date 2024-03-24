@@ -319,21 +319,17 @@ To test this example:&#xD;
             <body>Store the transition state (if idle next mode)</body>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_mJagQObIEe670Kb7sOjz5g" name="AOCS_isSafeMode">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_mJagQObIEe670Kb7sOjz5g" name="AOCS_isSafeMode" type="_GwLHQOUtEe670Kb7sOjz5g">
           <ownedComment xmi:type="uml:Comment" xmi:id="_mJagQebIEe670Kb7sOjz5g" annotatedElement="_mJagQObIEe670Kb7sOjz5g">
             <body>flag to indicate if this is a safe mode</body>
           </ownedComment>
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_8UlJoObCEe670Kb7sOjz5g" name="AOCS_modeTransitionTable">
           <ownedComment xmi:type="uml:Comment" xmi:id="_8UlJoebCEe670Kb7sOjz5g" annotatedElement="_8UlJoObCEe670Kb7sOjz5g">
-            <body>Set the requested mode if it is a valid transistion</body>
+            <body>Set the requested mode if it is a valid transition</body>
           </ownedComment>
-          <type xmi:type="uml:Interface" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_5jaF0GMnEeydfJuFsrdeeg"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_hbNw8NC9Ee6OJd78DXkgdw" name="DTM_YTM_CPM" visibility="private" isStatic="true" isReadOnly="true">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
-          <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_hbNw8dC9Ee6OJd78DXkgdw" value="300"/>
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_O3XbAOnGEe670Kb7sOjz5g" value="*"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_TYtJMrg3Ee6IpLPqVFrelw" name="powerthread" visibility="private" type="_18DmAK_HEe6-S-w_PQWpLQ" aggregation="shared" association="_TYsiILg3Ee6IpLPqVFrelw"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_QfE0Mrg4Ee6IpLPqVFrelw" name="statethread" visibility="private" type="_mw6RgK_HEe6-S-w_PQWpLQ" aggregation="shared" association="_QfENILg4Ee6IpLPqVFrelw"/>
@@ -354,13 +350,25 @@ if (AOCS_transState != AOCS_TRANS_STATE.AMOH_TRANS_IDLE) {&#xD;
 /* check if is different to current value */&#xD;
 if (newMode != AOCS_currentMode) {&#xD;
     /* Set the requested mode if it is a valid transistion */&#xD;
-    if (GDEF_STATUS.GDEF_TRUE == CheckValidModetransition(newMode)) {}&#xD;
+    if (GDEF_STATUS.GDEF_TRUE == CheckValidModetransition(newMode)) {&#xD;
+&#xD;
+				/* set the request mode */&#xD;
+				AOCS_reqMode = newMode;&#xD;
+&#xD;
+				/* set the transition state to requested */&#xD;
+				AOCS_transState = AOCS_TRANS_STATE.AMOH_TRANS_REQ;&#xD;
+&#xD;
+				// AOCS Algs will see the flag change and proceeds with mode transition&#xD;
+				AOCS_UpdateMode();&#xD;
+				// print into the ewod&#xD;
+				System.out.println(&quot;VALID mode trans req: [&quot; + AOCS_currentMode + &quot;] -> [&quot; + AOCS_reqMode + &quot;]&quot;);&#xD;
+}&#xD;
 }&#xD;
 return GDEF_STATUS.GDEF_SUCCESS;</body>
         </ownedBehavior>
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_nfphAOXkEe670Kb7sOjz5g" name="CheckValidModetransitionBehaviour" useCase="_drW5ENcVEe6Hj6nzgakJ2A" specification="_Jvpb8OXkEe670Kb7sOjz5g">
           <language>JAVA</language>
-          <body>return AOCS_modeTransitionTable.get(AOCS_currentMode)[modeIndexMap.get(newMode)];</body>
+          <body>return AOCS_modeTransitionTable[modeIndexMap.get(AOCS_currentMode)][modeIndexMap.get(newMode)]? GDEF_STATUS.GDEF_TRUE : GDEF_STATUS.GDEF_FALSE;</body>
         </ownedBehavior>
         <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_I-aYAOX_Ee670Kb7sOjz5g" name="initBahavior" specification="_mYj7IOX6Ee670Kb7sOjz5g">
           <language>JAVA</language>
@@ -372,21 +380,74 @@ modeIndexMap.put(AOCS_MODES.YTM, 2);&#xD;
 modeIndexMap.put(AOCS_MODES.CPM, 3);&#xD;
 modeIndexMap.put(AOCS_MODES.NOM, 4);&#xD;
 &#xD;
-// Initialization of rules arrays&#xD;
-for (AOCS_MODES mode : AOCS_MODES.values()) {&#xD;
-    AOCS_modeTransitionTable.put(mode, new GDEF_STATUS[AOCS_MODES.values().length]); &#xD;
-}&#xD;
-&#xD;
-// Accessing and assigning elements&#xD;
-AOCS_modeTransitionTable.get(AOCS_MODES.SBM)[modeIndexMap.get(AOCS_MODES.YTM)] = GDEF_STATUS.GDEF_SUCCESS; &#xD;
+// Initialization of AOCS_modeTransitionTable rules arrays&#xD;
+AOCS_modeTransitionTable = new boolean[][] {&#xD;
+		//SBM-----DTM---YTM----CPM----NOM--&#xD;
+		{ false, true, false, false, false }, // SBM&#xD;
+		{ true, false, false, false, false }, // DTM&#xD;
+		{ false, false, false, true, false }, // YTM&#xD;
+		{ false, false, false, false, true }, // CPM&#xD;
+		{ false, false, false, false, false } // NOM&#xD;
+};&#xD;
+ &#xD;
 </body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_X2S2IOnMEe670Kb7sOjz5g" name="contructor" specification="_FYpPEOnMEe670Kb7sOjz5g">
+          <language>JAVA</language>
+          <body>//intialise the parameters&#xD;
+init();</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_Tq3asOnQEe670Kb7sOjz5g" name="AOCS_ForceModeBehaviour" specification="_orDzAOUaEe670Kb7sOjz5g">
+          <language>JAVA</language>
+          <body>/* if current mode transition occurring then abort */&#xD;
+// ACON_AbortSked(); // not in our case&#xD;
+		&#xD;
+// print into the ewod&#xD;
+System.out.println(&quot;Force Mode change to&quot; + AOCS_reqMode);&#xD;
+		&#xD;
+//other mode so update in usual manner&#xD;
+AOCS_reqMode = newMode;&#xD;
+AOCS_transState = AOCS_TRANS_STATE.AMOH_TRANS_REQ;&#xD;
+AOCS_UpdateMode();&#xD;
+</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_JSl38OnTEe670Kb7sOjz5g" name="AOCS_UpdateModeBehaviour" specification="_zdQ_4OnREe670Kb7sOjz5g">
+          <language>JAVA</language>
+          <body>		// switch the current transition state&#xD;
+		switch (AOCS_transState) {&#xD;
+		case AMOH_TRANS_IDLE:&#xD;
+			/* nothing to do so just return */&#xD;
+			break;&#xD;
+&#xD;
+		case AMOH_TRANS_REQ: {&#xD;
+			/*&#xD;
+			 * no config required in standby OPS, config might be required in safe standby&#xD;
+			 * (i.e. logging telemetry)&#xD;
+			 */&#xD;
+			if ((AOCS_MODES.SBM == AOCS_reqMode) &amp;&amp; (GDEF_STATUS.GDEF_FALSE == AOCS_isSafeMode)) {&#xD;
+				// update ewod &#xD;
+				// EWOD_SetDefaultTlmType(MODE_SBM);&#xD;
+				/* standby mode so just update shell params */&#xD;
+				AOCS_transState = AOCS_TRANS_STATE.AMOH_TRANS_SHELL;&#xD;
+			}&#xD;
+			break;&#xD;
+		}&#xD;
+		}</body>
         </ownedBehavior>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_iK5DILYeEe6IpLPqVFrelw" name="AOCS_RequestMode" method="_Vf4awOUeEe670Kb7sOjz5g">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_tbCcEOUNEe670Kb7sOjz5g" name="newMode" type="_i2fTkNCmEe6OJd78DXkgdw"/>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_ROO6MOUwEe670Kb7sOjz5g" type="_GwLHQOUtEe670Kb7sOjz5g" direction="return"/>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_orDzAOUaEe670Kb7sOjz5g" name="AOCS_ForceMode">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_orDzAOUaEe670Kb7sOjz5g" name="AOCS_ForceMode" method="_Tq3asOnQEe670Kb7sOjz5g">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_Es6NoOnQEe670Kb7sOjz5g" annotatedElement="_orDzAOUaEe670Kb7sOjz5g">
+            <body>sets the mode regardless of requests or valid transitions</body>
+          </ownedComment>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_orDzAeUaEe670Kb7sOjz5g" name="newMode" type="_i2fTkNCmEe6OJd78DXkgdw"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_zdQ_4OnREe670Kb7sOjz5g" name="AOCS_UpdateMode" method="_JSl38OnTEe670Kb7sOjz5g">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_zdQ_4enREe670Kb7sOjz5g" annotatedElement="_zdQ_4OnREe670Kb7sOjz5g">
+            <body>Allow a mode change for new cycle</body>
+          </ownedComment>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_BHOm8OUbEe670Kb7sOjz5g" name="AOCS_GetReqMode" method="_v3knkOUbEe670Kb7sOjz5g">
           <ownedComment xmi:type="uml:Comment" xmi:id="_FtXEkOUbEe670Kb7sOjz5g" annotatedElement="_BHOm8OUbEe670Kb7sOjz5g">
@@ -414,12 +475,17 @@ AOCS_modeTransitionTable.get(AOCS_MODES.SBM)[modeIndexMap.get(AOCS_MODES.YTM)] =
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_Jvpb8OXkEe670Kb7sOjz5g" name="CheckValidModetransition" method="_nfphAOXkEe670Kb7sOjz5g">
           <ownedComment xmi:type="uml:Comment" xmi:id="_Jvpb8eXkEe670Kb7sOjz5g" annotatedElement="_Jvpb8OXkEe670Kb7sOjz5g">
-            <body>Check if the requested mode is a valid transistion </body>
+            <body>Check if the requested mode is a valid transition </body>
           </ownedComment>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_Jvpb8uXkEe670Kb7sOjz5g" name="newMode" type="_i2fTkNCmEe6OJd78DXkgdw"/>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_TbJQ4OXkEe670Kb7sOjz5g" type="_GwLHQOUtEe670Kb7sOjz5g" direction="return"/>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_mYj7IOX6Ee670Kb7sOjz5g" name="init" method="_I-aYAOX_Ee670Kb7sOjz5g"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_FYpPEOnMEe670Kb7sOjz5g" name="AOCS_State_Machine" method="_X2S2IOnMEe670Kb7sOjz5g">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FYpPEenMEe670Kb7sOjz5g" annotatedElement="_FYpPEOnMEe670Kb7sOjz5g">
+            <body>Constructor</body>
+          </ownedComment>
+        </ownedOperation>
         <nestedClassifier xmi:type="uml:Enumeration" xmi:id="_i2fTkNCmEe6OJd78DXkgdw" name="AOCS_MODES" visibility="public">
           <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_BPjzsNC7Ee6OJd78DXkgdw" name="SBM"/>
           <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_i2fTkdCmEe6OJd78DXkgdw" name="DTM"/>
@@ -777,7 +843,73 @@ this is in accordance with the satellite's FDIR strategy</body>
           <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_7TOS8ORUEe670Kb7sOjz5g" name="RCON_RECONFIG3"/>
         </nestedClassifier>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_EbAfUOUwEe670Kb7sOjz5g" name="TTC_Handler">
+      <packagedElement xmi:type="uml:Class" xmi:id="_EbAfUOUwEe670Kb7sOjz5g" name="AOCS_Shell" visibility="public">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_Dh1Q4OnsEe670Kb7sOjz5g" annotatedElement="_EbAfUOUwEe670Kb7sOjz5g">
+          <body>Entry point for the OBC750 AOCS Process</body>
+        </ownedComment>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_cWbTQOnpEe670Kb7sOjz5g" name="AOCS_downlink_telemetry_handler">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_vQqvsOnpEe670Kb7sOjz5g" annotatedElement="_cWbTQOnpEe670Kb7sOjz5g">
+            <body>Routine to generate the telemetry information that will be transmitted on the downlink.</body>
+          </ownedComment>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_1APhoOnpEe670Kb7sOjz5g" name="getCANReg">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_1APhoenpEe670Kb7sOjz5g" annotatedElement="_1APhoOnpEe670Kb7sOjz5g">
+            <body>Routine to the CAN API Registration Structure</body>
+          </ownedComment>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_DRDU0OnqEe670Kb7sOjz5g" name="aocs_pps_timer_signal_handler">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_DRDU0enqEe670Kb7sOjz5g" annotatedElement="_DRDU0OnqEe670Kb7sOjz5g">
+            <body>Routine to handle the PPS Timer Signal</body>
+          </ownedComment>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_HIhVoOnqEe670Kb7sOjz5g" name="aocs_actuation_timer_signal_handler">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_HIhVoenqEe670Kb7sOjz5g" annotatedElement="_HIhVoOnqEe670Kb7sOjz5g">
+            <body>Routine to handle the Actuation Timer Signal</body>
+          </ownedComment>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_tRwhEOnrEe670Kb7sOjz5g" name="aocs_aim_check_timer_signal_handler">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_vRaEoOnrEe670Kb7sOjz5g" annotatedElement="_tRwhEOnrEe670Kb7sOjz5g">
+            <body>Routine to handle the AIM Check Timer Signal</body>
+          </ownedComment>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_zqC40OnrEe670Kb7sOjz5g" name="aocs_message_dispatcher_thread">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_zqC40enrEe670Kb7sOjz5g" annotatedElement="_zqC40OnrEe670Kb7sOjz5g">
+            <body>Routine to handle the Message Interface implemented as a POSIX Thread.</body>
+          </ownedComment>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_Q1EokOnsEe670Kb7sOjz5g" name="main">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_SvK9wOnsEe670Kb7sOjz5g" annotatedElement="_Q1EokOnsEe670Kb7sOjz5g">
+            <body>Entry point for the OBC750 AOCS Process</body>
+          </ownedComment>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_Q1EokensEe670Kb7sOjz5g" name="arg">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_Q1EokunsEe670Kb7sOjz5g" name="argv">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_XxJZwGx-Eey_s9B0BvHgkw"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_eQIfgOnsEe670Kb7sOjz5g" name="TaskExit">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_o6yEUOnsEe670Kb7sOjz5g" annotatedElement="_eQIfgOnsEe670Kb7sOjz5g">
+            <body>AOCS Task exit function</body>
+          </ownedComment>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_gtocsOnsEe670Kb7sOjz5g" name="TaskInit">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_md7AUOnsEe670Kb7sOjz5g" annotatedElement="_gtocsOnsEe670Kb7sOjz5g">
+            <body>AOCS Task initialisation function</body>
+          </ownedComment>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_yRFsYOnsEe670Kb7sOjz5g" name="aocs_can_thread">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_yRFsYensEe670Kb7sOjz5g" annotatedElement="_yRFsYOnsEe670Kb7sOjz5g">
+            <body>Routine to register the AOCS Process with the CAN Server.&#xD;
+Registers Telecommand and Telemetry service queues and a generic receive message queue.&#xD;
+Block waits for Received CAN messages.</body>
+          </ownedComment>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_FZ6-cOntEe670Kb7sOjz5g" name="InitAocs">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_FZ6-centEe670Kb7sOjz5g" annotatedElement="_FZ6-cOntEe670Kb7sOjz5g">
+            <body>Initialises a new AOCS cycle</body>
+          </ownedComment>
+        </ownedOperation>
         <nestedClassifier xmi:type="uml:Enumeration" xmi:id="_GwLHQOUtEe670Kb7sOjz5g" name="GDEF_STATUS">
           <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TRddkOUtEe670Kb7sOjz5g" name="GDEF_FAILURE">
             <ownedComment xmi:type="uml:Comment" xmi:id="_TRddkeUtEe670Kb7sOjz5g" annotatedElement="_TRddkOUtEe670Kb7sOjz5g">
@@ -801,6 +933,7 @@ this is in accordance with the satellite's FDIR strategy</body>
           </ownedLiteral>
         </nestedClassifier>
       </packagedElement>
+      <packagedElement xmi:type="uml:Usage" xmi:id="_PHySQOnqEe670Kb7sOjz5g" client="_XgbL4LYbEe6HVJQsqClfdg" supplier="_EbAfUOUwEe670Kb7sOjz5g"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_AOQzoNbuEe6Hj6nzgakJ2A" name="UseCaseDiagrams">
       <packagedElement xmi:type="uml:Actor" xmi:id="_wPGlQNcOEe6Hj6nzgakJ2A" name="Operator"/>
@@ -943,9 +1076,10 @@ this is in accordance with the satellite's FDIR strategy</body>
   <Codegen:NoCodeGen xmi:id="_UG9lMM8TEe60kqNX-kRKdg" base_Element="__4nyYL9VEe6neZnDM9mQww"/>
   <PapyrusJava:Import xmi:id="_Zb_xcORiEe670Kb7sOjz5g" manualImports="import AOCS_RTP.AOCS_State_Machine.AOCS_MODES;" base_class="_lntV0ORhEe670Kb7sOjz5g" base_Classifier="_lntV0ORhEe670Kb7sOjz5g"/>
   <java:JavaClass xmi:id="_rFDdYORjEe670Kb7sOjz5g" author="Youcef Bouziane" base_Classifier="_lntV0ORhEe670Kb7sOjz5g"/>
-  <PapyrusJava:Import xmi:id="_1x8HsOUwEe670Kb7sOjz5g" manualImports="import AOCS_RTP.TTC_Handler.GDEF_STATUS;import java.util.EnumMap;import java.util.HashMap;" base_class="_XgbL4LYbEe6HVJQsqClfdg" base_Classifier="_XgbL4LYbEe6HVJQsqClfdg"/>
-  <PapyrusJava:Array xmi:id="_QkTq8ObGEe670Kb7sOjz5g" definition="&lt;AOCS_MODES, GDEF_STATUS[]>" base_property="_8UlJoObCEe670Kb7sOjz5g"/>
+  <PapyrusJava:Import xmi:id="_1x8HsOUwEe670Kb7sOjz5g" manualImports="import AOCS_RTP.TTC_Handler.GDEF_STATUS;import java.util.HashMap;" base_class="_XgbL4LYbEe6HVJQsqClfdg" base_Classifier="_XgbL4LYbEe6HVJQsqClfdg"/>
   <java:JavaClass xmi:id="_qirKEObJEe670Kb7sOjz5g" name="AOCS_State_Machine" base_Classifier="_XgbL4LYbEe6HVJQsqClfdg"/>
   <PapyrusJava:Array xmi:id="_fDHhEObKEe670Kb7sOjz5g" definition="&lt;AOCS_MODES, Integer>" base_property="_aEttYObKEe670Kb7sOjz5g"/>
   <Codegen:TraceHint xmi:id="_CQOvEObLEe670Kb7sOjz5g" declaration="new Object();" base_Element="_i2fTkNCmEe6OJd78DXkgdw"/>
+  <PapyrusJava:Array xmi:id="_om_a4OnGEe670Kb7sOjz5g" definition="[][]" base_property="_8UlJoObCEe670Kb7sOjz5g"/>
+  <standard:Create xmi:id="_HmHzQOnMEe670Kb7sOjz5g" base_BehavioralFeature="_FYpPEOnMEe670Kb7sOjz5g"/>
 </xmi:XMI>
