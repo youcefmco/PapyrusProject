@@ -227,12 +227,10 @@ To test this example:&#xD;
           </ownedParameter>
         </ownedOperation>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_SMG-gK8IEe6-S-w_PQWpLQ" name="AIM_TmTc_Struct" isActive="true">
-        <generalization xmi:type="uml:Generalization" xmi:id="_wafsELtmEe6neZnDM9mQww" general="_pAfYoLtmEe6neZnDM9mQww"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_iaX84K8IEe6-S-w_PQWpLQ" name="mtq_speed" visibility="private">
+      <packagedElement xmi:type="uml:Class" xmi:id="_SMG-gK8IEe6-S-w_PQWpLQ" name="Hardware_AIM" isActive="true">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_iaX84K8IEe6-S-w_PQWpLQ" name="mtq_values" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_G3v50K_CEe6-S-w_PQWpLQ" value="1"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Rk71QK_CEe6-S-w_PQWpLQ" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Rk71QK_CEe6-S-w_PQWpLQ" value="*"/>
           <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_5xc4IK-kEe6-S-w_PQWpLQ"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_CxhqYK8JEe6-S-w_PQWpLQ" name="mtm_value" visibility="private">
@@ -240,18 +238,26 @@ To test this example:&#xD;
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_G3m6cK_DEe6-S-w_PQWpLQ" value="1"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IXG-UK_DEe6-S-w_PQWpLQ" value="1"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_QTEj0K8JEe6-S-w_PQWpLQ" name="wheel_1_speed" visibility="private">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_QTEj0K8JEe6-S-w_PQWpLQ" name="wheels_speeds" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_KeGgAK_DEe6-S-w_PQWpLQ" value="1"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LpWLIK_DEe6-S-w_PQWpLQ" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LpWLIK_DEe6-S-w_PQWpLQ" value="*"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_Vzam8K8JEe6-S-w_PQWpLQ" name="wheel_2_speed" visibility="private">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_X39fcOqPEe670Kb7sOjz5g" name="AIM_NUM_SAS">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_X39fceqPEe670Kb7sOjz5g" annotatedElement="_X39fcOqPEe670Kb7sOjz5g">
+            <body>number of devices supported by the AIM</body>
+          </ownedComment>
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_NsZA8K_DEe6-S-w_PQWpLQ" value="1"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_OucT0K_DEe6-S-w_PQWpLQ" value="1"/>
+          <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_cpyPsOqPEe670Kb7sOjz5g" value="2"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_gJ_AAOqPEe670Kb7sOjz5g" name="AIM_NUM_MTM">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_gJ_AAeqPEe670Kb7sOjz5g" value="1"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_kdmKQOqPEe670Kb7sOjz5g" name="AIM_NUM_MTQ">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_kdmKQeqPEe670Kb7sOjz5g" value="3"/>
         </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_4QywIK_EEe6-S-w_PQWpLQ" name="setMtq_speed"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_IvFukK_FEe6-S-w_PQWpLQ" name="setMtm_value"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_R06DkK_FEe6-S-w_PQWpLQ" name="setWheel_1_speed"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_WTr8AK_FEe6-S-w_PQWpLQ" name="setWheel_2_speed"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_iCWikK_FEe6-S-w_PQWpLQ" name="getMtq_speed">
@@ -290,6 +296,7 @@ To test this example:&#xD;
         </ownedAttribute>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_XgbL4LYbEe6HVJQsqClfdg" name="AOCS_State_Machine" visibility="public" useCase="_zur1ENcPEe6Hj6nzgakJ2A __jS2INcQEe6Hj6nzgakJ2A _Q17mINcSEe6Hj6nzgakJ2A _drW5ENcVEe6Hj6nzgakJ2A _8trhoNcVEe6Hj6nzgakJ2A _bpcWMNk6Ee6Hj6nzgakJ2A _KaoKsNlDEe6Hj6nzgakJ2A _NxdC8NlLEe6Hj6nzgakJ2A">
+        <elementImport xmi:type="uml:ElementImport" xmi:id="_6hGUIOqDEe670Kb7sOjz5g" importedElement="_GwLHQOUtEe670Kb7sOjz5g"/>
         <ownedUseCase xmi:type="uml:UseCase" xmi:id="_zur1ENcPEe6Hj6nzgakJ2A" name="Receive TM" subject="_XgbL4LYbEe6HVJQsqClfdg"/>
         <ownedUseCase xmi:type="uml:UseCase" xmi:id="__jS2INcQEe6Hj6nzgakJ2A" name="AOCS Algorithm" subject="_XgbL4LYbEe6HVJQsqClfdg"/>
         <ownedUseCase xmi:type="uml:UseCase" xmi:id="_Q17mINcSEe6Hj6nzgakJ2A" name="Actuate" subject="_XgbL4LYbEe6HVJQsqClfdg"/>
@@ -300,7 +307,7 @@ To test this example:&#xD;
           <include xmi:type="uml:Include" xmi:id="_P_FU8NlHEe6Hj6nzgakJ2A" addition="_8trhoNcVEe6Hj6nzgakJ2A"/>
         </ownedUseCase>
         <ownedUseCase xmi:type="uml:UseCase" xmi:id="_NxdC8NlLEe6Hj6nzgakJ2A" name="Specific Maneuver" subject="_XgbL4LYbEe6HVJQsqClfdg"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_l10ygNCmEe6OJd78DXkgdw" name="AOCS_currentMode" visibility="private" type="_i2fTkNCmEe6OJd78DXkgdw">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_l10ygNCmEe6OJd78DXkgdw" name="AOCS_currentMode" visibility="private" isStatic="true" type="_i2fTkNCmEe6OJd78DXkgdw">
           <ownedComment xmi:type="uml:Comment" xmi:id="_hCK5oORXEe670Kb7sOjz5g" annotatedElement="_l10ygNCmEe6OJd78DXkgdw">
             <body>Current mode</body>
           </ownedComment>
@@ -309,17 +316,17 @@ To test this example:&#xD;
             <body>AOCS_MODES.SBM</body>
           </defaultValue>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_o1XJIORXEe670Kb7sOjz5g" name="AOCS_reqMode" visibility="private" type="_i2fTkNCmEe6OJd78DXkgdw">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_o1XJIORXEe670Kb7sOjz5g" name="AOCS_reqMode" visibility="private" isStatic="true" type="_i2fTkNCmEe6OJd78DXkgdw">
           <ownedComment xmi:type="uml:Comment" xmi:id="_tAnooORXEe670Kb7sOjz5g" annotatedElement="_o1XJIORXEe670Kb7sOjz5g">
             <body>store the requested mode before a transition</body>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_sTJwkObGEe670Kb7sOjz5g" name="AOCS_transState" type="_29JtsOUcEe670Kb7sOjz5g">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_sTJwkObGEe670Kb7sOjz5g" name="AOCS_transState" isStatic="true" type="_29JtsOUcEe670Kb7sOjz5g">
           <ownedComment xmi:type="uml:Comment" xmi:id="_vLuOQObIEe670Kb7sOjz5g" annotatedElement="_sTJwkObGEe670Kb7sOjz5g">
             <body>Store the transition state (if idle next mode)</body>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_mJagQObIEe670Kb7sOjz5g" name="AOCS_isSafeMode" type="_GwLHQOUtEe670Kb7sOjz5g">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_mJagQObIEe670Kb7sOjz5g" name="AOCS_isSafeMode" isStatic="true" type="_GwLHQOUtEe670Kb7sOjz5g">
           <ownedComment xmi:type="uml:Comment" xmi:id="_mJagQebIEe670Kb7sOjz5g" annotatedElement="_mJagQObIEe670Kb7sOjz5g">
             <body>flag to indicate if this is a safe mode</body>
           </ownedComment>
@@ -333,8 +340,14 @@ To test this example:&#xD;
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_TYtJMrg3Ee6IpLPqVFrelw" name="powerthread" visibility="private" type="_18DmAK_HEe6-S-w_PQWpLQ" aggregation="shared" association="_TYsiILg3Ee6IpLPqVFrelw"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_QfE0Mrg4Ee6IpLPqVFrelw" name="statethread" visibility="private" type="_mw6RgK_HEe6-S-w_PQWpLQ" aggregation="shared" association="_QfENILg4Ee6IpLPqVFrelw"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_aEttYObKEe670Kb7sOjz5g" name="modeIndexMap ">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_aEttYObKEe670Kb7sOjz5g" name="modeIndexMap " isStatic="true">
           <type xmi:type="uml:Interface" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_5jaF0GMnEeydfJuFsrdeeg"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_wR9T4Oq1Ee670Kb7sOjz5g" name="AOCS_maxCycle" isStatic="true">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_wR9T4eq1Ee670Kb7sOjz5g" annotatedElement="_wR9T4Oq1Ee670Kb7sOjz5g">
+            <body>return the AOCS period</body>
+          </ownedComment>
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
         </ownedAttribute>
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_v3knkOUbEe670Kb7sOjz5g" name="AOCS_GetReqModeBehaviour" specification="_BHOm8OUbEe670Kb7sOjz5g">
           <language>JAVA</language>
@@ -425,26 +438,124 @@ AOCS_UpdateMode();&#xD;
 			 * (i.e. logging telemetry)&#xD;
 			 */&#xD;
 			if ((AOCS_MODES.SBM == AOCS_reqMode) &amp;&amp; (GDEF_STATUS.GDEF_FALSE == AOCS_isSafeMode)) {&#xD;
-				// update ewod &#xD;
+				// update ewod&#xD;
 				// EWOD_SetDefaultTlmType(MODE_SBM);&#xD;
 				/* standby mode so just update shell params */&#xD;
+				AOCS_transState = AOCS_TRANS_STATE.AMOH_TRANS_SHELL;&#xD;
+			} else {&#xD;
+				/* kick off the hardware config sked for the mode */&#xD;
+				if (GDEF_STATUS.GDEF_SUCCESS != AOCS_Configuration.ACON_StartSked(modeIndexMap.get(AOCS_reqMode))) {&#xD;
+					// failure&#xD;
+					/* abort and go Back */&#xD;
+					AOCS_transState = AOCS_TRANS_STATE.AMOH_TRANS_IDLE;&#xD;
+					// log to ewod&#xD;
+					System.out.println(&quot;Unable to run config sked for mode [&quot; + AOCS_reqMode + &quot;]&quot;);&#xD;
+				} else {&#xD;
+					// success&#xD;
+					/* update state to config */&#xD;
+					AOCS_transState = AOCS_TRANS_STATE.AMOH_TRANS_CONFIG;&#xD;
+					// log to ewod&#xD;
+					System.out.println(&quot;config started for mode [&quot; + AOCS_reqMode + &quot;]&quot;);&#xD;
+				}&#xD;
+			}&#xD;
+			break;&#xD;
+&#xD;
+		}&#xD;
+		case AMOH_TRANS_CONFIG: {&#xD;
+			// check configuration sked complete&#xD;
+			if (!AOCS_Configuration.ACON_GetSkedStatus()) {&#xD;
+				// log to ewod&#xD;
+				System.out.println(&quot;Config sked completed for mode [&quot; + AOCS_reqMode + &quot;]&quot;);&#xD;
+				/* update state to config */&#xD;
 				AOCS_transState = AOCS_TRANS_STATE.AMOH_TRANS_SHELL;&#xD;
 			}&#xD;
 			break;&#xD;
 		}&#xD;
+		case AMOH_TRANS_SHELL:{&#xD;
+/* set shell parameters */&#xD;
+			Set_Shell_AocsMode();&#xD;
+			break;&#xD;
+		}&#xD;
 		}</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_125akOqeEe670Kb7sOjz5g" name="Set_Shell_AocsMode" specification="_bWBj8OqeEe670Kb7sOjz5g">
+          <language>JAVA</language>
+          <body>		/* check if a mode transition */&#xD;
+		if (AOCS_reqMode != AOCS_currentMode) {&#xD;
+			/* update the mode */&#xD;
+			AOCS_currentMode = AOCS_reqMode;&#xD;
+&#xD;
+			/* reset the ARO Counter */&#xD;
+			ARO_Handler.ARO_Reset();&#xD;
+&#xD;
+			/* hold off ARO during the mode transistion */&#xD;
+			ARO_Handler.ARO_SetHoldOff(AOCS_currentMode);&#xD;
+		} else {&#xD;
+&#xD;
+		}&#xD;
+&#xD;
+		/* update the sample time - AJ wait till after configuration? */&#xD;
+		ACON_SetRate(AMOH_mode);&#xD;
+&#xD;
+		/* set flags for algs - needs to be done before */&#xD;
+&#xD;
+		/* signal to units the new mode */&#xD;
+		HMGR_InitMode(AMOH_mode);&#xD;
+&#xD;
+		/* set up sampling telemetry */&#xD;
+		if (AMOH_isUnsolMode) {&#xD;
+			/* initialise the unsolicted telemetry */&#xD;
+			UTLM_InitMode(AMOH_mode);&#xD;
+		}&#xD;
+&#xD;
+		/* update EWOD logging for mode */&#xD;
+		EWOD_InitMode(AMOH_mode);</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_ZmYYAOquEe670Kb7sOjz5g" name="AOCS_SafeModeTransitionBehaviour" specification="_cJ1MMOquEe670Kb7sOjz5g">
+          <language>JAVA</language>
+          <body>		/* set the safe state flag */&#xD;
+		if (AOCS_SetSafeMode(mode) == AOCS_Shell.GDEF_STATUS.GDEF_SUCCESS) {&#xD;
+			return AOCS_Shell.GDEF_STATUS.GDEF_SUCCESS;&#xD;
+		}&#xD;
+&#xD;
+		/* update the mode */&#xD;
+		AOCS_ForceMode(mode);&#xD;
+&#xD;
+		return AOCS_Shell.GDEF_STATUS.GDEF_SUCCESS;</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_f_5pYOqvEe670Kb7sOjz5g" name="AOCS_SetSafeMode" specification="_vsJVQOquEe670Kb7sOjz5g">
+          <language>JAVA</language>
+          <body>/*   // if we set from OPS mode to safe mode then check that the current mode has a safe mode version&#xD;
+   if (GDEF_TRUE == value)&#xD;
+   {&#xD;
+      if (mode >= NUM_SAFE_MODES)&#xD;
+         return GDEF_FAILURE;&#xD;
+&#xD;
+   }&#xD;
+&#xD;
+   AMOH_isSafeMode = value;&#xD;
+&#xD;
+   //re-initialise the mode&#xD;
+   AMOH_transState = AMOH_TRANS_REQ;&#xD;
+*/&#xD;
+   return AOCS_Shell.GDEF_STATUS.GDEF_SUCCESS;&#xD;
+</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_Byd9QOq2Ee670Kb7sOjz5g" name="AOCS_SetPeriodBahaviour" specification="_UaPLEOBtEe6XoZmok9ehtw">
+          <language>JAVA</language>
+          <body>AOCS_maxCycle = period;</body>
         </ownedBehavior>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_iK5DILYeEe6IpLPqVFrelw" name="AOCS_RequestMode" method="_Vf4awOUeEe670Kb7sOjz5g">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_tbCcEOUNEe670Kb7sOjz5g" name="newMode" type="_i2fTkNCmEe6OJd78DXkgdw"/>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_ROO6MOUwEe670Kb7sOjz5g" type="_GwLHQOUtEe670Kb7sOjz5g" direction="return"/>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_orDzAOUaEe670Kb7sOjz5g" name="AOCS_ForceMode" method="_Tq3asOnQEe670Kb7sOjz5g">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_orDzAOUaEe670Kb7sOjz5g" name="AOCS_ForceMode" isStatic="true" method="_Tq3asOnQEe670Kb7sOjz5g">
           <ownedComment xmi:type="uml:Comment" xmi:id="_Es6NoOnQEe670Kb7sOjz5g" annotatedElement="_orDzAOUaEe670Kb7sOjz5g">
             <body>sets the mode regardless of requests or valid transitions</body>
           </ownedComment>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_orDzAeUaEe670Kb7sOjz5g" name="newMode" type="_i2fTkNCmEe6OJd78DXkgdw"/>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_zdQ_4OnREe670Kb7sOjz5g" name="AOCS_UpdateMode" method="_JSl38OnTEe670Kb7sOjz5g">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_zdQ_4OnREe670Kb7sOjz5g" name="AOCS_UpdateMode" isStatic="true" method="_JSl38OnTEe670Kb7sOjz5g">
           <ownedComment xmi:type="uml:Comment" xmi:id="_zdQ_4enREe670Kb7sOjz5g" annotatedElement="_zdQ_4OnREe670Kb7sOjz5g">
             <body>Allow a mode change for new cycle</body>
           </ownedComment>
@@ -455,7 +566,7 @@ AOCS_UpdateMode();&#xD;
           </ownedComment>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_BHOm8eUbEe670Kb7sOjz5g" type="_i2fTkNCmEe6OJd78DXkgdw" direction="return" effect="read"/>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_UaPLEOBtEe6XoZmok9ehtw" name="AOCS_SetPeriod">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_UaPLEOBtEe6XoZmok9ehtw" name="AOCS_SetPeriod" isStatic="true" method="_Byd9QOq2Ee670Kb7sOjz5g">
           <ownedComment xmi:type="uml:Comment" xmi:id="_hi9osOEZEe6XoZmok9ehtw" annotatedElement="_UaPLEOBtEe6XoZmok9ehtw">
             <body>Sets the AOCS period</body>
           </ownedComment>
@@ -468,9 +579,10 @@ AOCS_UpdateMode();&#xD;
             <body> Calls the AOCS function, checks for errors, and implements the ARO counter.</body>
           </ownedComment>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_4Fb0gOBzEe6XoZmok9ehtw" name="Actuate">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_4Fb0gOBzEe6XoZmok9ehtw" name="AOCS_Actuate">
           <ownedComment xmi:type="uml:Comment" xmi:id="_-m7LkOBzEe6XoZmok9ehtw" annotatedElement="_4Fb0gOBzEe6XoZmok9ehtw">
-            <body> Sends the commands to the actuators and updates the AOCS ewods.</body>
+            <body> Sends the commands to the actuators and updates the AOCS ewods. (HMGR_Actuate)&#xD;
+This function converts the data provided by the AOCS algorithms  into the commands required by the AOCS hardware.</body>
           </ownedComment>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_Jvpb8OXkEe670Kb7sOjz5g" name="CheckValidModetransition" method="_nfphAOXkEe670Kb7sOjz5g">
@@ -485,6 +597,26 @@ AOCS_UpdateMode();&#xD;
           <ownedComment xmi:type="uml:Comment" xmi:id="_FYpPEenMEe670Kb7sOjz5g" annotatedElement="_FYpPEOnMEe670Kb7sOjz5g">
             <body>Constructor</body>
           </ownedComment>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_bWBj8OqeEe670Kb7sOjz5g" name="Set_Shell_AocsMode" isStatic="true" method="_125akOqeEe670Kb7sOjz5g">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_lqy_YOqeEe670Kb7sOjz5g" annotatedElement="_bWBj8OqeEe670Kb7sOjz5g">
+            <body>set shell (state machine) parameters after successful transition</body>
+          </ownedComment>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_cJ1MMOquEe670Kb7sOjz5g" name="AOCS_SafeModeTransition" isStatic="true" method="_ZmYYAOquEe670Kb7sOjz5g">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_COf2IOqvEe670Kb7sOjz5g" annotatedElement="_cJ1MMOquEe670Kb7sOjz5g">
+            <body>sets the safe mode flag (if no safe mode version exists of current mode then rejects)&#xD;
+will also re-initialise a mode transition</body>
+          </ownedComment>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_cJ1MMequEe670Kb7sOjz5g" name="mode" type="_i2fTkNCmEe6OJd78DXkgdw"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_cJ1MMuquEe670Kb7sOjz5g" type="_GwLHQOUtEe670Kb7sOjz5g" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_vsJVQOquEe670Kb7sOjz5g" name=" AOCS_SetSafeMode" isStatic="true" method="_f_5pYOqvEe670Kb7sOjz5g">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_Ia6VEOqvEe670Kb7sOjz5g" annotatedElement="_vsJVQOquEe670Kb7sOjz5g">
+            <body>if we set from OPS mode to safe mode then check that the current mode has a safe mode versio</body>
+          </ownedComment>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_vsJVQequEe670Kb7sOjz5g" name="mode" type="_i2fTkNCmEe6OJd78DXkgdw"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_vsJVQuquEe670Kb7sOjz5g" type="_GwLHQOUtEe670Kb7sOjz5g" direction="return"/>
         </ownedOperation>
         <nestedClassifier xmi:type="uml:Enumeration" xmi:id="_i2fTkNCmEe6OJd78DXkgdw" name="AOCS_MODES" visibility="public">
           <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_BPjzsNC7Ee6OJd78DXkgdw" name="SBM"/>
@@ -577,6 +709,7 @@ AOCS_UpdateMode();&#xD;
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
           </ownedParameter>
         </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_WrmyUOqVEe670Kb7sOjz5g" name="CAN_send_tc"/>
         <nestedClassifier xmi:type="uml:FunctionBehavior" xmi:id="_U8lLULubEe6neZnDM9mQww" name="FunctionBehaviorGetDestinationAddress" specification="_teJ2wLtmEe6neZnDM9mQww">
           <language>JAVA</language>
           <body>return this.destinationAddress;</body>
@@ -756,7 +889,50 @@ For NOM the counter is set to 600</body>
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
           <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_Wq024dDFEe6OJd78DXkgdw" name="ARO_INIT_VALUE" value="100"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_AvrWwORkEe670Kb7sOjz5g" name="ARO_reconfigState"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_AvrWwORkEe670Kb7sOjz5g" name="ARO_reconfigState" type="_NdkY8ORUEe670Kb7sOjz5g"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_1JclEOqmEe670Kb7sOjz5g" name="AROH_holdOffPeriod" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5zwioOqnEe670Kb7sOjz5g" value="*"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_kS8skOqnEe670Kb7sOjz5g" name="ARO_HoldOffTime" isStatic="true">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_kS8skeqnEe670Kb7sOjz5g" annotatedElement="_kS8skOqnEe670Kb7sOjz5g">
+            <body>ARO hold off time</body>
+          </ownedComment>
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+        </ownedAttribute>
+        <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="__fFK4OqgEe670Kb7sOjz5g" name="ARO_SetHoldOffBahviour" specification="_0t6j0OqfEe670Kb7sOjz5g">
+          <language>JAVA</language>
+          <body>		long tNow = 0;&#xD;
+&#xD;
+		/* get currrent time */&#xD;
+		tNow = System.currentTimeMillis();&#xD;
+&#xD;
+		/* set new ARO hold off time */&#xD;
+		ARO_HoldOffTime = tNow + AROH_holdOffPeriod[AOCS_State_Machine.modeIndexMap.get(newMode)];</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oFTpYORQEe670Kb7sOjz5g" name="RCON_ReconfigureOpaqueBehavior" specification="_da2uUORPEe670Kb7sOjz5g">
+          <language>JAVA</language>
+          <body>AOCS_State_Machine.AOCS_MODES newMode;&#xD;
+   /* &#xD;
+    * set reconfig state &#xD;
+    */&#xD;
+   //AROH_reconfigState = RCON_RECONFIG1;&#xD;
+&#xD;
+   /*&#xD;
+    *  set safe mode to standby &#xD;
+    */&#xD;
+   newMode= AOCS_State_Machine.AOCS_MODES.SBM;&#xD;
+&#xD;
+   /*  &#xD;
+    * kick off a safe mode transition&#xD;
+    */&#xD;
+   AOCS_State_Machine.AOCS_SafeModeTransition(newMode);&#xD;
+&#xD;
+   /* &#xD;
+    * return new mode&#xD;
+    */&#xD;
+   return newMode;</body>
+        </ownedBehavior>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_s8DyYNDHEe6OJd78DXkgdw" name="ARO_SetDecFlag">
           <ownedComment xmi:type="uml:Comment" xmi:id="_6PHoYOB0Ee6XoZmok9ehtw" annotatedElement="_s8DyYNDHEe6OJd78DXkgdw">
             <body>Sets a flag to indicate ARO is to decrement</body>
@@ -787,36 +963,22 @@ return void</body>
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
           </ownedParameter>
         </ownedOperation>
-        <nestedClassifier xmi:type="uml:Enumeration" xmi:id="__TeJoMQFEe6Ukrbv40SpNA" name="FLAG_STATES">
-          <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__TeJocQFEe6Ukrbv40SpNA" name="NoFlag"/>
-          <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__TeJo8QFEe6Ukrbv40SpNA" name="DecFlag"/>
-          <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__TeJpcQFEe6Ukrbv40SpNA" name="ReconfigFlag"/>
-        </nestedClassifier>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_lntV0ORhEe670Kb7sOjz5g" name="Reconfigure">
-        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oFTpYORQEe670Kb7sOjz5g" name="RCON_ReconfigureOpaqueBehavior" specification="_da2uUORPEe670Kb7sOjz5g">
-          <language>JAVA</language>
-          <body>AOCS_MODES newMode;&#xD;
-   /* &#xD;
-    * set reconfig state &#xD;
-    */&#xD;
-   //AROH_reconfigState = RCON_RECONFIG1;&#xD;
-&#xD;
-   /*&#xD;
-    *  set safe mode to standby &#xD;
-    */&#xD;
-   newMode= AOCS_MODES.SBM;&#xD;
-&#xD;
-   /*  &#xD;
-    * kick off a safe mode transition&#xD;
-    */&#xD;
-   AMOH_SafeModeTransition(newMode);&#xD;
-&#xD;
-   /* &#xD;
-    * return new mode&#xD;
-    */&#xD;
-   return newMode;</body>
-        </ownedBehavior>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_wroOYOqEEe670Kb7sOjz5g" name="ARO_Update">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_wroOYeqEEe670Kb7sOjz5g" annotatedElement="_wroOYOqEEe670Kb7sOjz5g">
+            <body>Updates the ARO counter and takes action on it reaching 0</body>
+          </ownedComment>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_Spli0OqfEe670Kb7sOjz5g" name="ARO_Reset" isStatic="true">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_Spli0eqfEe670Kb7sOjz5g" annotatedElement="_Spli0OqfEe670Kb7sOjz5g">
+            <body>Reset the ARO counter</body>
+          </ownedComment>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_0t6j0OqfEe670Kb7sOjz5g" name="ARO_SetHoldOff" isStatic="true" method="__fFK4OqgEe670Kb7sOjz5g">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_0t6j0eqfEe670Kb7sOjz5g" annotatedElement="_0t6j0OqfEe670Kb7sOjz5g">
+            <body> Updates  the ARO hold off time (wait for mode to stabilise) value depending on the input mode</body>
+          </ownedComment>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_NxSsQOqhEe670Kb7sOjz5g" name="newMode" type="_i2fTkNCmEe6OJd78DXkgdw"/>
+        </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_da2uUORPEe670Kb7sOjz5g" name="Reconfigure" method="_oFTpYORQEe670Kb7sOjz5g">
           <ownedComment xmi:type="uml:Comment" xmi:id="_iFQn8ORPEe670Kb7sOjz5g" annotatedElement="_da2uUORPEe670Kb7sOjz5g">
             <body>Reconfigure&#xD;
@@ -827,6 +989,11 @@ this is in accordance with the satellite's FDIR strategy</body>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_tOEvcORPEe670Kb7sOjz5g" name="mode" type="_i2fTkNCmEe6OJd78DXkgdw"/>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_EnQcYORQEe670Kb7sOjz5g" type="_i2fTkNCmEe6OJd78DXkgdw" direction="return"/>
         </ownedOperation>
+        <nestedClassifier xmi:type="uml:Enumeration" xmi:id="__TeJoMQFEe6Ukrbv40SpNA" name="FLAG_STATES">
+          <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__TeJocQFEe6Ukrbv40SpNA" name="NoFlag"/>
+          <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__TeJo8QFEe6Ukrbv40SpNA" name="DecFlag"/>
+          <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__TeJpcQFEe6Ukrbv40SpNA" name="ReconfigFlag"/>
+        </nestedClassifier>
         <nestedClassifier xmi:type="uml:Enumeration" xmi:id="_NdkY8ORUEe670Kb7sOjz5g" name="RECONFIG_STATES">
           <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_4MtN8ORUEe670Kb7sOjz5g" name="RCON_NO_RECONFIG"/>
           <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_5K4GYORUEe670Kb7sOjz5g" name="RCON_RECONFIG1">
@@ -933,7 +1100,57 @@ Block waits for Received CAN messages.</body>
           </ownedLiteral>
         </nestedClassifier>
       </packagedElement>
-      <packagedElement xmi:type="uml:Usage" xmi:id="_PHySQOnqEe670Kb7sOjz5g" client="_XgbL4LYbEe6HVJQsqClfdg" supplier="_EbAfUOUwEe670Kb7sOjz5g"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_MeV70OqPEe670Kb7sOjz5g" name="AOCS_TTC">
+        <generalization xmi:type="uml:Generalization" xmi:id="_hZKWoOqUEe670Kb7sOjz5g" general="_pAfYoLtmEe6neZnDM9mQww"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_MbIWIOqXEe670Kb7sOjz5g" name="AOCS_Configuration">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_uZnRAOqbEe670Kb7sOjz5g" name="ACON_pollSkedFlag" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+          <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_uZnRAeqbEe670Kb7sOjz5g"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_VtCOQOq2Ee670Kb7sOjz5g" name="ACON_aocsRate" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4x3qAOq2Ee670Kb7sOjz5g" value="*"/>
+        </ownedAttribute>
+        <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_kq-ogOqbEe670Kb7sOjz5g" name="ACON_GetSkedStatusBehaviour" specification="_lDIp0OqbEe670Kb7sOjz5g">
+          <language>JAVA</language>
+          <body>return ACON_pollSkedFlag;</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_NWw8UOq1Ee670Kb7sOjz5g" name="ACON_SetRateBehaviour" specification="_dnRy4Oq0Ee670Kb7sOjz5g">
+          <language>JAVA</language>
+          <body>AOCS_State_Machine.AOCS_SetPeriod(ACON_aocsRate[AOCS_State_Machine.modeIndexMap.get(mode)]);</body>
+        </ownedBehavior>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_c4Po0OqXEe670Kb7sOjz5g" name="ACON_StartSked" isStatic="true">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_c4Po0eqXEe670Kb7sOjz5g" annotatedElement="_c4Po0OqXEe670Kb7sOjz5g">
+            <body>Starts the configuration sked</body>
+          </ownedComment>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_c4Po0uqXEe670Kb7sOjz5g" name="modeID">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_7w-QgOqXEe670Kb7sOjz5g" type="_GwLHQOUtEe670Kb7sOjz5g" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_lDIp0OqbEe670Kb7sOjz5g" name="ACON_GetSkedStatus" isStatic="true" method="_kq-ogOqbEe670Kb7sOjz5g">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_lDIp0eqbEe670Kb7sOjz5g" annotatedElement="_lDIp0OqbEe670Kb7sOjz5g">
+            <body> Rountine to determine the current ACON Configuration Sked status.</body>
+          </ownedComment>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_lDIp0uqbEe670Kb7sOjz5g" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_dnRy4Oq0Ee670Kb7sOjz5g" name="ACON_SetRate" isStatic="true" method="_NWw8UOq1Ee670Kb7sOjz5g">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_dnRy4eq0Ee670Kb7sOjz5g" annotatedElement="_dnRy4Oq0Ee670Kb7sOjz5g">
+            <body>Stes the rate for the given mode</body>
+          </ownedComment>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_dnRy4uq0Ee670Kb7sOjz5g" name="mode" type="_i2fTkNCmEe6OJd78DXkgdw"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_E_wPEOqqEe670Kb7sOjz5g" memberEnd="_FAJQoOqqEe670Kb7sOjz5g _FAKewOqqEe670Kb7sOjz5g" navigableOwnedEnd="_FAKewOqqEe670Kb7sOjz5g _FAJQoOqqEe670Kb7sOjz5g">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FAIpkOqqEe670Kb7sOjz5g" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FAIpkeqqEe670Kb7sOjz5g" key="nature" value="UML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_FAJQoOqqEe670Kb7sOjz5g" name="aocs_state_machine" type="_XgbL4LYbEe6HVJQsqClfdg" association="_E_wPEOqqEe670Kb7sOjz5g"/>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_FAKewOqqEe670Kb7sOjz5g" name="aro_handler" type="_4J8-cORgEe670Kb7sOjz5g" association="_E_wPEOqqEe670Kb7sOjz5g"/>
+      </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_AOQzoNbuEe6Hj6nzgakJ2A" name="UseCaseDiagrams">
       <packagedElement xmi:type="uml:Actor" xmi:id="_wPGlQNcOEe6Hj6nzgakJ2A" name="Operator"/>
@@ -1074,12 +1291,9 @@ Block waits for Received CAN messages.</body>
   <standard:Create xmi:id="_MldSUMTxEe6OXuhxNqOtLQ" base_BehavioralFeature="_Mk3ccMTxEe6OXuhxNqOtLQ"/>
   <Codegen:NoCodeGen xmi:id="_LAX0IM8TEe60kqNX-kRKdg" base_Element="_Wm3qkMZqEe6SvYXnNjpWuQ"/>
   <Codegen:NoCodeGen xmi:id="_UG9lMM8TEe60kqNX-kRKdg" base_Element="__4nyYL9VEe6neZnDM9mQww"/>
-  <PapyrusJava:Import xmi:id="_Zb_xcORiEe670Kb7sOjz5g" manualImports="import AOCS_RTP.AOCS_State_Machine.AOCS_MODES;" base_class="_lntV0ORhEe670Kb7sOjz5g" base_Classifier="_lntV0ORhEe670Kb7sOjz5g"/>
-  <java:JavaClass xmi:id="_rFDdYORjEe670Kb7sOjz5g" author="Youcef Bouziane" base_Classifier="_lntV0ORhEe670Kb7sOjz5g"/>
-  <PapyrusJava:Import xmi:id="_1x8HsOUwEe670Kb7sOjz5g" manualImports="import AOCS_RTP.TTC_Handler.GDEF_STATUS;import java.util.HashMap;" base_class="_XgbL4LYbEe6HVJQsqClfdg" base_Classifier="_XgbL4LYbEe6HVJQsqClfdg"/>
+  <PapyrusJava:Import xmi:id="_1x8HsOUwEe670Kb7sOjz5g" manualImports="import AOCS_RTP.AOCS_Shell.GDEF_STATUS;import java.util.HashMap;" base_class="_XgbL4LYbEe6HVJQsqClfdg" base_Classifier="_XgbL4LYbEe6HVJQsqClfdg"/>
   <java:JavaClass xmi:id="_qirKEObJEe670Kb7sOjz5g" name="AOCS_State_Machine" base_Classifier="_XgbL4LYbEe6HVJQsqClfdg"/>
   <PapyrusJava:Array xmi:id="_fDHhEObKEe670Kb7sOjz5g" definition="&lt;AOCS_MODES, Integer>" base_property="_aEttYObKEe670Kb7sOjz5g"/>
-  <Codegen:TraceHint xmi:id="_CQOvEObLEe670Kb7sOjz5g" declaration="new Object();" base_Element="_i2fTkNCmEe6OJd78DXkgdw"/>
   <PapyrusJava:Array xmi:id="_om_a4OnGEe670Kb7sOjz5g" definition="[][]" base_property="_8UlJoObCEe670Kb7sOjz5g"/>
   <standard:Create xmi:id="_HmHzQOnMEe670Kb7sOjz5g" base_BehavioralFeature="_FYpPEOnMEe670Kb7sOjz5g"/>
 </xmi:XMI>
