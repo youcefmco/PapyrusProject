@@ -419,6 +419,48 @@ To test this example:&#xD;
             </ownedComment>
           </ownedParameter>
         </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_FhvAAOxFEe670Kb7sOjz5g" name="UTLM_SetWheelData">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_J4YQIOxFEe670Kb7sOjz5g" annotatedElement="_FhvAAOxFEe670Kb7sOjz5g">
+            <body>Sets the Microsat wheel data &amp; validity based on the received tlm &amp; if enabled</body>
+          </ownedComment>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_FhvAAexFEe670Kb7sOjz5g" name="pTtc">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_SkTecOxFEe670Kb7sOjz5g" name="ActuateMWheels">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_SkTecexFEe670Kb7sOjz5g" annotatedElement="_SkTecOxFEe670Kb7sOjz5g">
+            <body> Actuate Microsat wheels</body>
+          </ownedComment>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_SkTecuxFEe670Kb7sOjz5g" name="cmdVal">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_abAU8OxFEe670Kb7sOjz5g" name="ProcWheelTlm">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_abAU8exFEe670Kb7sOjz5g" annotatedElement="_abAU8OxFEe670Kb7sOjz5g">
+            <body>Proceses an incoming unsolicted microsat wheel telemetry frame</body>
+          </ownedComment>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_abAU8uxFEe670Kb7sOjz5g" name="wheelNo">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_abAU8-xFEe670Kb7sOjz5g" name="pData">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_iaUU4OxFEe670Kb7sOjz5g" name="InitSampleMWhl">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_iaUU4exFEe670Kb7sOjz5g" name="tlmPacket">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_t7mmwOxFEe670Kb7sOjz5g" name="UTLM_MWInitDataGathering">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_t7mmwexFEe670Kb7sOjz5g" annotatedElement="_t7mmwOxFEe670Kb7sOjz5g">
+            <body>UNSOLICITED TLM FUNCTIONS</body>
+          </ownedComment>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_3ZcaMOxFEe670Kb7sOjz5g" name="SetMWhlSampleTlm">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_3ZcaMexFEe670Kb7sOjz5g" name="recvTlmBuf">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+          </ownedParameter>
+        </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_mw6RgK_HEe6-S-w_PQWpLQ" name="StateThread">
         <generalization xmi:type="uml:Generalization" xmi:id="_r3tC4L3CEe6neZnDM9mQww" general="__9YG8LttEe6neZnDM9mQww"/>
@@ -461,10 +503,11 @@ To test this example:&#xD;
             <body>Store the transition state (if idle next mode)</body>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_mJagQObIEe670Kb7sOjz5g" name="AOCS_isSafeMode" isStatic="true" type="_GwLHQOUtEe670Kb7sOjz5g">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_mJagQObIEe670Kb7sOjz5g" name="AOCS_isSafeMode" isStatic="true">
           <ownedComment xmi:type="uml:Comment" xmi:id="_mJagQebIEe670Kb7sOjz5g" annotatedElement="_mJagQObIEe670Kb7sOjz5g">
             <body>flag to indicate if this is a safe mode</body>
           </ownedComment>
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_8UlJoObCEe670Kb7sOjz5g" name="AOCS_modeTransitionTable">
           <ownedComment xmi:type="uml:Comment" xmi:id="_8UlJoebCEe670Kb7sOjz5g" annotatedElement="_8UlJoObCEe670Kb7sOjz5g">
@@ -503,6 +546,10 @@ To test this example:&#xD;
             <body>return the AOCS period</body>
           </ownedComment>
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_MZXf0uw9Ee670Kb7sOjz5g" name="algs_interface" isStatic="true" type="_2SoIoOwwEe670Kb7sOjz5g" aggregation="composite" association="_MZWRsOw9Ee670Kb7sOjz5g"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_6qpwcOw-Ee670Kb7sOjz5g" name="AOCS_isUnsolMode" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
         </ownedAttribute>
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_v3knkOUbEe670Kb7sOjz5g" name="AOCS_GetReqModeBehaviour" specification="_BHOm8OUbEe670Kb7sOjz5g">
           <language>JAVA</language>
@@ -593,7 +640,7 @@ AOCS_UpdateMode();&#xD;
 			 * no config required in standby OPS, config might be required in safe standby&#xD;
 			 * (i.e. logging telemetry)&#xD;
 			 */&#xD;
-			if ((AOCS_MODES.SBM == AOCS_reqMode) &amp;&amp; (GDEF_STATUS.GDEF_FALSE == AOCS_isSafeMode)) {&#xD;
+			if ((AOCS_MODES.SBM == AOCS_reqMode) &amp;&amp; (AOCS_isSafeMode == false)) {&#xD;
 				// update ewod&#xD;
 				// EWOD_SetDefaultTlmType(MODE_SBM);&#xD;
 				/* standby mode so just update shell params */&#xD;
@@ -622,16 +669,51 @@ AOCS_UpdateMode();&#xD;
 			if (!AOCS_Configuration.ACON_GetSkedStatus()) {&#xD;
 				// log to ewod&#xD;
 				System.out.println(&quot;Config sked completed for mode [&quot; + AOCS_reqMode + &quot;]&quot;);&#xD;
-				/* update state to config */&#xD;
+				/* update state to shell */&#xD;
 				AOCS_transState = AOCS_TRANS_STATE.AMOH_TRANS_SHELL;&#xD;
 			}&#xD;
 			break;&#xD;
 		}&#xD;
-		case AMOH_TRANS_SHELL:{&#xD;
-/* set shell parameters */&#xD;
+		case AMOH_TRANS_SHELL: {&#xD;
+			/* set shell parameters */&#xD;
 			Set_Shell_AocsMode();&#xD;
+			&#xD;
+		      /* set init flag for algs */&#xD;
+algs_interface.aint_pTtc_struct.mode_isReset = true;&#xD;
+					algs_interface.aint_pTtc_struct.mode_current= AOCS_currentMode;&#xD;
+					algs_interface.aint_pTtc_struct.mode_isSafeMode = AOCS_isSafeMode;&#xD;
+					algs_interface.aint_pTtc_struct.mode_isUnsolicited = AOCS_isUnsolMode;&#xD;
+			&#xD;
+			// log to ewod&#xD;
+			System.out.println(&quot;Shell updated to mode [&quot; + AOCS_reqMode + &quot;]&quot;);&#xD;
+			&#xD;
+			/* update state to ALGS */&#xD;
+			AOCS_transState = AOCS_TRANS_STATE.AMOH_TRANS_ALGS;&#xD;
+			 /* fall through to trans algs immediately */&#xD;
 			break;&#xD;
 		}&#xD;
+		case AMOH_TRANS_ALGS:{&#xD;
+			&#xD;
+			if(algs_interface.aint_pTtc_struct.mode_isReset == false)&#xD;
+		      {&#xD;
+				// log to ewod&#xD;
+				System.out.println(&quot;Transition completed to mode [&quot; + AOCS_reqMode + &quot;]&quot;);&#xD;
+				&#xD;
+				/* update state to idle */&#xD;
+				AOCS_transState = AOCS_TRANS_STATE.AMOH_TRANS_IDLE;&#xD;
+		      }&#xD;
+			&#xD;
+			break;&#xD;
+		}&#xD;
+			default: {&#xD;
+			/* Invalid trans state*/&#xD;
+			System.out.println(&quot;Invalid trans state [&quot; + AOCS_reqMode + &quot;]&quot;);&#xD;
+			&#xD;
+			/* update state to idle */&#xD;
+			AOCS_transState = AOCS_TRANS_STATE.AMOH_TRANS_IDLE;&#xD;
+			break;&#xD;
+		}&#xD;
+		&#xD;
 		}</body>
         </ownedBehavior>
         <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_125akOqeEe670Kb7sOjz5g" name="Set_Shell_AocsMode" specification="_bWBj8OqeEe670Kb7sOjz5g">
@@ -701,6 +783,15 @@ AOCS_UpdateMode();&#xD;
           <language>JAVA</language>
           <body>AOCS_maxCycle = period;</body>
         </ownedBehavior>
+        <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_8kXKcOxGEe670Kb7sOjz5g" name="AOCS_ActuateBehaviour" specification="_4Fb0gOBzEe6XoZmok9ehtw">
+          <language>JAVA</language>
+          <body>   HMGR_Actuate();&#xD;
+&#xD;
+   /* &#xD;
+    * Update the EWOD&#xD;
+    */&#xD;
+   EWOD_Update();</body>
+        </ownedBehavior>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_iK5DILYeEe6IpLPqVFrelw" name="AOCS_RequestMode" method="_Vf4awOUeEe670Kb7sOjz5g">
           <ownedComment xmi:type="uml:Comment" xmi:id="_9zpPoOtXEe670Kb7sOjz5g" annotatedElement="_iK5DILYeEe6IpLPqVFrelw">
             <body>check if the mode transition is valid then start the updateMode transitions routine</body>
@@ -738,7 +829,7 @@ AOCS_UpdateMode();&#xD;
             <body> Calls the AOCS function, checks for errors, and implements the ARO counter.</body>
           </ownedComment>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_4Fb0gOBzEe6XoZmok9ehtw" name="AOCS_Actuate">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_4Fb0gOBzEe6XoZmok9ehtw" name="AOCS_Actuate" method="_8kXKcOxGEe670Kb7sOjz5g">
           <ownedComment xmi:type="uml:Comment" xmi:id="_-m7LkOBzEe6XoZmok9ehtw" annotatedElement="_4Fb0gOBzEe6XoZmok9ehtw">
             <body> Sends the commands to the actuators and updates the AOCS ewods. (HMGR_Actuate)&#xD;
 This function converts the data provided by the AOCS algorithms  into the commands required by the AOCS hardware.</body>
@@ -829,44 +920,33 @@ will also re-initialise a mode transition</body>
         </eAnnotations>
         <ownedEnd xmi:type="uml:Property" xmi:id="_WKTmwLg6Ee6IpLPqVFrelw" name="aocs_module" type="_ILcRcLg1Ee6IpLPqVFrelw" association="_WKNgILg6Ee6IpLPqVFrelw"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_pAfYoLtmEe6neZnDM9mQww" name="CAN_TmTc_Struct" visibility="public">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_fLnv0LtnEe6neZnDM9mQww" name="destinationAddress">
+      <packagedElement xmi:type="uml:Class" xmi:id="_pAfYoLtmEe6neZnDM9mQww" name="CAN_Node" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_fLnv0LtnEe6neZnDM9mQww" name="Node_Address">
           <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_ILxaUPaLEeW5KOK8aDMdgA"/>
           <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_tsSj8LtnEe6neZnDM9mQww" name="broadcat" value="255"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_fVwjQLtnEe6neZnDM9mQww" name="sourceAddress">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_ILxaUPaLEeW5KOK8aDMdgA"/>
-          <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_yTpJkLtnEe6neZnDM9mQww" name="broadcast" value="255"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_fVwjQLtnEe6neZnDM9mQww" name="CAN_Buffer">
+          <type xmi:type="uml:Interface" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_3ic6sGMnEeydfJuFsrdeeg"/>
         </ownedAttribute>
-        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_0g-xgMESEe6Ukrbv40SpNA" name="returnSourceAddressOpaqueBehaviour" specification="_teOIMLtmEe6neZnDM9mQww">
-          <language>JAVA</language>
-          <body>return this.sourceAddress;</body>
-        </ownedBehavior>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_teE-QLtmEe6neZnDM9mQww" name="setDestinationAddress">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_teE-QbtmEe6neZnDM9mQww" name="address">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_WrmyUOqVEe670Kb7sOjz5g" name="CAN_send_tc">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_tNGIgOwlEe670Kb7sOjz5g" annotatedElement="_WrmyUOqVEe670Kb7sOjz5g">
+            <body>send tc de destinartion node</body>
+          </ownedComment>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_sTV2AOwlEe670Kb7sOjz5g" name="destination">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_sTV2AewlEe670Kb7sOjz5g" annotatedElement="_sTV2AOwlEe670Kb7sOjz5g">
+              <body>send tc de destinartion node</body>
+            </ownedComment>
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
           </ownedParameter>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_teJ2wLtmEe6neZnDM9mQww" name="getDestinationAddress" method="_U8lLULubEe6neZnDM9mQww">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_teJ2wbtmEe6neZnDM9mQww" name="result" direction="return">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_i0ShoOwlEe670Kb7sOjz5g" name="CAN_send_tm">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_wM6voOwlEe670Kb7sOjz5g" annotatedElement="_i0ShoOwlEe670Kb7sOjz5g">
+            <body>send solicited TM</body>
+          </ownedComment>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_i0ShoewlEe670Kb7sOjz5g" name="destination">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
           </ownedParameter>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_teOIMLtmEe6neZnDM9mQww" name="getSourceAddress" method="_0g-xgMESEe6Ukrbv40SpNA">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_teOIMbtmEe6neZnDM9mQww" name="result" direction="return">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-          </ownedParameter>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_teRLgLtmEe6neZnDM9mQww" name="setSourceAddress">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_teRLgbtmEe6neZnDM9mQww" name="address">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
-          </ownedParameter>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_WrmyUOqVEe670Kb7sOjz5g" name="CAN_send_tc"/>
-        <nestedClassifier xmi:type="uml:FunctionBehavior" xmi:id="_U8lLULubEe6neZnDM9mQww" name="FunctionBehaviorGetDestinationAddress" specification="_teJ2wLtmEe6neZnDM9mQww">
-          <language>JAVA</language>
-          <body>return this.destinationAddress;</body>
-        </nestedClassifier>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="__9YG8LttEe6neZnDM9mQww" name="Thread"/>
       <packagedElement xmi:type="uml:StateMachine" xmi:id="__4nyYL9VEe6neZnDM9mQww" name="ARO_CounterStatus">
@@ -1009,7 +1089,7 @@ will also re-initialise a mode transition</body>
           <body>State_Machine_AOCS.aroCounter =&lt; 0</body>
         </changeExpression>
       </packagedElement>
-      <packagedElement xmi:type="uml:Activity" xmi:id="_0114cNDPEe6OJd78DXkgdw" name="Activity23" node="_-kd54NDPEe6OJd78DXkgdw _REZ_8NDQEe6OJd78DXkgdw">
+      <packagedElement xmi:type="uml:Activity" xmi:id="_0114cNDPEe6OJd78DXkgdw" name="modeTransitionActivity" node="_-kd54NDPEe6OJd78DXkgdw _REZ_8NDQEe6OJd78DXkgdw">
         <node xmi:type="uml:InitialNode" xmi:id="_-kd54NDPEe6OJd78DXkgdw" name="InitialNode1"/>
         <node xmi:type="uml:DecisionNode" xmi:id="_REZ_8NDQEe6OJd78DXkgdw" name="newMode"/>
       </packagedElement>
@@ -1351,6 +1431,52 @@ AOCS_State_Machine.AOCS_SetPeriod(ACON_aocsRate[modeID]);</body>
         </eAnnotations>
         <ownedEnd xmi:type="uml:Property" xmi:id="_0onLAet5Ee670Kb7sOjz5g" name="aocs_shell" type="_EbAfUOUwEe670Kb7sOjz5g" association="_0okHsOt5Ee670Kb7sOjz5g"/>
       </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_EA1lEOwxEe670Kb7sOjz5g" name="AINT_pTtc_Struct">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_YgW9QOwxEe670Kb7sOjz5g" annotatedElement="_EA1lEOwxEe670Kb7sOjz5g">
+          <body>The AOCS structure used to pass data between the shell and the AOCS algorithms</body>
+        </ownedComment>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_qyQAQOwxEe670Kb7sOjz5g" name="mode_isReset">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_tmzLgOwxEe670Kb7sOjz5g" name="mode_current" type="_i2fTkNCmEe6OJd78DXkgdw"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_w24cMOwxEe670Kb7sOjz5g" name="mode_isSafeMode">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_zvLfAOwxEe670Kb7sOjz5g" name="mode_isUnsolicited">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_zqujMOw5Ee670Kb7sOjz5g" name="test_configuration">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_4fZzIOw5Ee670Kb7sOjz5g" name="enableSns">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_-_YuUOw5Ee670Kb7sOjz5g" name="enableAct">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_2SoIoOwwEe670Kb7sOjz5g" name="ALGS_Interface">
+        <ownedComment xmi:type="uml:Comment" xmi:id="__yjmwOwwEe670Kb7sOjz5g" annotatedElement="_2SoIoOwwEe670Kb7sOjz5g">
+          <body>the AOCS algorithms</body>
+        </ownedComment>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_qG4SkOwyEe670Kb7sOjz5g" name="aint_pTtc_struct" isStatic="true" type="_EA1lEOwxEe670Kb7sOjz5g" aggregation="composite" association="_qG2dYOwyEe670Kb7sOjz5g">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_LeTxUOwzEe670Kb7sOjz5g" annotatedElement="_qG4SkOwyEe670Kb7sOjz5g">
+            <body>The AOCS structure used to pass data between the shell and the AOCS algorithms</body>
+          </ownedComment>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_qG2dYOwyEe670Kb7sOjz5g" memberEnd="_qG4SkOwyEe670Kb7sOjz5g _qG5gsOwyEe670Kb7sOjz5g">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_qG3rgOwyEe670Kb7sOjz5g" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_qG3rgewyEe670Kb7sOjz5g" key="nature" value="UML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_qG5gsOwyEe670Kb7sOjz5g" name="algs_interface" type="_2SoIoOwwEe670Kb7sOjz5g" association="_qG2dYOwyEe670Kb7sOjz5g"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_MZWRsOw9Ee670Kb7sOjz5g" memberEnd="_MZXf0uw9Ee670Kb7sOjz5g _MZYG4uw9Ee670Kb7sOjz5g">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_MZXf0Ow9Ee670Kb7sOjz5g" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_MZXf0ew9Ee670Kb7sOjz5g" key="nature" value="UML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_MZYG4uw9Ee670Kb7sOjz5g" name="aocs_state_machine" type="_XgbL4LYbEe6HVJQsqClfdg" association="_MZWRsOw9Ee670Kb7sOjz5g"/>
+      </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_AOQzoNbuEe6Hj6nzgakJ2A" name="UseCaseDiagrams">
       <packagedElement xmi:type="uml:Actor" xmi:id="_wPGlQNcOEe6Hj6nzgakJ2A" name="Operator"/>
@@ -1375,8 +1501,8 @@ AOCS_State_Machine.AOCS_SetPeriod(ACON_aocsRate[modeID]);</body>
         <generalization xmi:type="uml:Generalization" xmi:id="_aZbxwNk4Ee6Hj6nzgakJ2A" general="_T1Od4Nk4Ee6Hj6nzgakJ2A"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Actor" xmi:id="_T1Od4Nk4Ee6Hj6nzgakJ2A" name="AIM"/>
-      <packagedElement xmi:type="uml:Actor" xmi:id="_r7vgANk6Ee6Hj6nzgakJ2A" name="Payload process"/>
-      <packagedElement xmi:type="uml:Actor" xmi:id="_ISqYoNlDEe6Hj6nzgakJ2A" name="Safety Process"/>
+      <packagedElement xmi:type="uml:Actor" xmi:id="_r7vgANk6Ee6Hj6nzgakJ2A" name="Payload_Process"/>
+      <packagedElement xmi:type="uml:Actor" xmi:id="_ISqYoNlDEe6Hj6nzgakJ2A" name="Safety_Process"/>
       <packagedElement xmi:type="uml:Actor" xmi:id="_JY_ukNlDEe6Hj6nzgakJ2A" name="PDM"/>
       <packagedElement xmi:type="uml:Association" xmi:id="_hZprMNlDEe6Hj6nzgakJ2A" name="Aocs triggers FDIR actions" memberEnd="_hZprM9lDEe6Hj6nzgakJ2A _hZprNNlDEe6Hj6nzgakJ2A">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_hZprMdlDEe6Hj6nzgakJ2A" source="org.eclipse.papyrus">
