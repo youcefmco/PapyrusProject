@@ -619,7 +619,7 @@ into the commands required by the AOCS hardware.</body>
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
           <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_ur7SYuzzEe670Kb7sOjz5g"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_NEy20ACTEe--rtUdFrbRMA" name="AOCS_shell_state_table" type="_DVxUMP_MEe6-rtUdFrbRMA">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_NEy20ACTEe--rtUdFrbRMA" name="AOCS_shell_state_table" isStatic="true" type="_DVxUMP_MEe6-rtUdFrbRMA">
           <ownedComment xmi:type="uml:Comment" xmi:id="_mj7A8ACxEe--rtUdFrbRMA" annotatedElement="_NEy20ACTEe--rtUdFrbRMA">
             <body>This 2D array defines the next state for each combination of event and current state. &#xD;
     * Rows represent events (e.g., PPS_RECEIVED).&#xD;
@@ -642,7 +642,7 @@ into the commands required by the AOCS hardware.</body>
 	}</body>
           </defaultValue>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_V4XBkAC8Ee--rtUdFrbRMA" name="AOCS_shell_event_table" type="_Tk7_cAY4Ee-3FI3WuBx1gw">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_V4XBkAC8Ee--rtUdFrbRMA" name="AOCS_shell_event_table" isStatic="true" type="_Tk7_cAY4Ee-3FI3WuBx1gw">
           <ownedComment xmi:type="uml:Comment" xmi:id="_V4XBkQC8Ee--rtUdFrbRMA" annotatedElement="_V4XBkAC8Ee--rtUdFrbRMA">
             <body>This 2D array defines functions associated with each event-state combination. Similar to the state transition table:&#xD;
     * Rows represent events.&#xD;
@@ -664,6 +664,12 @@ into the commands required by the AOCS hardware.</body>
    {null,             null,    AOCS_State_Machine::actuate}/* ACTUATE                */&#xD;
 }</body>
           </defaultValue>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_yJKBcArzEe-3FI3WuBx1gw" name="No_of_PPS_sent">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_yJKBcQrzEe-3FI3WuBx1gw" annotatedElement="_yJKBcArzEe-3FI3WuBx1gw">
+            <body>Counter on the number of PPS until declaring ALL-PPS-RECEIVED</body>
+          </ownedComment>
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
         </ownedAttribute>
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_v3knkOUbEe670Kb7sOjz5g" name="AOCS_GetReqModeBehaviour" specification="_BHOm8OUbEe670Kb7sOjz5g">
           <language>JAVA</language>
@@ -915,8 +921,13 @@ return 0;</body>
         </ownedBehavior>
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_5hTbUAVvEe--rtUdFrbRMA" name="pps_receivedBehaviour" specification="_KvVRkAVEEe--rtUdFrbRMA">
           <language>JAVA</language>
-          <body>//all good&#xD;
-return 0;</body>
+          <body>		/*&#xD;
+		 * Synchronise the AOCS units every 60sec&#xD;
+		 */&#xD;
+		config.aocs_shell_pps_timer_id = (int) System.currentTimeMillis();&#xD;
+&#xD;
+		No_of_PPS_sent++;&#xD;
+		return 0;</body>
         </ownedBehavior>
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_-2Z3wAVvEe--rtUdFrbRMA" name="all_pps_receivedBehaviour" specification="_lyWzAAVEEe--rtUdFrbRMA">
           <language>JAVA</language>
@@ -1113,7 +1124,7 @@ will also re-initialise a mode transition</body>
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
           </ownedParameter>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_v4LHYAY_Ee-3FI3WuBx1gw" name="AOCS_Shell_process_event" method="_e-Z4cAZAEe-3FI3WuBx1gw">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_v4LHYAY_Ee-3FI3WuBx1gw" name="AOCS_Shell_process_event" isStatic="true" method="_e-Z4cAZAEe-3FI3WuBx1gw">
           <ownedComment xmi:type="uml:Comment" xmi:id="_v4LHYQY_Ee-3FI3WuBx1gw" annotatedElement="_v4LHYAY_Ee-3FI3WuBx1gw">
             <body>Routine action Events into the AOCS Finite State Machine</body>
           </ownedComment>
@@ -1237,7 +1248,7 @@ State where the AOCS cycle is running</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_V4zqAQIbEe--rtUdFrbRMA" annotatedElement="_V4zqAAIbEe--rtUdFrbRMA">
               <body>AOCS Shell FSM Event Action Time </body>
             </ownedComment>
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
           </ownedAttribute>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_3IblsAb_Ee-3FI3WuBx1gw" name="aocs_shell_pps_timer_id">
             <ownedComment xmi:type="uml:Comment" xmi:id="_3IblsQb_Ee-3FI3WuBx1gw" annotatedElement="_3IblsAb_Ee-3FI3WuBx1gw">
@@ -1605,9 +1616,9 @@ this is in accordance with the satellite's FDIR strategy</body>
         <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_AjxpIAbcEe-3FI3WuBx1gw" name="aocs_message_dispatcher_thread_Behaviour" specification="_zqC40OnrEe670Kb7sOjz5g">
           <language>JAVA</language>
           <body>	/*&#xD;
-		 * Initialise the AOCS Shell Protection Mutex. Thread is just an token, it could&#xD;
-		 * be any object&#xD;
-		 */&#xD;
+				 * Initialise the AOCS Shell Protection Mutex. Thread is just an token, it could&#xD;
+				 * be any object&#xD;
+				 */&#xD;
 		config.aocs_shell_protection_mutex = new Thread();&#xD;
 		/*&#xD;
 		 * Create the AOCS PPS Timer.&#xD;
@@ -1625,21 +1636,89 @@ this is in accordance with the satellite's FDIR strategy</body>
 			 * Process the received message&#xD;
 			 */&#xD;
 			switch (aocs_message.aocs_message_type) {&#xD;
+			/*&#xD;
+			 * When a message is received from outside, it will never enter in this case at first&#xD;
+			 * it first get processed in the following cases&#xD;
+			 * then the AOCS_Shell_process_event to right EVENT&#xD;
+			 * and the aocs_message_type to 'eAOCSTimerMessage'&#xD;
+			 * to get back HERE and execute the Events into the AOCS Finite State Machine Table&#xD;
+			 */&#xD;
 			case eAOCSTimerMessage: {&#xD;
-				config =aocs_message.aocs_message_data.message_pointer ;&#xD;
-				&#xD;
-				AOCS_State_Machine.AOCS_Shell_process_event(config);&#xD;
-				synchronized (config.aocs_shell_protection_mutex) {&#xD;
+				//get the aocs shell configuration struct from the message&#xD;
+				config = aocs_message.aocs_message_data.message_pointer;&#xD;
 &#xD;
-				}&#xD;
+				//Execute the Action related to Events (using the table) into the AOCS Finite State Machine&#xD;
+				AOCS_State_Machine.AOCS_Shell_process_event(config).handleEvent(config);&#xD;
+&#xD;
 				break;&#xD;
 			}&#xD;
+			&#xD;
+			//PPS_RECEIVED event&#xD;
 			case ePPSTimerMessage: {&#xD;
+				/*&#xD;
+				 * Obtain the AOCS Shell Protection Mutex.&#xD;
+				 */&#xD;
+				synchronized (config.aocs_shell_protection_mutex) {&#xD;
+					// set the event to know what to do next&#xD;
+					config.aocs_shell_fsm_event = AOCS_State_Machine.AOCS_shell_fsm_event.PPS_RECEIVED;&#xD;
+					// get current time&#xD;
+					config.aocs_shell_event_action_time = System.currentTimeMillis();&#xD;
+					// deliver the event to execute it&#xD;
+					AOCS_Shell_deliver_event(config);&#xD;
+				}&#xD;
+				/*&#xD;
+				 * Release the AOCS Shell Protection Mutex.&#xD;
+				 */&#xD;
 				break;&#xD;
 			}&#xD;
+			case eActuationTimerMessage:&#xD;
+				/*&#xD;
+				 * Obtain the AOCS Shell Protection Mutex.&#xD;
+				 */&#xD;
+				synchronized (config.aocs_shell_protection_mutex) {&#xD;
+					// set the event to know what to do next&#xD;
+					config.aocs_shell_fsm_event = AOCS_State_Machine.AOCS_shell_fsm_event.ACTUATE;&#xD;
+					// get current time&#xD;
+					config.aocs_shell_event_action_time = System.currentTimeMillis();&#xD;
+					// deliver the event to execute it&#xD;
+					AOCS_Shell_deliver_event(config);&#xD;
+				}&#xD;
+				/*&#xD;
+				 * Release the AOCS Shell Protection Mutex.&#xD;
+				 */&#xD;
+				break;&#xD;
+&#xD;
+			case eAimCheckTimerMessage:&#xD;
+				 /*&#xD;
+                 * Send sync cmds only if we are not SBM of SAFE&#xD;
+                 */&#xD;
+				break;&#xD;
+			default:&#xD;
+				System.out.println(&quot;Unknown Message received\n&quot;);&#xD;
+				break;&#xD;
 &#xD;
 			}&#xD;
 		}</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_bxM6QAruEe-3FI3WuBx1gw" name="aocs_shell_deliver_event_behaviour" specification="_UDK0YArqEe-3FI3WuBx1gw">
+          <language>JAVA</language>
+          <body>		/*&#xD;
+		 * Obtain the AOCS Shell Protection Mutex.&#xD;
+		 */&#xD;
+		synchronized (config.aocs_shell_protection_mutex) {&#xD;
+&#xD;
+			// set the message type to eAOCSTimerMessage to process in the following message in the first case&#xD;
+			aocs_message.aocs_message_type = AOCS_message_type.eAOCSTimerMessage;&#xD;
+			&#xD;
+			//get the aocs shell configuration&#xD;
+			aocs_message.aocs_message_data.message_pointer = config;&#xD;
+			&#xD;
+			//send the CAN message&#xD;
+			mq_send(config);&#xD;
+		}&#xD;
+		/*&#xD;
+		 * Release the AOCS Shell Protection Mutex.&#xD;
+		 */</body>
         </ownedBehavior>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_cWbTQOnpEe670Kb7sOjz5g" name="AOCS_downlink_telemetry_handler">
           <ownedComment xmi:type="uml:Comment" xmi:id="_vQqvsOnpEe670Kb7sOjz5g" annotatedElement="_cWbTQOnpEe670Kb7sOjz5g">
@@ -1704,6 +1783,27 @@ Block waits for Received CAN messages.</body>
           <ownedComment xmi:type="uml:Comment" xmi:id="_FZ6-centEe670Kb7sOjz5g" annotatedElement="_FZ6-cOntEe670Kb7sOjz5g">
             <body>Initialises a new AOCS cycle</body>
           </ownedComment>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_VBlSgArsEe-3FI3WuBx1gw" name="mq_send">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_VBlSgQrsEe-3FI3WuBx1gw" annotatedElement="_VBlSgArsEe-3FI3WuBx1gw">
+            <body>Send can message&#xD;
+</body>
+          </ownedComment>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_h-t3UArsEe-3FI3WuBx1gw" name="config" type="_eTFu8AF8Ee--rtUdFrbRMA">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_h-t3UQrsEe-3FI3WuBx1gw" annotatedElement="_h-t3UArsEe-3FI3WuBx1gw">
+              <body>Pointer to the AOCS Configuration Structure</body>
+            </ownedComment>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_UDK0YArqEe-3FI3WuBx1gw" name="AOCS_Shell_deliver_event" method="_bxM6QAruEe-3FI3WuBx1gw">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_UDK0YQrqEe-3FI3WuBx1gw" annotatedElement="_UDK0YArqEe-3FI3WuBx1gw">
+            <body>Routine to deliver an EVENT to the AOCS Finite State Machine.</body>
+          </ownedComment>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_UDK0YgrqEe-3FI3WuBx1gw" name="config" type="_eTFu8AF8Ee--rtUdFrbRMA">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_UDK0YwrqEe-3FI3WuBx1gw" annotatedElement="_UDK0YgrqEe-3FI3WuBx1gw">
+              <body>Pointer to the AOCS Configuration Structure</body>
+            </ownedComment>
+          </ownedParameter>
         </ownedOperation>
         <nestedClassifier xmi:type="uml:Enumeration" xmi:id="_GwLHQOUtEe670Kb7sOjz5g" name="GDEF_STATUS">
           <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TRddkOUtEe670Kb7sOjz5g" name="GDEF_FAILURE">
