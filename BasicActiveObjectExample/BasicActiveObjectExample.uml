@@ -301,6 +301,13 @@ To test this example:&#xD;
 		/* actuate microsat wheels */&#xD;
 		ActuateMWheels(algs_tcmd.wheelID, algs_tcmd.wheelValue, algs_tcmd.whlEnableFlag);</body>
         </ownedBehavior>
+        <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_kuxwgBIFEe-3FI3WuBx1gw" name="HMGR_CheckNoAckErrorsBehaviour" specification="_oKUDQBIFEe-3FI3WuBx1gw">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_nxxAYBIFEe-3FI3WuBx1gw" annotatedElement="_kuxwgBIFEe-3FI3WuBx1gw">
+            <body>NOT IMPLEMENTED YET</body>
+          </ownedComment>
+          <language>JAVA</language>
+          <body>return true;</body>
+        </ownedBehavior>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_gEDfoOtqEe670Kb7sOjz5g" name="UpdateAimPeriod">
           <ownedComment xmi:type="uml:Comment" xmi:id="_gEDfoetqEe670Kb7sOjz5g" annotatedElement="_gEDfoOtqEe670Kb7sOjz5g">
             <body>set the current AIM frame size</body>
@@ -509,6 +516,24 @@ into the commands required by the AOCS hardware.</body>
           </ownedComment>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_yqxZoO0LEe670Kb7sOjz5g" name="algs_tcmd" type="_52fJgOz3Ee670Kb7sOjz5g"/>
         </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_oKUDQBIFEe-3FI3WuBx1gw" name="HMGR_CheckNoAckErrors" isStatic="true" method="_kuxwgBIFEe-3FI3WuBx1gw">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_oKUDQRIFEe-3FI3WuBx1gw" annotatedElement="_oKUDQBIFEe-3FI3WuBx1gw">
+            <body>determines if there are still acks pending from actuate cmds</body>
+          </ownedComment>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_oKUDQhIFEe-3FI3WuBx1gw" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_odJ_YBIIEe-3FI3WuBx1gw" name="HMGR_PrepareData" isStatic="true">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_odJ_YRIIEe-3FI3WuBx1gw" annotatedElement="_odJ_YBIIEe-3FI3WuBx1gw">
+            <body>Prepares data for algorithms&#xD;
+store mtm data&#xD;
+set the sunsensor data &#xD;
+update the microsat wheel data&#xD;
+update the microsat wheel data &#xD;
+TODO implement this method</body>
+          </ownedComment>
+        </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_mw6RgK_HEe6-S-w_PQWpLQ" name="StateThread">
         <generalization xmi:type="uml:Generalization" xmi:id="_r3tC4L3CEe6neZnDM9mQww" general="__9YG8LttEe6neZnDM9mQww"/>
@@ -673,7 +698,7 @@ into the commands required by the AOCS hardware.</body>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_J20MsAu8Ee-3FI3WuBx1gw" name="SEND_SYNC_TIME" isStatic="true">
           <ownedComment xmi:type="uml:Comment" xmi:id="_J20MsQu8Ee-3FI3WuBx1gw" annotatedElement="_J20MsAu8Ee-3FI3WuBx1gw">
-            <body>When we are here for the &quot;SEND_SYNC_TIME&quot;th, ie 15*4 = 60sec</body>
+            <body>When we are here for the &quot;SEND_SYNC_TIME&quot;th is 15*4 = 60sec</body>
           </ownedComment>
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
           <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_J20Msgu8Ee-3FI3WuBx1gw" value="15"/>
@@ -927,18 +952,26 @@ return 0;</body>
 		 * When we are here for the &quot;SEND_SYNC_TIME&quot;th, ie 15*4 = 60sec&#xD;
 		 * send sync message to Node 0.&#xD;
 		 */&#xD;
+		/* If we haven't received an ACK for all commands, set the ARO counter */&#xD;
+		if (HW_Manager.HMGR_CheckNoAckErrors() != true) {&#xD;
+			ARO_Handler.ARO_SetDecFlag();&#xD;
+		}&#xD;
+		&#xD;
 		No_all_PPS_received++;&#xD;
 		if (No_all_PPS_received >= SEND_SYNC_TIME) {&#xD;
 			/*&#xD;
-	          * Distribute the current OBC Time over the Spacecraft CANBUS.&#xD;
-	          * Transmit the Time Synchronisation CAN Datagram over the Spacecraft CANBUS&#xD;
-	          */&#xD;
+			  * Distribute the current OBC Time over the Spacecraft CANBUS.&#xD;
+			  * Transmit the Time Synchronisation CAN Datagram over the Spacecraft CANBUS&#xD;
+			  */&#xD;
 &#xD;
 			AOCS_Process_Shell.CANA_send_datagram(AOCS_Process_Shell.cans_datagram);&#xD;
 &#xD;
 			//reset the counter &#xD;
 			No_all_PPS_received = 0;&#xD;
 		}&#xD;
+		&#xD;
+		 /* prepare data for algorithms */&#xD;
+		HW_Manager.HMGR_PrepareData();&#xD;
 		return 0;</body>
         </ownedBehavior>
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_5hTbUAVvEe--rtUdFrbRMA" name="pps_receivedBehaviour" specification="_KvVRkAVEEe--rtUdFrbRMA">
@@ -1568,6 +1601,12 @@ For NOM the counter is set to 600</body>
           </ownedComment>
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
         </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_e_UlQBIDEe-3FI3WuBx1gw" name="ARO_DecFlag" isStatic="true">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_e_UlQRIDEe-3FI3WuBx1gw" annotatedElement="_e_UlQBIDEe-3FI3WuBx1gw">
+            <body>A Flag to monitor ARO decrement</body>
+          </ownedComment>
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </ownedAttribute>
         <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="__fFK4OqgEe670Kb7sOjz5g" name="ARO_SetHoldOffBahviour" specification="_0t6j0OqfEe670Kb7sOjz5g">
           <language>JAVA</language>
           <body>		long tNow = 0;&#xD;
@@ -1576,7 +1615,7 @@ For NOM the counter is set to 600</body>
 		tNow = System.currentTimeMillis();&#xD;
 &#xD;
 		/* set new ARO hold off time */&#xD;
-		ARO_HoldOffTime = tNow + AROH_holdOffPeriod[AOCS_State_Machine.modeIndexMap.get(newMode)];</body>
+		ARO_HoldOffTime = tNow + AROH_holdOffPeriod[newMode.ordinal()];</body>
         </ownedBehavior>
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oFTpYORQEe670Kb7sOjz5g" name="RCON_ReconfigureOpaqueBehavior" specification="_da2uUORPEe670Kb7sOjz5g">
           <language>JAVA</language>
@@ -1601,7 +1640,11 @@ AOCS_Process_Shell.aocs_State_Machine.AOCS_SafeModeTransition(newMode);&#xD;
     */&#xD;
    return newMode;</body>
         </ownedBehavior>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_s8DyYNDHEe6OJd78DXkgdw" name="ARO_SetDecFlag">
+        <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_MRgbQBIDEe-3FI3WuBx1gw" name="ARO_SetDecFlagBehaviour" specification="_s8DyYNDHEe6OJd78DXkgdw">
+          <language>JAVA</language>
+          <body>ARO_DecFlag = false;</body>
+        </ownedBehavior>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_s8DyYNDHEe6OJd78DXkgdw" name="ARO_SetDecFlag" isStatic="true" method="_MRgbQBIDEe-3FI3WuBx1gw">
           <ownedComment xmi:type="uml:Comment" xmi:id="_6PHoYOB0Ee6XoZmok9ehtw" annotatedElement="_s8DyYNDHEe6OJd78DXkgdw">
             <body>Sets a flag to indicate ARO is to decrement</body>
           </ownedComment>
