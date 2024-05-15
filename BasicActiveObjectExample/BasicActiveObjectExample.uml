@@ -703,6 +703,19 @@ TODO implement this method</body>
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
           <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_J20Msgu8Ee-3FI3WuBx1gw" value="15"/>
         </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_0HsQcBKjEe-3FI3WuBx1gw" name="AIM_PPS" isStatic="true">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_0HsQcRKjEe-3FI3WuBx1gw" annotatedElement="_0HsQcBKjEe-3FI3WuBx1gw">
+            <body>Counter of pps received by AIM</body>
+          </ownedComment>
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_D1EIQBKkEe-3FI3WuBx1gw" name="wake_up_aim" isStatic="true">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_D1EIQRKkEe-3FI3WuBx1gw" annotatedElement="_D1EIQBKkEe-3FI3WuBx1gw">
+            <body>Constant on the number off pps received by AIM</body>
+          </ownedComment>
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_D1EIQhKkEe-3FI3WuBx1gw" value="100"/>
+        </ownedAttribute>
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_v3knkOUbEe670Kb7sOjz5g" name="AOCS_GetReqModeBehaviour" specification="_BHOm8OUbEe670Kb7sOjz5g">
           <language>JAVA</language>
           <body>return AOCS_reqMode;</body>
@@ -956,22 +969,68 @@ return 0;</body>
 		if (HW_Manager.HMGR_CheckNoAckErrors() != true) {&#xD;
 			ARO_Handler.ARO_SetDecFlag();&#xD;
 		}&#xD;
-		&#xD;
+&#xD;
 		No_all_PPS_received++;&#xD;
+		AIM_PPS++;&#xD;
 		if (No_all_PPS_received >= SEND_SYNC_TIME) {&#xD;
+&#xD;
+			/*&#xD;
+			 * Build and send the sync Telecommand(5,1) to AIM1&#xD;
+			 */&#xD;
+			/*&#xD;
+			CANS_datagram.u1Src    = CANADDR_ADCS_PROCESS;&#xD;
+			CANS_datagram.u1Dest   = CANADDR_BROADCAST;&#xD;
+			CANS_datagram.u1Length = sizeof(CANS_datagram.a1Buffer);&#xD;
+			CANS_datagram.u1Type   = CANI_Time_Set_Command;&#xD;
+			*/&#xD;
 			/*&#xD;
 			  * Distribute the current OBC Time over the Spacecraft CANBUS.&#xD;
 			  * Transmit the Time Synchronisation CAN Datagram over the Spacecraft CANBUS&#xD;
 			  */&#xD;
-&#xD;
-			AOCS_Process_Shell.CANA_send_datagram(AOCS_Process_Shell.cans_datagram);&#xD;
+			AOCS_Process_Shell.aocs_TTC.CANA_send_datagram(AOCS_Process_Shell.aocs_TTC.cans_datagram);&#xD;
 &#xD;
 			//reset the counter &#xD;
 			No_all_PPS_received = 0;&#xD;
+&#xD;
 		}&#xD;
-		&#xD;
-		 /* prepare data for algorithms */&#xD;
+		if (AIM_PPS >= wake_up_aim) {&#xD;
+			/*        &#xD;
+			  stTcReqParams.psRegInfo      = (tsCANS_RegRtn*)getCANReg();&#xD;
+			  stTcReqParams.eSendQPriority = eCANS_LO_PRI_Q;&#xD;
+			  stTcReqParams.eWait          = eCANS_NO_WAIT;&#xD;
+			  stTcReqParams.u1Src          = CANADDR_ADCS_PROCESS;&#xD;
+			  stTcReqParams.u4RetryCount   = DEFAULT_AOCS_TC_RETRY_COUNT;&#xD;
+			  stTcReqParams.u4RtnQIdx      = DEFAULT_DISPATCHER_Q;&#xD;
+			  stTcReqParams.u4Timeout      = DEFAULT_TELECOMMAND_REQUEST_TIMEOUT;&#xD;
+			  */&#xD;
+			/*&#xD;
+			 * Build and send the sync Telecommand(5,1) to AIM1&#xD;
+			 */&#xD;
+			AOCS_Process_Shell.aocs_TTC.CANA_send_datagram(AOCS_Process_Shell.aocs_TTC.cans_datagram);&#xD;
+			//reset counter&#xD;
+			AIM_PPS = 0;&#xD;
+		}&#xD;
+&#xD;
+		/* prepare data for algorithms */&#xD;
 		HW_Manager.HMGR_PrepareData();&#xD;
+		&#xD;
+		/* RUN THE AOCS ALGORITHMS */&#xD;
+		algs_interface.AINT_AlgManager();&#xD;
+		&#xD;
+	    /*&#xD;
+	    * Initialise data gathering for new cycle&#xD;
+	    */&#xD;
+		AOCS_Process_Shell.InitAocs();&#xD;
+&#xD;
+		/*&#xD;
+		* Start the 200ms delay before we fire the actuator, as requested by AOCS.&#xD;
+		*/&#xD;
+		// set the new event&#xD;
+		config.aocs_shell_fsm_event = AOCS_shell_fsm_event.ACTUATE;&#xD;
+&#xD;
+		// process end execute the new event&#xD;
+		AOCS_Process_Shell.AOCS_Shell_deliver_event(config);&#xD;
+		&#xD;
 		return 0;</body>
         </ownedBehavior>
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_5hTbUAVvEe--rtUdFrbRMA" name="pps_receivedBehaviour" specification="_KvVRkAVEEe--rtUdFrbRMA">
@@ -993,7 +1052,7 @@ return 0;</body>
 		 * DEFAULT_TELECOMMAND_REQUEST_TIMEOUT;&#xD;
 		 */&#xD;
 		//send the TC&#xD;
-		AOCS_Process_Shell.CANA_send_tc(AOCS_Process_Shell.tcreqparams);&#xD;
+		AOCS_Process_Shell.aocs_TTC.CANA_send_tc(AOCS_Process_Shell.aocs_TTC.tcreqparams);&#xD;
 &#xD;
 		No_of_PPS_sent++;&#xD;
 		/*&#xD;
@@ -1728,8 +1787,6 @@ this is in accordance with the satellite's FDIR strategy</body>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_TOx4get5Ee670Kb7sOjz5g" name="aocs_State_Machine" isStatic="true" type="_XgbL4LYbEe6HVJQsqClfdg" aggregation="shared" association="_TOwDUOt5Ee670Kb7sOjz5g"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_0ol84et5Ee670Kb7sOjz5g" name="aocs_TTC" isStatic="true" type="_MeV70OqPEe670Kb7sOjz5g" aggregation="shared" association="_0okHsOt5Ee670Kb7sOjz5g"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_KQV0IgiUEe-3FI3WuBx1gw" name="aocs_message" isStatic="true" type="_TxhE4AiTEe-3FI3WuBx1gw" aggregation="composite" association="_KQVNEAiUEe-3FI3WuBx1gw"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_fO0xEguFEe-3FI3WuBx1gw" name="tcreqparams" isStatic="true" type="_UOXJwAuEEe-3FI3WuBx1gw" aggregation="composite" association="_fO0KAAuFEe-3FI3WuBx1gw"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_fpEqAgu6Ee-3FI3WuBx1gw" name="cans_datagram" isStatic="true" type="_zCQhsAu5Ee-3FI3WuBx1gw" aggregation="composite" association="_fpDb4Au6Ee-3FI3WuBx1gw"/>
         <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_AjxpIAbcEe-3FI3WuBx1gw" name="aocs_message_dispatcher_thread_Behaviour" specification="_zqC40OnrEe670Kb7sOjz5g">
           <language>JAVA</language>
           <body>	/*&#xD;
@@ -1826,16 +1883,25 @@ this is in accordance with the satellite's FDIR strategy</body>
 &#xD;
 			// set the message type to eAOCSTimerMessage to process in the following message in the first case&#xD;
 			aocs_message.aocs_message_type = AOCS_message_type.eAOCSTimerMessage;&#xD;
-			&#xD;
+&#xD;
 			//get the aocs shell configuration&#xD;
 			aocs_message.aocs_message_data.message_pointer = config;&#xD;
-			&#xD;
-			//send the CAN message&#xD;
+&#xD;
+			   /*&#xD;
+			    * Send the message to the AOCS Process Dispatcher.&#xD;
+			    */&#xD;
 			mq_send(config);&#xD;
 		}&#xD;
 		/*&#xD;
 		 * Release the AOCS Shell Protection Mutex.&#xD;
 		 */</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_vCbgcBKbEe-3FI3WuBx1gw" name="mq_send_Behaviour" specification="_VBlSgArsEe-3FI3WuBx1gw">
+          <language>JAVA</language>
+          <body>   /*&#xD;
+    * Send the message to the AOCS Process Dispatcher.&#xD;
+    */&#xD;
+aocs_message_dispatcher_thread(config);</body>
         </ownedBehavior>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_cWbTQOnpEe670Kb7sOjz5g" name="AOCS_downlink_telemetry_handler">
           <ownedComment xmi:type="uml:Comment" xmi:id="_vQqvsOnpEe670Kb7sOjz5g" annotatedElement="_cWbTQOnpEe670Kb7sOjz5g">
@@ -1862,7 +1928,7 @@ this is in accordance with the satellite's FDIR strategy</body>
             <body>Routine to handle the AIM Check Timer Signal</body>
           </ownedComment>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_zqC40OnrEe670Kb7sOjz5g" name="aocs_message_dispatcher_thread" concurrency="concurrent" method="_AjxpIAbcEe-3FI3WuBx1gw">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_zqC40OnrEe670Kb7sOjz5g" name="aocs_message_dispatcher_thread" isStatic="true" concurrency="concurrent" method="_AjxpIAbcEe-3FI3WuBx1gw">
           <ownedComment xmi:type="uml:Comment" xmi:id="_zqC40enrEe670Kb7sOjz5g" annotatedElement="_zqC40OnrEe670Kb7sOjz5g">
             <body>Routine to handle the Message Interface implemented as a POSIX Thread.</body>
           </ownedComment>
@@ -1896,14 +1962,16 @@ Registers Telecommand and Telemetry service queues and a generic receive message
 Block waits for Received CAN messages.</body>
           </ownedComment>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_FZ6-cOntEe670Kb7sOjz5g" name="InitAocs">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_FZ6-cOntEe670Kb7sOjz5g" name="InitAocs" isStatic="true">
           <ownedComment xmi:type="uml:Comment" xmi:id="_FZ6-centEe670Kb7sOjz5g" annotatedElement="_FZ6-cOntEe670Kb7sOjz5g">
-            <body>Initialises a new AOCS cycle</body>
+            <body>Initialises a new AOCS cycle&#xD;
+Initialise data gathering for new cycle&#xD;
+</body>
           </ownedComment>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_VBlSgArsEe-3FI3WuBx1gw" name="mq_send" isStatic="true">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_VBlSgArsEe-3FI3WuBx1gw" name="mq_send" isStatic="true" method="_vCbgcBKbEe-3FI3WuBx1gw">
           <ownedComment xmi:type="uml:Comment" xmi:id="_VBlSgQrsEe-3FI3WuBx1gw" annotatedElement="_VBlSgArsEe-3FI3WuBx1gw">
-            <body>Send can message&#xD;
+            <body>Send the message to the AOCS Process Dispatcher&#xD;
 </body>
           </ownedComment>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_h-t3UArsEe-3FI3WuBx1gw" name="config" type="_eTFu8AF8Ee--rtUdFrbRMA">
@@ -1919,23 +1987,6 @@ Block waits for Received CAN messages.</body>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_UDK0YgrqEe-3FI3WuBx1gw" name="config" type="_eTFu8AF8Ee--rtUdFrbRMA">
             <ownedComment xmi:type="uml:Comment" xmi:id="_UDK0YwrqEe-3FI3WuBx1gw" annotatedElement="_UDK0YgrqEe-3FI3WuBx1gw">
               <body>Pointer to the AOCS Configuration Structure</body>
-            </ownedComment>
-          </ownedParameter>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_yNJZEAuBEe-3FI3WuBx1gw" name="CANA_send_tc" isStatic="true">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_yNJZEQuBEe-3FI3WuBx1gw" annotatedElement="_yNJZEAuBEe-3FI3WuBx1gw">
-            <body>Send a CAN TC</body>
-          </ownedComment>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_AQ908AuJEe-3FI3WuBx1gw" name="TcReqParams" type="_UOXJwAuEEe-3FI3WuBx1gw">
-            <ownedComment xmi:type="uml:Comment" xmi:id="_AQ908QuJEe-3FI3WuBx1gw" annotatedElement="_AQ908AuJEe-3FI3WuBx1gw">
-              <body>TC parameters data</body>
-            </ownedComment>
-          </ownedParameter>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_tYjHMAu5Ee-3FI3WuBx1gw" name="CANA_send_datagram" isStatic="true">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_R9GCMAu6Ee-3FI3WuBx1gw" name="CANS_datagram" type="_zCQhsAu5Ee-3FI3WuBx1gw">
-            <ownedComment xmi:type="uml:Comment" xmi:id="_R9GCMQu6Ee-3FI3WuBx1gw" annotatedElement="_R9GCMAu6Ee-3FI3WuBx1gw">
-              <body>input data for daragram</body>
             </ownedComment>
           </ownedParameter>
         </ownedOperation>
@@ -2007,6 +2058,54 @@ Block waits for Received CAN messages.</body>
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
           </ownedAttribute>
         </nestedClassifier>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_MeV70OqPEe670Kb7sOjz5g" name="AOCS_TTC">
+        <generalization xmi:type="uml:Generalization" xmi:id="_hZKWoOqUEe670Kb7sOjz5g" general="_pAfYoLtmEe6neZnDM9mQww"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_fpEqAgu6Ee-3FI3WuBx1gw" name="cans_datagram" type="_zCQhsAu5Ee-3FI3WuBx1gw" aggregation="composite" association="_fpDb4Au6Ee-3FI3WuBx1gw"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_fO0xEguFEe-3FI3WuBx1gw" name="tcreqparams" type="_UOXJwAuEEe-3FI3WuBx1gw" aggregation="composite" association="_fO0KAAuFEe-3FI3WuBx1gw"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_yNJZEAuBEe-3FI3WuBx1gw" name="CANA_send_tc">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_yNJZEQuBEe-3FI3WuBx1gw" annotatedElement="_yNJZEAuBEe-3FI3WuBx1gw">
+            <body>Send a CAN TC</body>
+          </ownedComment>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_AQ908AuJEe-3FI3WuBx1gw" name="TcReqParams" type="_UOXJwAuEEe-3FI3WuBx1gw">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_AQ908QuJEe-3FI3WuBx1gw" annotatedElement="_AQ908AuJEe-3FI3WuBx1gw">
+              <body>TC parameters data</body>
+            </ownedComment>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_tYjHMAu5Ee-3FI3WuBx1gw" name="CANA_send_datagram">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_R9GCMAu6Ee-3FI3WuBx1gw" name="CANS_datagram" type="_zCQhsAu5Ee-3FI3WuBx1gw">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_R9GCMQu6Ee-3FI3WuBx1gw" annotatedElement="_R9GCMAu6Ee-3FI3WuBx1gw">
+              <body>input data for daragram</body>
+            </ownedComment>
+          </ownedParameter>
+        </ownedOperation>
+        <nestedClassifier xmi:type="uml:Class" xmi:id="_zCQhsAu5Ee-3FI3WuBx1gw" name="CANS_datagram">
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_4zij0Au5Ee-3FI3WuBx1gw" name="u1Src">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_4zij0Qu5Ee-3FI3WuBx1gw" annotatedElement="_4zij0Au5Ee-3FI3WuBx1gw">
+              <body>CANADDR_ADCS_PROCESS</body>
+            </ownedComment>
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_70rZkAu5Ee-3FI3WuBx1gw" name="u1Dest">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_70rZkQu5Ee-3FI3WuBx1gw" annotatedElement="_70rZkAu5Ee-3FI3WuBx1gw">
+              <body>CANADDR_BROADCAST</body>
+            </ownedComment>
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_A23hEAu6Ee-3FI3WuBx1gw" name="u1Length">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_A23hEQu6Ee-3FI3WuBx1gw" annotatedElement="_A23hEAu6Ee-3FI3WuBx1gw">
+              <body>sizeof(CANS_datagram.a1Buffer)</body>
+            </ownedComment>
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_EsV90Au6Ee-3FI3WuBx1gw" name="u1Type">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_EsV90Qu6Ee-3FI3WuBx1gw" annotatedElement="_EsV90Au6Ee-3FI3WuBx1gw">
+              <body>Datagram type ex: CANI_Time_Set_Command</body>
+            </ownedComment>
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedAttribute>
+        </nestedClassifier>
         <nestedClassifier xmi:type="uml:Class" xmi:id="_UOXJwAuEEe-3FI3WuBx1gw" name="TcReqParams">
           <ownedAttribute xmi:type="uml:Property" xmi:id="_pI8GQAuEEe-3FI3WuBx1gw" name="psRegInfo">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
@@ -2042,35 +2141,6 @@ Block waits for Received CAN messages.</body>
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
           </ownedAttribute>
         </nestedClassifier>
-        <nestedClassifier xmi:type="uml:Class" xmi:id="_zCQhsAu5Ee-3FI3WuBx1gw" name="CANS_datagram">
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_4zij0Au5Ee-3FI3WuBx1gw" name="u1Src">
-            <ownedComment xmi:type="uml:Comment" xmi:id="_4zij0Qu5Ee-3FI3WuBx1gw" annotatedElement="_4zij0Au5Ee-3FI3WuBx1gw">
-              <body>CANADDR_ADCS_PROCESS</body>
-            </ownedComment>
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
-          </ownedAttribute>
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_70rZkAu5Ee-3FI3WuBx1gw" name="u1Dest">
-            <ownedComment xmi:type="uml:Comment" xmi:id="_70rZkQu5Ee-3FI3WuBx1gw" annotatedElement="_70rZkAu5Ee-3FI3WuBx1gw">
-              <body>CANADDR_BROADCAST</body>
-            </ownedComment>
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
-          </ownedAttribute>
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_A23hEAu6Ee-3FI3WuBx1gw" name="u1Length">
-            <ownedComment xmi:type="uml:Comment" xmi:id="_A23hEQu6Ee-3FI3WuBx1gw" annotatedElement="_A23hEAu6Ee-3FI3WuBx1gw">
-              <body>sizeof(CANS_datagram.a1Buffer)</body>
-            </ownedComment>
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
-          </ownedAttribute>
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_EsV90Au6Ee-3FI3WuBx1gw" name="u1Type">
-            <ownedComment xmi:type="uml:Comment" xmi:id="_EsV90Qu6Ee-3FI3WuBx1gw" annotatedElement="_EsV90Au6Ee-3FI3WuBx1gw">
-              <body>Datagram type ex: CANI_Time_Set_Command</body>
-            </ownedComment>
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
-          </ownedAttribute>
-        </nestedClassifier>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_MeV70OqPEe670Kb7sOjz5g" name="AOCS_TTC">
-        <generalization xmi:type="uml:Generalization" xmi:id="_hZKWoOqUEe670Kb7sOjz5g" general="_pAfYoLtmEe6neZnDM9mQww"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_MbIWIOqXEe670Kb7sOjz5g" name="AOCS_Configuration">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_uZnRAOqbEe670Kb7sOjz5g" name="ACON_pollSkedFlag">
@@ -2152,6 +2222,44 @@ AOCS_Process_Shell.aocs_State_Machine.AOCS_SetPeriod(ACON_aocsRate[modeID]);</bo
         </ownedComment>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_6wSIEAIbEe--rtUdFrbRMA" name="algs_Struct" type="_EA1lEOwxEe670Kb7sOjz5g"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="__2SYkAIbEe--rtUdFrbRMA" name="algs_tcmd" type="_52fJgOz3Ee670Kb7sOjz5g"/>
+        <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_wq9jgBKmEe-3FI3WuBx1gw" specification="_cYWl8BKmEe-3FI3WuBx1gw">
+          <language>JAVA</language>
+          <body>//TODO implement the algs here&#xD;
+return 0;</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_aVzp8BKnEe-3FI3WuBx1gw" name="AINT_AlgManager_Behaviour" specification="_-yvzABKlEe-3FI3WuBx1gw">
+          <language>JAVA</language>
+          <body>int callVal = 0;&#xD;
+&#xD;
+/* run the algorithms AJ - change prototype */&#xD;
+   callVal = AOCS_Go ();&#xD;
+&#xD;
+   /* update the alg telemetry */&#xD;
+   AOCS_Telemetry();&#xD;
+&#xD;
+   /* check if algorithms ran successfully */&#xD;
+   if (callVal != 0){&#xD;
+System.out.println(&quot;Algorithm Error&quot;);&#xD;
+}</body>
+        </ownedBehavior>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_-yvzABKlEe-3FI3WuBx1gw" name="AINT_AlgManager" method="_aVzp8BKnEe-3FI3WuBx1gw">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_-yvzARKlEe-3FI3WuBx1gw" annotatedElement="_-yvzABKlEe-3FI3WuBx1gw">
+            <body>RUN THE AOCS ALGORITHMS </body>
+          </ownedComment>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_Lhk2EBKmEe-3FI3WuBx1gw" name="AOCS_Telemetry">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_Lhk2ERKmEe-3FI3WuBx1gw" annotatedElement="_Lhk2EBKmEe-3FI3WuBx1gw">
+            <body>update the alg telemetry </body>
+          </ownedComment>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_cYWl8BKmEe-3FI3WuBx1gw" name="AOCS_Go" method="_wq9jgBKmEe-3FI3WuBx1gw">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_cYWl8RKmEe-3FI3WuBx1gw" annotatedElement="_cYWl8BKmEe-3FI3WuBx1gw">
+            <body>run the algorithms</body>
+          </ownedComment>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_09ZCABKmEe-3FI3WuBx1gw" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+        </ownedOperation>
         <nestedClassifier xmi:type="uml:Class" xmi:id="_52fJgOz3Ee670Kb7sOjz5g" name="ALGS_TCMD">
           <ownedAttribute xmi:type="uml:Property" xmi:id="_xnWIYOz4Ee670Kb7sOjz5g" name="torquerID">
             <ownedComment xmi:type="uml:Comment" xmi:id="_85VaAOz4Ee670Kb7sOjz5g" annotatedElement="_xnWIYOz4Ee670Kb7sOjz5g">
@@ -2273,13 +2381,13 @@ int handleEvent(AOCS_shell_configuration config);</body>
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_fO0xEAuFEe-3FI3WuBx1gw" source="org.eclipse.papyrus">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_fO0xEQuFEe-3FI3WuBx1gw" key="nature" value="UML_Nature"/>
         </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_fO1YIguFEe-3FI3WuBx1gw" name="aocs_process_shell" type="_EbAfUOUwEe670Kb7sOjz5g" association="_fO0KAAuFEe-3FI3WuBx1gw"/>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_fO1YIguFEe-3FI3WuBx1gw" name="aocs_process_shell" type="_MeV70OqPEe670Kb7sOjz5g" association="_fO0KAAuFEe-3FI3WuBx1gw"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_fpDb4Au6Ee-3FI3WuBx1gw" memberEnd="_fpEqAgu6Ee-3FI3WuBx1gw _fpFREgu6Ee-3FI3WuBx1gw">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_fpEqAAu6Ee-3FI3WuBx1gw" source="org.eclipse.papyrus">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_fpEqAQu6Ee-3FI3WuBx1gw" key="nature" value="UML_Nature"/>
         </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_fpFREgu6Ee-3FI3WuBx1gw" name="aocs_process_shell" type="_EbAfUOUwEe670Kb7sOjz5g" association="_fpDb4Au6Ee-3FI3WuBx1gw"/>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_fpFREgu6Ee-3FI3WuBx1gw" name="aocs_process_shell" type="_MeV70OqPEe670Kb7sOjz5g" association="_fpDb4Au6Ee-3FI3WuBx1gw"/>
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_AOQzoNbuEe6Hj6nzgakJ2A" name="UseCaseDiagrams">
