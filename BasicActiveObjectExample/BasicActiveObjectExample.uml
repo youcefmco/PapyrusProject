@@ -664,17 +664,17 @@ TODO implement this method</body>
             <language>JAVA</language>
             <body>new AOCS_Shell_EventHandler[][] {&#xD;
 			/*&#xD;
-			 * RUNAOCS -----------------------------------------------------------------&#xD;
-			 * CHECKTLM ----------------------------------------      					|&#xD;
-			 * IDLE-----------------     		  				|      					|&#xD;
-			 *                      |        	  				|						|&#xD;
-			 *                      |     		  				|     					|&#xD;
+			 * RUNAOCS ---------------------------------&#xD;
+			 * CHECKTLM --------------------------      |&#xD;
+			 * IDLE-----------------     		  |     |&#xD;
+			 *                      |        	  |		|&#xD;
+			 *                      |     		  |     |&#xD;
 			 */&#xD;
-   {AOCS_State_Machine::pps_received,     null,    null   },/* PPS_RECEIVED           */ &#xD;
-   {AOCS_State_Machine::all_pps_received, null,    null   },/* ALL_PPS_RECEIVED       */ &#xD;
-   {null,             AOCS_State_Machine::run_AOCS, null   }, /* ADCS_MESSAGE           */ &#xD;
-   {null,             null,    AOCS_State_Machine::actuate}/* ACTUATE                */&#xD;
-}</body>
+			{ AOCS_State_Machine::pps_received, null, null }, /* PPS_RECEIVED           */&#xD;
+			{ AOCS_State_Machine::all_pps_received, null, null }, /* ALL_PPS_RECEIVED       */&#xD;
+			{ null, AOCS_State_Machine::run_AOCS, null }, /* ADCS_MESSAGE           */&#xD;
+			{ null, null, AOCS_State_Machine::actuate }/* ACTUATE                */&#xD;
+	}</body>
           </defaultValue>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_yJKBcArzEe-3FI3WuBx1gw" name="No_of_PPS_sent" isStatic="true">
@@ -1789,19 +1789,42 @@ this is in accordance with the satellite's FDIR strategy</body>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_KQV0IgiUEe-3FI3WuBx1gw" name="aocs_message" isStatic="true" type="_TxhE4AiTEe-3FI3WuBx1gw" aggregation="composite" association="_KQVNEAiUEe-3FI3WuBx1gw"/>
         <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_AjxpIAbcEe-3FI3WuBx1gw" name="aocs_message_dispatcher_thread_Behaviour" specification="_zqC40OnrEe670Kb7sOjz5g">
           <language>JAVA</language>
-          <body>	/*&#xD;
-				 * Initialise the AOCS Shell Protection Mutex. Thread is just an token, it could&#xD;
-				 * be any object&#xD;
-				 */&#xD;
+          <body>		/*&#xD;
+		 * Initialise the AOCS Shell Protection Mutex. Thread is just an token, it could&#xD;
+		 * be any object&#xD;
+		*/&#xD;
 		config.aocs_shell_protection_mutex = new Thread();&#xD;
+		/*&#xD;
+		 * We have 3 timers :&#xD;
+		 * PPSTimer&#xD;
+		 * ActuationTimer&#xD;
+		 * AIMCheckTimer (opt)&#xD;
+		 * */&#xD;
+&#xD;
 		/*&#xD;
 		 * Create the AOCS PPS Timer.&#xD;
 		 */&#xD;
 		config.aocs_shell_pps_timer_id = 0; // new Timer();&#xD;
 		/*&#xD;
-		 * Connect the AOCS Actuation Timer.&#xD;
+		* Connect the AOCS PPS Timer.&#xD;
+		*/&#xD;
+		AOCS_Process_Shell.aocs_pps_timer_signal_handler(config);&#xD;
+		/*&#xD;
+		 * Create the AOCS Actuation Timer.&#xD;
 		 */&#xD;
 		config.aocs_shell_actuation_timer_id = 0; // new Timer();&#xD;
+		/*&#xD;
+		 * Connect the AOCS Actuation Timer.&#xD;
+		 */&#xD;
+		AOCS_Process_Shell.aocs_pps_timer_signal_handler(config);&#xD;
+		/*&#xD;
+		 * Create the AIM Check Timer.&#xD;
+		 */&#xD;
+		config.aocs_shell_actuation_timer_id = 0; // new Timer();&#xD;
+		/*&#xD;
+		 * Connect the AIM Check Timer.&#xD;
+		 */&#xD;
+		AOCS_Process_Shell.aocs_aim_check_timer_signal_handler(config);&#xD;
 		/*&#xD;
 		 * Repeatedly read messages received on the AOCS Dispatcher Message Queue&#xD;
 		 */&#xD;
@@ -1810,11 +1833,13 @@ this is in accordance with the satellite's FDIR strategy</body>
 			 * Process the received message&#xD;
 			 */&#xD;
 			switch (aocs_message.aocs_message_type) {&#xD;
-			/*&#xD;
-			 * When a message is received from outside, it will never enter in this case at first&#xD;
-			 * it first get processed in the following cases&#xD;
-			 * then the AOCS_Shell_process_event to right EVENT&#xD;
-			 * and the aocs_message_type to 'eAOCSTimerMessage'&#xD;
+			/* The above 3 timers will send ticks message as followings :&#xD;
+			 * PPSTimer = ePPSTimerMessage (event = PPS_RECEIVED)&#xD;
+			 * ActuationTimer = eActuationTimerMessage (event = ACTUATE)&#xD;
+			 * AIMCheckTimer = eAimCheckTimerMessage&#xD;
+			 * the 'eAOCSTimerMessage' is set in 'aocs_shell_deliver_event' which is triggered between &#xD;
+			 * Idle events: 'pps_received -> all_pps_received '(event = ALL_PPS_RECEIVED)  &#xD;
+			 * and 'all_pps_received -> run_AOCS' (event = AOCS_MESSAGE)&#xD;
 			 * to get back HERE and execute the Events into the AOCS Finite State Machine Table&#xD;
 			 */&#xD;
 			case eAOCSTimerMessage: {&#xD;
@@ -1826,7 +1851,7 @@ this is in accordance with the satellite's FDIR strategy</body>
 &#xD;
 				break;&#xD;
 			}&#xD;
-			&#xD;
+&#xD;
 			//PPS_RECEIVED event&#xD;
 			case ePPSTimerMessage: {&#xD;
 				/*&#xD;
@@ -1863,9 +1888,9 @@ this is in accordance with the satellite's FDIR strategy</body>
 				break;&#xD;
 &#xD;
 			case eAimCheckTimerMessage:&#xD;
-				 /*&#xD;
-                 * Send sync cmds only if we are not SBM of SAFE&#xD;
-                 */&#xD;
+				/*&#xD;
+				* Send sync cmds only if we are not SBM of SAFE&#xD;
+				*/&#xD;
 				break;&#xD;
 			default:&#xD;
 				System.out.println(&quot;Unknown Message received\n&quot;);&#xD;
