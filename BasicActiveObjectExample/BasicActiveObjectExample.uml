@@ -1412,6 +1412,7 @@ State where the AOCS cycle is running</body>
               <body>AOCS Shell PPS Timer</body>
             </ownedComment>
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+            <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_weOToBa6Ee-04ccfAiTXhw" value="1000"/>
           </ownedAttribute>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_sDodsAcOEe-3FI3WuBx1gw" name="aocs_shell_actuation_timer_id" type="_Tt1_sBaSEe-04ccfAiTXhw">
             <ownedComment xmi:type="uml:Comment" xmi:id="_sDodsQcOEe-3FI3WuBx1gw" annotatedElement="_sDodsAcOEe-3FI3WuBx1gw">
@@ -1423,6 +1424,7 @@ State where the AOCS cycle is running</body>
               <body>AOCS Shell Actuation Timer</body>
             </ownedComment>
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+            <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_nNuYoBa6Ee-04ccfAiTXhw" value="1000"/>
           </ownedAttribute>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_gVq4UBaREe-04ccfAiTXhw" name="aocs_shell_aim_check_timer_id" type="_Tt1_sBaSEe-04ccfAiTXhw">
             <ownedComment xmi:type="uml:Comment" xmi:id="_gVq4URaREe-04ccfAiTXhw" annotatedElement="_gVq4UBaREe-04ccfAiTXhw">
@@ -1434,6 +1436,7 @@ State where the AOCS cycle is running</body>
               <body>AOCS Shell AIM Check Timer</body>
             </ownedComment>
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+            <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_yRLfABa6Ee-04ccfAiTXhw" value="1000"/>
           </ownedAttribute>
         </nestedClassifier>
       </packagedElement>
@@ -1820,28 +1823,34 @@ this is in accordance with the satellite's FDIR strategy</body>
 			/*&#xD;
 			 * Create the AOCS PPS Timer.&#xD;
 			 */&#xD;
-			_config.aocs_shell_pps_timer_id  = Executors.newSingleThreadScheduledExecutor(); // new Timer();&#xD;
+			_config.aocs_shell_pps_timer_id = Executors.newSingleThreadScheduledExecutor(); // new Timer();&#xD;
 			/*&#xD;
 			* Connect the AOCS PPS Timer.&#xD;
 			* 			&#xD;
 			 * Schedule the task to run periodically every 'aocs_shell_pps_timer' milliseconds&#xD;
 			 * set the task and the timer value&#xD;
 			 */&#xD;
-			_config.aocs_shell_pps_timer_id.scheduleAtFixedRate(() -> aocs_pps_timer_signal_handler(_config), 0, _config.aocs_shell_pps_timer, TimeUnit.MILLISECONDS);&#xD;
-			&#xD;
+			_config.aocs_shell_pps_timer_id.scheduleAtFixedRate(() -> aocs_pps_timer_signal_handler(_config), 0,&#xD;
+					_config.aocs_shell_pps_timer, TimeUnit.MILLISECONDS);&#xD;
+&#xD;
 			&#xD;
 			/*&#xD;
 			 * Create the AOCS Actuation Timer.&#xD;
 			 */&#xD;
-			_config.aocs_shell_actuation_timer_id  = Executors.newSingleThreadScheduledExecutor(); // new Timer();&#xD;
+			_config.aocs_shell_actuation_timer_id = Executors.newSingleThreadScheduledExecutor(); // new Timer();&#xD;
 			/*&#xD;
 			* Connect the AOCS Actuation Timer.&#xD;
 			* 			&#xD;
 			 * Schedule the task to run periodically every 'aocs_shell_actuation_timer' milliseconds&#xD;
 			 * set the task and the timer value&#xD;
 			 */&#xD;
-			_config.aocs_shell_actuation_timer_id.scheduleAtFixedRate(() -> aocs_actuation_timer_signal_handler(_config), 0, _config.aocs_shell_actuation_timer, TimeUnit.MILLISECONDS);&#xD;
-			&#xD;
+			/*&#xD;
+			 * wait 500 millisecond before starting the second timers&#xD;
+			 * according to the Figure 3 2: AOCS periodic activities (FSM) in the flight software specification&#xD;
+			 * */&#xD;
+			_config.aocs_shell_actuation_timer_id.scheduleAtFixedRate(&#xD;
+					() -> aocs_actuation_timer_signal_handler(_config), 500, _config.aocs_shell_actuation_timer,&#xD;
+					TimeUnit.MILLISECONDS);&#xD;
 &#xD;
 			/*&#xD;
 			 * Create the AIM Check Timer.&#xD;
@@ -1853,8 +1862,10 @@ this is in accordance with the satellite's FDIR strategy</body>
 			 * Schedule the task to run periodically every 'aocs_shell_actuation_timer' milliseconds&#xD;
 			 * set the task and the timer value&#xD;
 			 */&#xD;
-			_config.aocs_shell_aim_check_timer_id.scheduleAtFixedRate(() -> aocs_aim_check_timer_signal_handler(_config), 0, _config.aocs_shell_aim_check_timer, TimeUnit.MILLISECONDS);&#xD;
-			&#xD;
+			_config.aocs_shell_aim_check_timer_id.scheduleAtFixedRate(&#xD;
+					() -> aocs_aim_check_timer_signal_handler(_config), 500, _config.aocs_shell_aim_check_timer,&#xD;
+					TimeUnit.MILLISECONDS);&#xD;
+&#xD;
 			/*&#xD;
 			 * Repeatedly read messages received on the AOCS Dispatcher Message Queue&#xD;
 			 */&#xD;
@@ -1943,6 +1954,14 @@ this is in accordance with the satellite's FDIR strategy</body>
           </defaultValue>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_DfG88BXyEe-04ccfAiTXhw" name="_config" isStatic="true" type="_eTFu8AF8Ee--rtUdFrbRMA"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_oHvjIBa1Ee-04ccfAiTXhw" name="aocs_can_thread">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_oHvjIRa1Ee-04ccfAiTXhw" annotatedElement="_oHvjIBa1Ee-04ccfAiTXhw">
+            <body>Routine to register the AOCS Process with the CAN Server.&#xD;
+Registers Telecommand and Telemetry service queues and a generic receive message queue.&#xD;
+Block waits for Received CAN messages.</body>
+          </ownedComment>
+          <type xmi:type="uml:Class" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vHXaMGMmEeydfJuFsrdeeg"/>
+        </ownedAttribute>
         <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_AjxpIAbcEe-3FI3WuBx1gw" name="aocs_message_dispatcher_thread_Behaviour">
           <language>JAVA</language>
           <body>		/*&#xD;
@@ -2091,11 +2110,24 @@ aocs_message_dispatcher_thread(config);</body>
         </ownedBehavior>
         <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_t1RtkBXMEe-04ccfAiTXhw" name="main_Behaviour" specification="_Q1EokOnsEe670Kb7sOjz5g">
           <language>JAVA</language>
-          <body> /*&#xD;
- * Create the AOCS Message Dispatcher Thread.&#xD;
-*/&#xD;
-aocs_message_dispatcher_thread.start();&#xD;
-   </body>
+          <body>	    /*&#xD;
+	    *  Create the AOCS CAN Thread.&#xD;
+	    */		&#xD;
+		aocs_can_thread.start();&#xD;
+		/*&#xD;
+		* Create the AOCS Message Dispatcher Thread.&#xD;
+		*/&#xD;
+		aocs_message_dispatcher_thread.start();&#xD;
+		&#xD;
+		  /* Initialise the task */&#xD;
+	      TaskInit();&#xD;
+	      &#xD;
+	      /*&#xD;
+	       * Register with the Downlink Telemetry Handler&#xD;
+	       */&#xD;
+	      AOCS_downlink_telemetry_handler();&#xD;
+	      //TODO : add the drive file functionality&#xD;
+	      //TODO : Register with the SKED library</body>
         </ownedBehavior>
         <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_ifbQkBaFEe-04ccfAiTXhw" name="aocs_pps_timer_signal_handler_Behaviour" specification="_DRDU0OnqEe670Kb7sOjz5g">
           <language>JAVA</language>
@@ -2151,6 +2183,19 @@ aocs_message_dispatcher_thread.start();&#xD;
 		//wake up the message waiting thread&#xD;
 		aocs_message_dispatcher_thread.notify();</body>
         </ownedBehavior>
+        <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_F6lrYBa3Ee-04ccfAiTXhw" name="TaskInit_Behaviour" specification="_gtocsOnsEe670Kb7sOjz5g">
+          <language>JAVA</language>
+          <body>		System.out.println(&quot;AOCS Process Started\n&quot;);&#xD;
+&#xD;
+		/* ensure mode is in standby */&#xD;
+		aocs_State_Machine.AOCS_ForceMode(AOCS_MODES.SBM);&#xD;
+&#xD;
+		/* initialise telemetry */&#xD;
+		 aocs_TTC.ATTC_Init();&#xD;
+&#xD;
+		/* initialise AOCS variables etc. */&#xD;
+		 aocs_State_Machine.algs_interface.AINT_Init();</body>
+        </ownedBehavior>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_cWbTQOnpEe670Kb7sOjz5g" name="AOCS_downlink_telemetry_handler">
           <ownedComment xmi:type="uml:Comment" xmi:id="_vQqvsOnpEe670Kb7sOjz5g" annotatedElement="_cWbTQOnpEe670Kb7sOjz5g">
             <body>Routine to generate the telemetry information that will be transmitted on the downlink.</body>
@@ -2195,16 +2240,9 @@ aocs_message_dispatcher_thread.start();&#xD;
             <body>AOCS Task exit function</body>
           </ownedComment>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_gtocsOnsEe670Kb7sOjz5g" name="TaskInit">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_gtocsOnsEe670Kb7sOjz5g" name="TaskInit" method="_F6lrYBa3Ee-04ccfAiTXhw">
           <ownedComment xmi:type="uml:Comment" xmi:id="_md7AUOnsEe670Kb7sOjz5g" annotatedElement="_gtocsOnsEe670Kb7sOjz5g">
             <body>AOCS Task initialisation function</body>
-          </ownedComment>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_yRFsYOnsEe670Kb7sOjz5g" name="aocs_can_thread">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_yRFsYensEe670Kb7sOjz5g" annotatedElement="_yRFsYOnsEe670Kb7sOjz5g">
-            <body>Routine to register the AOCS Process with the CAN Server.&#xD;
-Registers Telecommand and Telemetry service queues and a generic receive message queue.&#xD;
-Block waits for Received CAN messages.</body>
           </ownedComment>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_FZ6-cOntEe670Kb7sOjz5g" name="InitAocs" isStatic="true">
@@ -2313,6 +2351,11 @@ Initialise data gathering for new cycle&#xD;
               <body>input data for daragram</body>
             </ownedComment>
           </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_1qKw4Ba2Ee-04ccfAiTXhw" name="ATTC_Init">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_6k1UEBa2Ee-04ccfAiTXhw" annotatedElement="_1qKw4Ba2Ee-04ccfAiTXhw">
+            <body> initialise telemetry </body>
+          </ownedComment>
         </ownedOperation>
         <nestedClassifier xmi:type="uml:Class" xmi:id="_zCQhsAu5Ee-3FI3WuBx1gw" name="CANS_datagram">
           <ownedAttribute xmi:type="uml:Property" xmi:id="_4zij0Au5Ee-3FI3WuBx1gw" name="u1Src">
@@ -2493,6 +2536,11 @@ System.out.println(&quot;Algorithm Error&quot;);&#xD;
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_09ZCABKmEe-3FI3WuBx1gw" direction="return">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
           </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_rarooBa3Ee-04ccfAiTXhw" name="AINT_Init">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_rarooRa3Ee-04ccfAiTXhw" annotatedElement="_rarooBa3Ee-04ccfAiTXhw">
+            <body>initialise AOCS variables etc.</body>
+          </ownedComment>
         </ownedOperation>
         <nestedClassifier xmi:type="uml:Class" xmi:id="_52fJgOz3Ee670Kb7sOjz5g" name="ALGS_TCMD">
           <ownedAttribute xmi:type="uml:Property" xmi:id="_xnWIYOz4Ee670Kb7sOjz5g" name="torquerID">
@@ -2771,6 +2819,6 @@ int handleEvent(AOCS_shell_configuration config);</body>
   <PapyrusJava:Array xmi:id="_Y0olcAC8Ee--rtUdFrbRMA" definition="[][]" base_property="_V4XBkAC8Ee--rtUdFrbRMA"/>
   <Codegen:NoCodeGen xmi:id="__5gRQAiVEe-3FI3WuBx1gw" base_Element="_Tk7_cAY4Ee-3FI3WuBx1gw"/>
   <PapyrusJava:Import xmi:id="_F-ggoAiWEe-3FI3WuBx1gw" manualImports="AOCS_RTP.AOCS_State_Machine.AOCS_shell_configuration" base_Classifier="_Tk7_cAY4Ee-3FI3WuBx1gw"/>
-  <PapyrusJava:Import xmi:id="_qWlZEBaQEe-04ccfAiTXhw" manualImports="import java.util.concurrent.Executors;import java.util.concurrent.ScheduledExecutorService;import java.util.concurrent.TimeUnit;" base_class="_EbAfUOUwEe670Kb7sOjz5g" base_Classifier="_EbAfUOUwEe670Kb7sOjz5g"/>
+  <PapyrusJava:Import xmi:id="_qWlZEBaQEe-04ccfAiTXhw" manualImports="import java.util.concurrent.Executors;import java.util.concurrent.ScheduledExecutorService;import java.util.concurrent.TimeUnit;import AOCS_RTP.AOCS_State_Machine.AOCS_MODES;" base_class="_EbAfUOUwEe670Kb7sOjz5g" base_Classifier="_EbAfUOUwEe670Kb7sOjz5g"/>
   <PapyrusJava:External xmi:id="_lmvT4BaSEe-04ccfAiTXhw" name="java.util.concurrent.ScheduledExecutorService" base_Classifier="_Tt1_sBaSEe-04ccfAiTXhw"/>
 </xmi:XMI>
