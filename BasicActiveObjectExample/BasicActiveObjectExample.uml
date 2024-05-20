@@ -1402,17 +1402,21 @@ State where the AOCS cycle is running</body>
             </ownedComment>
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
           </ownedAttribute>
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_3IblsAb_Ee-3FI3WuBx1gw" name="aocs_shell_pps_timer_id">
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_3IblsAb_Ee-3FI3WuBx1gw" name="aocs_shell_pps_timer_id" type="_Tt1_sBaSEe-04ccfAiTXhw">
             <ownedComment xmi:type="uml:Comment" xmi:id="_3IblsQb_Ee-3FI3WuBx1gw" annotatedElement="_3IblsAb_Ee-3FI3WuBx1gw">
               <body>the AOCS PPS Timer</body>
             </ownedComment>
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
           </ownedAttribute>
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_sDodsAcOEe-3FI3WuBx1gw" name="aocs_shell_actuation_timer_id">
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_fjBgcAt6Ee-3FI3WuBx1gw" name="aocs_shell_pps_timer">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_fjBgcQt6Ee-3FI3WuBx1gw" annotatedElement="_fjBgcAt6Ee-3FI3WuBx1gw">
+              <body>AOCS Shell PPS Timer</body>
+            </ownedComment>
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_sDodsAcOEe-3FI3WuBx1gw" name="aocs_shell_actuation_timer_id" type="_Tt1_sBaSEe-04ccfAiTXhw">
             <ownedComment xmi:type="uml:Comment" xmi:id="_sDodsQcOEe-3FI3WuBx1gw" annotatedElement="_sDodsAcOEe-3FI3WuBx1gw">
               <body>AOCS Actuation Timer</body>
             </ownedComment>
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
           </ownedAttribute>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_RzywUAt6Ee-3FI3WuBx1gw" name="aocs_shell_actuation_timer">
             <ownedComment xmi:type="uml:Comment" xmi:id="_U0rucAt6Ee-3FI3WuBx1gw" annotatedElement="_RzywUAt6Ee-3FI3WuBx1gw">
@@ -1420,9 +1424,14 @@ State where the AOCS cycle is running</body>
             </ownedComment>
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
           </ownedAttribute>
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_fjBgcAt6Ee-3FI3WuBx1gw" name="aocs_shell_pps_timer">
-            <ownedComment xmi:type="uml:Comment" xmi:id="_fjBgcQt6Ee-3FI3WuBx1gw" annotatedElement="_fjBgcAt6Ee-3FI3WuBx1gw">
-              <body>AOCS Shell PPS Timer</body>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_gVq4UBaREe-04ccfAiTXhw" name="aocs_shell_aim_check_timer_id" type="_Tt1_sBaSEe-04ccfAiTXhw">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_gVq4URaREe-04ccfAiTXhw" annotatedElement="_gVq4UBaREe-04ccfAiTXhw">
+              <body>AOCS Shell AIM Check Timer ID</body>
+            </ownedComment>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_mzhFgBaREe-04ccfAiTXhw" name="aocs_shell_aim_check_timer">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_mzhFgRaREe-04ccfAiTXhw" annotatedElement="_mzhFgBaREe-04ccfAiTXhw">
+              <body>AOCS Shell AIM Check Timer</body>
             </ownedComment>
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
           </ownedAttribute>
@@ -1786,7 +1795,7 @@ this is in accordance with the satellite's FDIR strategy</body>
         </ownedComment>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_TOx4get5Ee670Kb7sOjz5g" name="aocs_State_Machine" isStatic="true" type="_XgbL4LYbEe6HVJQsqClfdg" aggregation="shared" association="_TOwDUOt5Ee670Kb7sOjz5g"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_0ol84et5Ee670Kb7sOjz5g" name="aocs_TTC" isStatic="true" type="_MeV70OqPEe670Kb7sOjz5g" aggregation="shared" association="_0okHsOt5Ee670Kb7sOjz5g"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_KQV0IgiUEe-3FI3WuBx1gw" name="aocs_message" isStatic="true" type="_TxhE4AiTEe-3FI3WuBx1gw" aggregation="composite" association="_KQVNEAiUEe-3FI3WuBx1gw"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_KQV0IgiUEe-3FI3WuBx1gw" name="_aocs_message" isStatic="true" type="_TxhE4AiTEe-3FI3WuBx1gw" aggregation="composite" association="_KQVNEAiUEe-3FI3WuBx1gw"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_skua8BXoEe-04ccfAiTXhw" name="aocs_message_dispatcher_thread" isStatic="true">
           <ownedComment xmi:type="uml:Comment" xmi:id="_skua8RXoEe-04ccfAiTXhw" annotatedElement="_skua8BXoEe-04ccfAiTXhw">
             <body> Routine to handle the Message Interface implemented as a POSIX Thread</body>
@@ -1811,32 +1820,46 @@ this is in accordance with the satellite's FDIR strategy</body>
 			/*&#xD;
 			 * Create the AOCS PPS Timer.&#xD;
 			 */&#xD;
-			_config.aocs_shell_pps_timer_id = 0; // new Timer();&#xD;
+			_config.aocs_shell_pps_timer_id  = Executors.newSingleThreadScheduledExecutor(); // new Timer();&#xD;
 			/*&#xD;
 			* Connect the AOCS PPS Timer.&#xD;
-			*/&#xD;
-			AOCS_Process_Shell.aocs_pps_timer_signal_handler(_config);&#xD;
+			* 			&#xD;
+			 * Schedule the task to run periodically every 'aocs_shell_pps_timer' milliseconds&#xD;
+			 * set the task and the timer value&#xD;
+			 */&#xD;
+			_config.aocs_shell_pps_timer_id.scheduleAtFixedRate(() -> aocs_pps_timer_signal_handler(_config), 0, _config.aocs_shell_pps_timer, TimeUnit.MILLISECONDS);&#xD;
+			&#xD;
+			&#xD;
 			/*&#xD;
 			 * Create the AOCS Actuation Timer.&#xD;
 			 */&#xD;
-			_config.aocs_shell_actuation_timer_id = 0; // new Timer();&#xD;
+			_config.aocs_shell_actuation_timer_id  = Executors.newSingleThreadScheduledExecutor(); // new Timer();&#xD;
 			/*&#xD;
-			 * Connect the AOCS Actuation Timer.&#xD;
+			* Connect the AOCS Actuation Timer.&#xD;
+			* 			&#xD;
+			 * Schedule the task to run periodically every 'aocs_shell_actuation_timer' milliseconds&#xD;
+			 * set the task and the timer value&#xD;
 			 */&#xD;
-			AOCS_Process_Shell.aocs_pps_timer_signal_handler(_config);&#xD;
+			_config.aocs_shell_actuation_timer_id.scheduleAtFixedRate(() -> aocs_actuation_timer_signal_handler(_config), 0, _config.aocs_shell_actuation_timer, TimeUnit.MILLISECONDS);&#xD;
+			&#xD;
+&#xD;
 			/*&#xD;
 			 * Create the AIM Check Timer.&#xD;
 			 */&#xD;
-			_config.aocs_shell_actuation_timer_id = 0; // new Timer();&#xD;
+			_config.aocs_shell_aim_check_timer_id = Executors.newSingleThreadScheduledExecutor(); // new Timer();&#xD;
 			/*&#xD;
-			 * Connect the AIM Check Timer.&#xD;
+			* Connect the AOCS Actuation Timer.&#xD;
+			* 			&#xD;
+			 * Schedule the task to run periodically every 'aocs_shell_actuation_timer' milliseconds&#xD;
+			 * set the task and the timer value&#xD;
 			 */&#xD;
-			AOCS_Process_Shell.aocs_aim_check_timer_signal_handler(_config);&#xD;
+			_config.aocs_shell_aim_check_timer_id.scheduleAtFixedRate(() -> aocs_aim_check_timer_signal_handler(_config), 0, _config.aocs_shell_aim_check_timer, TimeUnit.MILLISECONDS);&#xD;
+			&#xD;
 			/*&#xD;
 			 * Repeatedly read messages received on the AOCS Dispatcher Message Queue&#xD;
 			 */&#xD;
 			while (true) {&#xD;
-				while (aocs_message == null) { // Check if message is available&#xD;
+				while (_aocs_message == null) { // Check if message is available&#xD;
 					try {&#xD;
 						synchronized (this) { // Synchronize on the current object&#xD;
 							wait(); // Release lock and wait to be notified&#xD;
@@ -1848,7 +1871,7 @@ this is in accordance with the satellite's FDIR strategy</body>
 				/*&#xD;
 				 * Process the received message&#xD;
 				 */&#xD;
-				switch (aocs_message.aocs_message_type) {&#xD;
+				switch (_aocs_message.aocs_message_type) {&#xD;
 				/* The above 3 timers will send ticks message as followings :&#xD;
 				 * PPSTimer = ePPSTimerMessage (event = PPS_RECEIVED)&#xD;
 				 * ActuationTimer = eActuationTimerMessage (event = ACTUATE)&#xD;
@@ -1860,7 +1883,7 @@ this is in accordance with the satellite's FDIR strategy</body>
 				 */&#xD;
 				case eAOCSTimerMessage: {&#xD;
 					//get the aocs shell configuration struct from the message&#xD;
-					_config = aocs_message.aocs_message_data.message_pointer;&#xD;
+					_config = _aocs_message.aocs_message_data.message_pointer;&#xD;
 &#xD;
 					//Execute the Action related to Events (using the table) into the AOCS Finite State Machine&#xD;
 					AOCS_State_Machine.AOCS_Shell_process_event(_config).handleEvent(_config);&#xD;
@@ -1913,7 +1936,7 @@ this is in accordance with the satellite's FDIR strategy</body>
 					break;&#xD;
 &#xD;
 				}&#xD;
-				aocs_message = null; // Reset message for next iteration&#xD;
+				_aocs_message = null; // Reset message for next iteration&#xD;
 			}&#xD;
 		}&#xD;
 	}</body>
@@ -2040,21 +2063,26 @@ this is in accordance with the satellite's FDIR strategy</body>
 		synchronized (config.aocs_shell_protection_mutex) {&#xD;
 &#xD;
 			// set the message type to eAOCSTimerMessage to process in the following message in the first case&#xD;
-			aocs_message.aocs_message_type = AOCS_message_type.eAOCSTimerMessage;&#xD;
+			//the other types are set the three timers (actuation, pps, aim )&#xD;
+			_aocs_message.aocs_message_type = AOCS_message_type.eAOCSTimerMessage;&#xD;
 &#xD;
 			//get the aocs shell configuration&#xD;
-			aocs_message.aocs_message_data.message_pointer = config;&#xD;
+			_aocs_message.aocs_message_data.message_pointer = config;&#xD;
 &#xD;
-			   /*&#xD;
-			    * Send the message to the AOCS Process Dispatcher.&#xD;
-			    */&#xD;
-			mq_send(config);&#xD;
+			/*&#xD;
+			 * Send the message to the AOCS Process Dispatcher.&#xD;
+			 */&#xD;
+			//mq_send(config); this hat was done&#xD;
+			&#xD;
+			//wake up the message waiting thread&#xD;
+			aocs_message_dispatcher_thread.notify();	&#xD;
+			&#xD;
 		}&#xD;
 		/*&#xD;
 		 * Release the AOCS Shell Protection Mutex.&#xD;
 		 */</body>
         </ownedBehavior>
-        <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_vCbgcBKbEe-3FI3WuBx1gw" name="mq_send_Behaviour" specification="_VBlSgArsEe-3FI3WuBx1gw">
+        <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_vCbgcBKbEe-3FI3WuBx1gw" name="mq_send_Behaviour">
           <language>JAVA</language>
           <body>   /*&#xD;
     * Send the message to the AOCS Process Dispatcher.&#xD;
@@ -2069,6 +2097,60 @@ aocs_message_dispatcher_thread(config);</body>
 aocs_message_dispatcher_thread.start();&#xD;
    </body>
         </ownedBehavior>
+        <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_ifbQkBaFEe-04ccfAiTXhw" name="aocs_pps_timer_signal_handler_Behaviour" specification="_DRDU0OnqEe670Kb7sOjz5g">
+          <language>JAVA</language>
+          <body>		/*set the message type to ePPSTimerMessage to process in the message loop of the aocs_message_dispatcher_thread&#xD;
+		*the other types are set the three timers (actuation, deliver_event, aim )&#xD;
+		*/&#xD;
+		_aocs_message.aocs_message_type = AOCS_message_type.ePPSTimerMessage;&#xD;
+&#xD;
+		//get the aocs shell configuration&#xD;
+		_aocs_message.aocs_message_data.message_pointer = config;&#xD;
+&#xD;
+		/*&#xD;
+		 * Send the message to the AOCS Process Dispatcher.&#xD;
+		 */&#xD;
+		//mq_send(config); this hat was done&#xD;
+&#xD;
+		//wake up the message waiting thread&#xD;
+		aocs_message_dispatcher_thread.notify();</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_lMtrUBaHEe-04ccfAiTXhw" name="aocs_actuation_timer_signal_handler_Behaviour" specification="_HIhVoOnqEe670Kb7sOjz5g">
+          <language>JAVA</language>
+          <body>		/*set the message type to eActuationTimerMessage to process in the message loop of the aocs_message_dispatcher_thread&#xD;
+		*the other types are set the three timers (pps, deliver_event, aim )&#xD;
+		*/&#xD;
+		_aocs_message.aocs_message_type = AOCS_message_type.eActuationTimerMessage;&#xD;
+&#xD;
+		//get the aocs shell configuration&#xD;
+		_aocs_message.aocs_message_data.message_pointer = config;&#xD;
+&#xD;
+		/*&#xD;
+		 * Send the message to the AOCS Process Dispatcher.&#xD;
+		 */&#xD;
+		//mq_send(config); this hat was done&#xD;
+&#xD;
+		//wake up the message waiting thread&#xD;
+		aocs_message_dispatcher_thread.notify();</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_rrCkMBaIEe-04ccfAiTXhw" name="aocs_aim_check_timer_signal_handler_Behaviour" specification="_tRwhEOnrEe670Kb7sOjz5g">
+          <language>JAVA</language>
+          <body>		/*set the message type to eAimCheckTimerMessage to process in the message loop of the aocs_message_dispatcher_thread&#xD;
+		*the other types are set the three timers (pps, deliver_event, actuation)&#xD;
+		*/&#xD;
+		_aocs_message.aocs_message_type = AOCS_message_type.eAimCheckTimerMessage;&#xD;
+&#xD;
+		//get the aocs shell configuration&#xD;
+		_aocs_message.aocs_message_data.message_pointer = config;&#xD;
+&#xD;
+		/*&#xD;
+		 * Send the message to the AOCS Process Dispatcher.&#xD;
+		 */&#xD;
+		//mq_send(config); this hat was done&#xD;
+&#xD;
+		//wake up the message waiting thread&#xD;
+		aocs_message_dispatcher_thread.notify();</body>
+        </ownedBehavior>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_cWbTQOnpEe670Kb7sOjz5g" name="AOCS_downlink_telemetry_handler">
           <ownedComment xmi:type="uml:Comment" xmi:id="_vQqvsOnpEe670Kb7sOjz5g" annotatedElement="_cWbTQOnpEe670Kb7sOjz5g">
             <body>Routine to generate the telemetry information that will be transmitted on the downlink.</body>
@@ -2079,20 +2161,23 @@ aocs_message_dispatcher_thread.start();&#xD;
             <body>Routine to the CAN API Registration Structure</body>
           </ownedComment>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_DRDU0OnqEe670Kb7sOjz5g" name="aocs_pps_timer_signal_handler">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_DRDU0OnqEe670Kb7sOjz5g" name="aocs_pps_timer_signal_handler" isStatic="true" method="_ifbQkBaFEe-04ccfAiTXhw">
           <ownedComment xmi:type="uml:Comment" xmi:id="_DRDU0enqEe670Kb7sOjz5g" annotatedElement="_DRDU0OnqEe670Kb7sOjz5g">
             <body>Routine to handle the PPS Timer Signal</body>
           </ownedComment>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_osOxEBaFEe-04ccfAiTXhw" name="config" type="_eTFu8AF8Ee--rtUdFrbRMA"/>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_HIhVoOnqEe670Kb7sOjz5g" name="aocs_actuation_timer_signal_handler">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_HIhVoOnqEe670Kb7sOjz5g" name="aocs_actuation_timer_signal_handler" isStatic="true" method="_lMtrUBaHEe-04ccfAiTXhw">
           <ownedComment xmi:type="uml:Comment" xmi:id="_HIhVoenqEe670Kb7sOjz5g" annotatedElement="_HIhVoOnqEe670Kb7sOjz5g">
             <body>Routine to handle the Actuation Timer Signal</body>
           </ownedComment>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_qgp8EBaFEe-04ccfAiTXhw" name="config" type="_eTFu8AF8Ee--rtUdFrbRMA"/>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_tRwhEOnrEe670Kb7sOjz5g" name="aocs_aim_check_timer_signal_handler">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_tRwhEOnrEe670Kb7sOjz5g" name="aocs_aim_check_timer_signal_handler" isStatic="true" method="_rrCkMBaIEe-04ccfAiTXhw">
           <ownedComment xmi:type="uml:Comment" xmi:id="_vRaEoOnrEe670Kb7sOjz5g" annotatedElement="_tRwhEOnrEe670Kb7sOjz5g">
             <body>Routine to handle the AIM Check Timer Signal</body>
           </ownedComment>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_sPDXkBaFEe-04ccfAiTXhw" name="config" type="_eTFu8AF8Ee--rtUdFrbRMA"/>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_Q1EokOnsEe670Kb7sOjz5g" name="main" method="_t1RtkBXMEe-04ccfAiTXhw">
           <ownedComment xmi:type="uml:Comment" xmi:id="_SvK9wOnsEe670Kb7sOjz5g" annotatedElement="_Q1EokOnsEe670Kb7sOjz5g">
@@ -2128,17 +2213,6 @@ Block waits for Received CAN messages.</body>
 Initialise data gathering for new cycle&#xD;
 </body>
           </ownedComment>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_VBlSgArsEe-3FI3WuBx1gw" name="mq_send" isStatic="true" method="_vCbgcBKbEe-3FI3WuBx1gw">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_VBlSgQrsEe-3FI3WuBx1gw" annotatedElement="_VBlSgArsEe-3FI3WuBx1gw">
-            <body>Send the message to the AOCS Process Dispatcher&#xD;
-</body>
-          </ownedComment>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_h-t3UArsEe-3FI3WuBx1gw" name="config" type="_eTFu8AF8Ee--rtUdFrbRMA">
-            <ownedComment xmi:type="uml:Comment" xmi:id="_h-t3UQrsEe-3FI3WuBx1gw" annotatedElement="_h-t3UArsEe-3FI3WuBx1gw">
-              <body>Pointer to the AOCS Configuration Structure</body>
-            </ownedComment>
-          </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_UDK0YArqEe-3FI3WuBx1gw" name="AOCS_Shell_deliver_event" isStatic="true" method="_bxM6QAruEe-3FI3WuBx1gw">
           <ownedComment xmi:type="uml:Comment" xmi:id="_UDK0YQrqEe-3FI3WuBx1gw" annotatedElement="_UDK0YArqEe-3FI3WuBx1gw">
@@ -2641,6 +2715,7 @@ int handleEvent(AOCS_shell_configuration config);</body>
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_0qfysOXZEe670Kb7sOjz5g" name="Include"/>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_Tt1_sBaSEe-04ccfAiTXhw" name="ScheduledExecutorService"/>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_XRCisPufEeOaTf6ppV18tA">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_XSCBMPufEeOaTf6ppV18tA" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
@@ -2696,4 +2771,6 @@ int handleEvent(AOCS_shell_configuration config);</body>
   <PapyrusJava:Array xmi:id="_Y0olcAC8Ee--rtUdFrbRMA" definition="[][]" base_property="_V4XBkAC8Ee--rtUdFrbRMA"/>
   <Codegen:NoCodeGen xmi:id="__5gRQAiVEe-3FI3WuBx1gw" base_Element="_Tk7_cAY4Ee-3FI3WuBx1gw"/>
   <PapyrusJava:Import xmi:id="_F-ggoAiWEe-3FI3WuBx1gw" manualImports="AOCS_RTP.AOCS_State_Machine.AOCS_shell_configuration" base_Classifier="_Tk7_cAY4Ee-3FI3WuBx1gw"/>
+  <PapyrusJava:Import xmi:id="_qWlZEBaQEe-04ccfAiTXhw" manualImports="import java.util.concurrent.Executors;import java.util.concurrent.ScheduledExecutorService;import java.util.concurrent.TimeUnit;" base_class="_EbAfUOUwEe670Kb7sOjz5g" base_Classifier="_EbAfUOUwEe670Kb7sOjz5g"/>
+  <PapyrusJava:External xmi:id="_lmvT4BaSEe-04ccfAiTXhw" name="java.util.concurrent.ScheduledExecutorService" base_Classifier="_Tt1_sBaSEe-04ccfAiTXhw"/>
 </xmi:XMI>
