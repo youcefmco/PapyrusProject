@@ -1773,7 +1773,7 @@ this is in accordance with the satellite's FDIR strategy</body>
           <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_7TOS8ORUEe670Kb7sOjz5g" name="RCON_RECONFIG3"/>
         </nestedClassifier>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_EbAfUOUwEe670Kb7sOjz5g" name="AOCS_Process_Shell" visibility="public">
+      <packagedElement xmi:type="uml:Class" xmi:id="_EbAfUOUwEe670Kb7sOjz5g" name="AOCS_Process_Shell" visibility="public" classifierBehavior="_1J5bgBw_Ee-04ccfAiTXhw" isActive="true">
         <ownedComment xmi:type="uml:Comment" xmi:id="_Dh1Q4OnsEe670Kb7sOjz5g" annotatedElement="_EbAfUOUwEe670Kb7sOjz5g">
           <body>Entry point for the OBC750 AOCS Process</body>
         </ownedComment>
@@ -2177,6 +2177,66 @@ aocs_message_dispatcher_thread(config);</body>
 		/* initialise AOCS variables etc. */&#xD;
 		 aocs_State_Machine.algs_interface.AINT_Init();</body>
         </ownedBehavior>
+        <ownedBehavior xmi:type="uml:Activity" xmi:id="_1J5bgBw_Ee-04ccfAiTXhw" name="AOCS_Process_ShellClassifierBehavior" node="_x5zHQBxAEe-04ccfAiTXhw">
+          <node xmi:type="uml:ReadSelfAction" xmi:id="_x5zHQBxAEe-04ccfAiTXhw" name="this">
+            <result xmi:type="uml:OutputPin" xmi:id="_x59fUBxAEe-04ccfAiTXhw" name="result" type="_EbAfUOUwEe670Kb7sOjz5g">
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_x59fURxAEe-04ccfAiTXhw" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_x59fUhxAEe-04ccfAiTXhw" value="1"/>
+            </result>
+          </node>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:Activity" xmi:id="_UHRSoBxAEe-04ccfAiTXhw" name="AOCS_Process_Shell_Factory" node="_UHR5sxxAEe-04ccfAiTXhw _UHc40BxAEe-04ccfAiTXhw _UHdf4RxAEe-04ccfAiTXhw _UHeG8RxAEe-04ccfAiTXhw _UHeG9hxAEe-04ccfAiTXhw">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_UHR5sBxAEe-04ccfAiTXhw" name="result" type="_EbAfUOUwEe670Kb7sOjz5g" direction="return">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UHR5sRxAEe-04ccfAiTXhw" value="1"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UHR5shxAEe-04ccfAiTXhw" value="1"/>
+          </ownedParameter>
+          <edge xmi:type="uml:ObjectFlow" xmi:id="_UHdf6hxAEe-04ccfAiTXhw" name="createObjectAction to callConstructor" target="_UHdf4hxAEe-04ccfAiTXhw" source="_UHc40RxAEe-04ccfAiTXhw">
+            <guard xmi:type="uml:LiteralBoolean" xmi:id="_UIT0cBxAEe-04ccfAiTXhw" value="true"/>
+            <weight xmi:type="uml:LiteralInteger" xmi:id="_UIUbgBxAEe-04ccfAiTXhw" value="1"/>
+          </edge>
+          <edge xmi:type="uml:ObjectFlow" xmi:id="_UHeG8BxAEe-04ccfAiTXhw" name="callConstructor to returnParamNode" target="_UHR5sxxAEe-04ccfAiTXhw" source="_UHeG9hxAEe-04ccfAiTXhw">
+            <guard xmi:type="uml:LiteralBoolean" xmi:id="_UIUbgRxAEe-04ccfAiTXhw" value="true"/>
+            <weight xmi:type="uml:LiteralInteger" xmi:id="_UIUbghxAEe-04ccfAiTXhw" value="1"/>
+          </edge>
+          <edge xmi:type="uml:ObjectFlow" xmi:id="_UHeG9xxAEe-04ccfAiTXhw" name="fork to startbehavior input pin" target="_UHeG8hxAEe-04ccfAiTXhw" source="_UHeG9hxAEe-04ccfAiTXhw">
+            <guard xmi:type="uml:LiteralBoolean" xmi:id="_UIUbgxxAEe-04ccfAiTXhw" value="true"/>
+            <weight xmi:type="uml:LiteralInteger" xmi:id="_UIUbhBxAEe-04ccfAiTXhw" value="1"/>
+          </edge>
+          <edge xmi:type="uml:ObjectFlow" xmi:id="_UHeG-BxAEe-04ccfAiTXhw" name="callConstructor to startBehavior" target="_UHeG9hxAEe-04ccfAiTXhw" source="_UHdf5hxAEe-04ccfAiTXhw">
+            <guard xmi:type="uml:LiteralBoolean" xmi:id="_UIUbhRxAEe-04ccfAiTXhw" value="true"/>
+            <weight xmi:type="uml:LiteralInteger" xmi:id="_UIUbhhxAEe-04ccfAiTXhw" value="1"/>
+          </edge>
+          <node xmi:type="uml:ActivityParameterNode" xmi:id="_UHR5sxxAEe-04ccfAiTXhw" name="resultParameterNode" incoming="_UHeG8BxAEe-04ccfAiTXhw" type="_EbAfUOUwEe670Kb7sOjz5g" parameter="_UHR5sBxAEe-04ccfAiTXhw">
+            <upperBound xmi:type="uml:LiteralInteger" xmi:id="_UHSgwBxAEe-04ccfAiTXhw" value="1"/>
+          </node>
+          <node xmi:type="uml:CreateObjectAction" xmi:id="_UHc40BxAEe-04ccfAiTXhw" name="createObject" classifier="_EbAfUOUwEe670Kb7sOjz5g">
+            <result xmi:type="uml:OutputPin" xmi:id="_UHc40RxAEe-04ccfAiTXhw" name="result" outgoing="_UHdf6hxAEe-04ccfAiTXhw" type="_EbAfUOUwEe670Kb7sOjz5g">
+              <upperBound xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UHdf4BxAEe-04ccfAiTXhw" value="1"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UHc40hxAEe-04ccfAiTXhw" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UHc40xxAEe-04ccfAiTXhw" value="1"/>
+            </result>
+          </node>
+          <node xmi:type="uml:CallOperationAction" xmi:id="_UHdf4RxAEe-04ccfAiTXhw" name="callConstructor" operation="_UHSgwRxAEe-04ccfAiTXhw">
+            <result xmi:type="uml:OutputPin" xmi:id="_UHdf5hxAEe-04ccfAiTXhw" name="result" outgoing="_UHeG-BxAEe-04ccfAiTXhw" type="_EbAfUOUwEe670Kb7sOjz5g">
+              <upperBound xmi:type="uml:LiteralInteger" xmi:id="_UHdf6RxAEe-04ccfAiTXhw" value="1"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UHdf5xxAEe-04ccfAiTXhw" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UHdf6BxAEe-04ccfAiTXhw" value="1"/>
+            </result>
+            <target xmi:type="uml:InputPin" xmi:id="_UHdf4hxAEe-04ccfAiTXhw" name="target" incoming="_UHdf6hxAEe-04ccfAiTXhw" type="_EbAfUOUwEe670Kb7sOjz5g">
+              <upperBound xmi:type="uml:LiteralInteger" xmi:id="_UHdf5RxAEe-04ccfAiTXhw" value="1"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UHdf4xxAEe-04ccfAiTXhw" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UHdf5BxAEe-04ccfAiTXhw" value="1"/>
+            </target>
+          </node>
+          <node xmi:type="uml:StartObjectBehaviorAction" xmi:id="_UHeG8RxAEe-04ccfAiTXhw" name="start classifier behavior" isSynchronous="false">
+            <object xmi:type="uml:InputPin" xmi:id="_UHeG8hxAEe-04ccfAiTXhw" name="object" incoming="_UHeG9xxAEe-04ccfAiTXhw" type="_EbAfUOUwEe670Kb7sOjz5g">
+              <upperBound xmi:type="uml:LiteralInteger" xmi:id="_UHeG9RxAEe-04ccfAiTXhw" value="1"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UHeG8xxAEe-04ccfAiTXhw" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UHeG9BxAEe-04ccfAiTXhw" value="1"/>
+            </object>
+          </node>
+          <node xmi:type="uml:ForkNode" xmi:id="_UHeG9hxAEe-04ccfAiTXhw" name="forkInstanciatedObject" incoming="_UHeG-BxAEe-04ccfAiTXhw" outgoing="_UHeG8BxAEe-04ccfAiTXhw _UHeG9xxAEe-04ccfAiTXhw"/>
+        </ownedBehavior>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_cWbTQOnpEe670Kb7sOjz5g" name="AOCS_downlink_telemetry_handler">
           <ownedComment xmi:type="uml:Comment" xmi:id="_vQqvsOnpEe670Kb7sOjz5g" annotatedElement="_cWbTQOnpEe670Kb7sOjz5g">
             <body>Routine to generate the telemetry information that will be transmitted on the downlink.</body>
@@ -2241,6 +2301,12 @@ Initialise data gathering for new cycle&#xD;
             <ownedComment xmi:type="uml:Comment" xmi:id="_UDK0YwrqEe-3FI3WuBx1gw" annotatedElement="_UDK0YgrqEe-3FI3WuBx1gw">
               <body>Pointer to the AOCS Configuration Structure</body>
             </ownedComment>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_UHSgwRxAEe-04ccfAiTXhw" name="AOCS_Process_Shell">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_UHZ1gBxAEe-04ccfAiTXhw" name="return" type="_EbAfUOUwEe670Kb7sOjz5g" direction="return">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UHZ1gRxAEe-04ccfAiTXhw" value="1"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UHZ1ghxAEe-04ccfAiTXhw" value="1"/>
           </ownedParameter>
         </ownedOperation>
         <nestedClassifier xmi:type="uml:Enumeration" xmi:id="_GwLHQOUtEe670Kb7sOjz5g" name="GDEF_STATUS">
@@ -2812,4 +2878,5 @@ int handleEvent(AOCS_shell_configuration config);</body>
   <PapyrusJava:Import xmi:id="_F-ggoAiWEe-3FI3WuBx1gw" manualImports="AOCS_RTP.AOCS_State_Machine.AOCS_shell_configuration" base_Classifier="_Tk7_cAY4Ee-3FI3WuBx1gw"/>
   <PapyrusJava:Import xmi:id="_qWlZEBaQEe-04ccfAiTXhw" manualImports="import java.util.concurrent.Executors;import java.util.concurrent.ScheduledExecutorService;import java.util.concurrent.TimeUnit;import AOCS_RTP.AOCS_State_Machine.AOCS_MODES;" base_class="_EbAfUOUwEe670Kb7sOjz5g" base_Classifier="_EbAfUOUwEe670Kb7sOjz5g"/>
   <PapyrusJava:External xmi:id="_lmvT4BaSEe-04ccfAiTXhw" name="java.util.concurrent.ScheduledExecutorService" base_Classifier="_Tt1_sBaSEe-04ccfAiTXhw"/>
+  <standard:Create xmi:id="_UHcRwBxAEe-04ccfAiTXhw" base_BehavioralFeature="_UHSgwRxAEe-04ccfAiTXhw"/>
 </xmi:XMI>
