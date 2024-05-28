@@ -7,6 +7,9 @@
     <packageImport xmi:type="uml:PackageImport" xmi:id="_cMrgcOa_Ee670Kb7sOjz5g">
       <importedPackage xmi:type="uml:Profile" href="pathmap://PapyrusJava_PROFILES/PapyrusJava.profile.uml#_j9REUByGEduN1bTiWJ0lyw"/>
     </packageImport>
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_onM1EBzxEe-04ccfAiTXhw">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
     <packagedElement xmi:type="uml:Package" xmi:id="_wLFCsHXhEeKEDJ51kkuoUw" name="AOCS_RTP" visibility="public">
       <ownedComment xmi:type="uml:Comment" xmi:id="_chbAoKKFEeKB6PiQ7fFSsA">
         <body>This example consist in:&#xD;
@@ -77,7 +80,7 @@ To test this example:&#xD;
               <upperBound xmi:type="uml:LiteralInteger" xmi:id="_JP98IXXlEeKEDJ51kkuoUw" value="1"/>
             </result>
           </node>
-          <node xmi:type="uml:CallOperationAction" xmi:id="_MV1g4HXlEeKEDJ51kkuoUw" name="Call increment operation" outgoing="_UoNmwHXlEeKEDJ51kkuoUw" operation="_LmEtUHXkEeKEDJ51kkuoUw">
+          <node xmi:type="uml:CallOperationAction" xmi:id="_MV1g4HXlEeKEDJ51kkuoUw" name="Call increment operation" visibility="private" outgoing="_UoNmwHXlEeKEDJ51kkuoUw" operation="_LmEtUHXkEeKEDJ51kkuoUw">
             <target xmi:type="uml:InputPin" xmi:id="_MV1g43XlEeKEDJ51kkuoUw" name="target" incoming="_SnOmcHXlEeKEDJ51kkuoUw" type="_343NwHXhEeKEDJ51kkuoUw">
               <upperBound xmi:type="uml:LiteralInteger" xmi:id="_MV1g5HXlEeKEDJ51kkuoUw" value="1"/>
             </target>
@@ -1597,7 +1600,7 @@ State where the AOCS cycle is running</body>
           <body>State_Machine_AOCS.aroCounter =&lt; 0</body>
         </changeExpression>
       </packagedElement>
-      <packagedElement xmi:type="uml:Activity" xmi:id="_0114cNDPEe6OJd78DXkgdw" name="modeTransitionActivity" node="_-kd54NDPEe6OJd78DXkgdw _REZ_8NDQEe6OJd78DXkgdw">
+      <packagedElement xmi:type="uml:Activity" xmi:id="_0114cNDPEe6OJd78DXkgdw" name="modeTransitionActivity" node="_REZ_8NDQEe6OJd78DXkgdw _-kd54NDPEe6OJd78DXkgdw">
         <node xmi:type="uml:InitialNode" xmi:id="_-kd54NDPEe6OJd78DXkgdw" name="InitialNode1"/>
         <node xmi:type="uml:DecisionNode" xmi:id="_REZ_8NDQEe6OJd78DXkgdw" name="newMode"/>
       </packagedElement>
@@ -2177,13 +2180,18 @@ aocs_message_dispatcher_thread(config);</body>
 		/* initialise AOCS variables etc. */&#xD;
 		 aocs_State_Machine.algs_interface.AINT_Init();</body>
         </ownedBehavior>
-        <ownedBehavior xmi:type="uml:Activity" xmi:id="_1J5bgBw_Ee-04ccfAiTXhw" name="AOCS_Process_ShellClassifierBehavior" node="_x5zHQBxAEe-04ccfAiTXhw">
-          <node xmi:type="uml:ReadSelfAction" xmi:id="_x5zHQBxAEe-04ccfAiTXhw" name="this">
-            <result xmi:type="uml:OutputPin" xmi:id="_x59fUBxAEe-04ccfAiTXhw" name="result" type="_EbAfUOUwEe670Kb7sOjz5g">
+        <ownedBehavior xmi:type="uml:Activity" xmi:id="_1J5bgBw_Ee-04ccfAiTXhw" name="AOCS_Process_ShellClassifierBehavior" node="_x5zHQBxAEe-04ccfAiTXhw _NwiUoBzxEe-04ccfAiTXhw _ehsKYB0BEe-04ccfAiTXhw">
+          <edge xmi:type="uml:ControlFlow" xmi:id="_LbWJcBzyEe-04ccfAiTXhw" target="_NwiUoBzxEe-04ccfAiTXhw" source="_x59fUBxAEe-04ccfAiTXhw"/>
+          <edge xmi:type="uml:ControlFlow" xmi:id="_gJ1M4B0BEe-04ccfAiTXhw" target="_x5zHQBxAEe-04ccfAiTXhw" source="_ehsKYB0BEe-04ccfAiTXhw"/>
+          <node xmi:type="uml:ReadSelfAction" xmi:id="_x5zHQBxAEe-04ccfAiTXhw" name="This" incoming="_gJ1M4B0BEe-04ccfAiTXhw">
+            <result xmi:type="uml:OutputPin" xmi:id="_x59fUBxAEe-04ccfAiTXhw" name="result" outgoing="_LbWJcBzyEe-04ccfAiTXhw" type="_EbAfUOUwEe670Kb7sOjz5g">
+              <upperBound xmi:type="uml:LiteralInteger" xmi:id="_jcbwcBzdEe-04ccfAiTXhw" value="1"/>
               <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_x59fURxAEe-04ccfAiTXhw" value="1"/>
               <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_x59fUhxAEe-04ccfAiTXhw" value="1"/>
             </result>
           </node>
+          <node xmi:type="uml:CallBehaviorAction" xmi:id="_NwiUoBzxEe-04ccfAiTXhw" name="Call main behaviour" incoming="_LbWJcBzyEe-04ccfAiTXhw" behavior="_rRsHYBzbEe-04ccfAiTXhw"/>
+          <node xmi:type="uml:InitialNode" xmi:id="_ehsKYB0BEe-04ccfAiTXhw" outgoing="_gJ1M4B0BEe-04ccfAiTXhw"/>
         </ownedBehavior>
         <ownedBehavior xmi:type="uml:Activity" xmi:id="_UHRSoBxAEe-04ccfAiTXhw" name="AOCS_Process_Shell_Factory" node="_UHR5sxxAEe-04ccfAiTXhw _UHc40BxAEe-04ccfAiTXhw _UHdf4RxAEe-04ccfAiTXhw _UHeG8RxAEe-04ccfAiTXhw _UHeG9hxAEe-04ccfAiTXhw">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_UHR5sBxAEe-04ccfAiTXhw" name="result" type="_EbAfUOUwEe670Kb7sOjz5g" direction="return">
@@ -2237,6 +2245,32 @@ aocs_message_dispatcher_thread(config);</body>
           </node>
           <node xmi:type="uml:ForkNode" xmi:id="_UHeG9hxAEe-04ccfAiTXhw" name="forkInstanciatedObject" incoming="_UHeG-BxAEe-04ccfAiTXhw" outgoing="_UHeG8BxAEe-04ccfAiTXhw _UHeG9xxAEe-04ccfAiTXhw"/>
         </ownedBehavior>
+        <ownedBehavior xmi:type="uml:Activity" xmi:id="_rRsHYBzbEe-04ccfAiTXhw" name="mainMethod" specification="_Q1EokOnsEe670Kb7sOjz5g" node="_omSPEBzxEe-04ccfAiTXhw _X3zFQB0BEe-04ccfAiTXhw">
+          <edge xmi:type="uml:ControlFlow" xmi:id="_ZyVfUB0BEe-04ccfAiTXhw" target="_omSPEBzxEe-04ccfAiTXhw" source="_X3zFQB0BEe-04ccfAiTXhw"/>
+          <node xmi:type="uml:ValueSpecificationAction" xmi:id="_omSPEBzxEe-04ccfAiTXhw" name="ValueSpecificationAction1" incoming="_ZyVfUB0BEe-04ccfAiTXhw">
+            <handler xmi:type="uml:ExceptionHandler" xmi:id="_ZFJCIB0BEe-04ccfAiTXhw"/>
+            <result xmi:type="uml:OutputPin" xmi:id="_onNcIBzxEe-04ccfAiTXhw" name="result">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_onNcIRzxEe-04ccfAiTXhw" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_onNcIhzxEe-04ccfAiTXhw" value="1"/>
+            </result>
+            <value xmi:type="uml:LiteralInteger" xmi:id="_r9eNUBzxEe-04ccfAiTXhw" value="1"/>
+          </node>
+          <node xmi:type="uml:InitialNode" xmi:id="_X3zFQB0BEe-04ccfAiTXhw" name="InitialNode2" outgoing="_ZyVfUB0BEe-04ccfAiTXhw"/>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:Activity" xmi:id="_md0hMB0GEe-04ccfAiTXhw" name="Aocs_message_dispatcher_threadBehavior" node="_5qlRAB0GEe-04ccfAiTXhw _anNqIB0HEe-04ccfAiTXhw">
+          <node xmi:type="uml:InitialNode" xmi:id="_5qlRAB0GEe-04ccfAiTXhw" name="InitialNode1"/>
+          <node xmi:type="uml:ReadStructuralFeatureAction" xmi:id="_anNqIB0HEe-04ccfAiTXhw" name="read aocs message" structuralFeature="_KQV0IgiUEe-3FI3WuBx1gw">
+            <object xmi:type="uml:InputPin" xmi:id="_anORMB0HEe-04ccfAiTXhw" name="object" type="_EbAfUOUwEe670Kb7sOjz5g">
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_anORMR0HEe-04ccfAiTXhw" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_anORMh0HEe-04ccfAiTXhw" value="1"/>
+            </object>
+            <result xmi:type="uml:OutputPin" xmi:id="_37CJgB0HEe-04ccfAiTXhw" name="result" type="_TxhE4AiTEe-3FI3WuBx1gw">
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_37CwkB0HEe-04ccfAiTXhw" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_37CwkR0HEe-04ccfAiTXhw" value="1"/>
+            </result>
+          </node>
+        </ownedBehavior>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_cWbTQOnpEe670Kb7sOjz5g" name="AOCS_downlink_telemetry_handler">
           <ownedComment xmi:type="uml:Comment" xmi:id="_vQqvsOnpEe670Kb7sOjz5g" annotatedElement="_cWbTQOnpEe670Kb7sOjz5g">
             <body>Routine to generate the telemetry information that will be transmitted on the downlink.</body>
@@ -2265,16 +2299,10 @@ aocs_message_dispatcher_thread(config);</body>
           </ownedComment>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_sPDXkBaFEe-04ccfAiTXhw" name="config" type="_eTFu8AF8Ee--rtUdFrbRMA"/>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_Q1EokOnsEe670Kb7sOjz5g" name="main" method="_t1RtkBXMEe-04ccfAiTXhw">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_Q1EokOnsEe670Kb7sOjz5g" name="main" method="_rRsHYBzbEe-04ccfAiTXhw _t1RtkBXMEe-04ccfAiTXhw">
           <ownedComment xmi:type="uml:Comment" xmi:id="_SvK9wOnsEe670Kb7sOjz5g" annotatedElement="_Q1EokOnsEe670Kb7sOjz5g">
             <body>Entry point for the OBC750 AOCS Process</body>
           </ownedComment>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_Q1EokensEe670Kb7sOjz5g" name="arg">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
-          </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_Q1EokunsEe670Kb7sOjz5g" name="argv">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_XxJZwGx-Eey_s9B0BvHgkw"/>
-          </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_eQIfgOnsEe670Kb7sOjz5g" name="TaskExit">
           <ownedComment xmi:type="uml:Comment" xmi:id="_o6yEUOnsEe670Kb7sOjz5g" annotatedElement="_eQIfgOnsEe670Kb7sOjz5g">
@@ -2818,6 +2846,7 @@ int handleEvent(AOCS_shell_configuration config);</body>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_0qfysOXZEe670Kb7sOjz5g" name="Include"/>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="_Tt1_sBaSEe-04ccfAiTXhw" name="ScheduledExecutorService"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_OuyP8BzNEe-04ccfAiTXhw" name="StateMachineDiagram"/>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_XRCisPufEeOaTf6ppV18tA">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_XSCBMPufEeOaTf6ppV18tA" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
